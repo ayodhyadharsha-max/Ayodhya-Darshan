@@ -1,5 +1,5 @@
 /* ============================================================
-   Ayodhya Darshan — Design System
+   Ayodhya Dharshan — Design System
    Warm spiritual premium: ivory · saffron · maroon · gold
    ============================================================ */
 
@@ -370,3 +370,13 @@ image-slot{ --is-bg:#E9C98A; }
   padding:clamp(28px,4vw,44px); text-align:center; margin:48px auto 0; max-width:760px; }
 
 @media(prefers-reduced-motion:reduce){ *{ animation:none!important; transition:none!important; } .reveal{opacity:1;transform:none;} }
+
+/* Spinner animation */
+.spin {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
