@@ -210,28 +210,46 @@ form?.addEventListener('submit',(e)=>{
   submitButton.disabled = true;
   submitButton.innerHTML = 'Sending... <svg class="spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;animation:spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="8"/><path d="M12 2v4M12 18v4M4 12H2M22 12h-2"/></svg>';
   
-  fetch("https://formsubmit.co/ajax/ayodhyadharsha@gmail.com", {
+  const nameVal = form.name.value;
+  const phoneVal = form.phone.value;
+  const emailVal = form.email.value;
+  const cityVal = form.city.value;
+  const peopleVal = form.people.value;
+  const dateVal = form.date.value;
+  const budgetVal = form.budget.value;
+  const msgVal = form.msg.value;
+
+  fetch("https://api.web3forms.com/submit", {
     method: "POST",
     headers: { 
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
     body: JSON.stringify({
-      Name: form.name.value,
-      Phone: form.phone.value,
-      Email: form.email.value,
-      Destination: form.city.value,
-      Travellers: form.people.value,
-      Dates: form.date.value,
-      Budget: form.budget.value,
-      Message: form.msg.value
+      access_key: "eb6a0bc1-cc9b-48a4-8cee-7cd94d93ac27",
+      name: nameVal,
+      phone: phoneVal,
+      email: emailVal,
+      destination: cityVal,
+      travellers: peopleVal,
+      dates: dateVal,
+      budget: budgetVal,
+      message: msgVal,
+      subject: "New Enquiry from Ayodhya Dharshan Website"
     })
   })
-  .then(response => {
-    if (response.ok) {
-      ok.classList.add('show');
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
       form.reset();
-      window.scrollTo({top:ok.getBoundingClientRect().top+window.scrollY-120, behavior:'smooth'});
+      
+      const nameEnc = encodeURIComponent(nameVal);
+      const phoneEnc = encodeURIComponent(phoneVal);
+      const cityEnc = encodeURIComponent(cityVal || 'Sacred Circuit');
+      const travellersEnc = encodeURIComponent(peopleVal || '1-2');
+      const datesEnc = encodeURIComponent(dateVal || 'Not Specified');
+      
+      window.location.href = `thankyou.html?name=${nameEnc}&phone=${phoneEnc}&city=${cityEnc}&people=${travellersEnc}&dates=${datesEnc}`;
     } else {
       alert("Something went wrong. Please try again.");
     }
