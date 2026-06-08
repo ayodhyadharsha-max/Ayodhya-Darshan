@@ -10,3 +10,7 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+# Nested repositories / folders
+ayodhya-landing-main/
+
