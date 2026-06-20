@@ -604,3 +604,86 @@ dialog#discountDialog[open]::backdrop {
   text-align: center;
 }
 
+/* ---------- Pricing Comparison Table ---------- */
+.pricing-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 30px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  -webkit-overflow-scrolling: touch;
+}
+.pricing-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 750px;
+  font-family: var(--font-body);
+}
+.pricing-comparison-table th, 
+.pricing-comparison-table td {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 1.05rem;
+}
+.pricing-comparison-table th {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--maroon);
+  background: var(--bg-panel);
+  border-bottom: 2px solid var(--line);
+  vertical-align: middle;
+}
+.pricing-comparison-table tr:hover {
+  background: rgba(244, 232, 212, 0.2);
+}
+.pricing-comparison-table td.feat-name {
+  font-weight: 500;
+  color: var(--ink);
+  background: rgba(254, 252, 247, 0.7);
+  width: 25%;
+}
+.tier-budget {
+  width: 25%;
+}
+.tier-standard {
+  width: 25%;
+  background: rgba(221, 122, 31, 0.03);
+}
+.tier-standard.popular {
+  position: relative;
+  background: rgba(221, 122, 31, 0.06);
+  border-left: 2px solid rgba(221, 122, 31, 0.3);
+  border-right: 2px solid rgba(221, 122, 31, 0.3);
+}
+.tier-premium {
+  width: 25%;
+}
+.badge-pop {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--saffron-deep);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.pricing-comparison-table td strong {
+  font-size: 1.25rem;
+  color: var(--maroon);
+}
+.pricing-comparison-table .btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+}
+
