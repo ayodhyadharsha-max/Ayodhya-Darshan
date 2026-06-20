@@ -624,6 +624,90 @@ const CITIES=[
 })();
 </script>
 
+
+<!-- Special Discount Offer Dialog -->
+<dialog id="discountDialog" closedby="any" aria-labelledby="discountTitle">
+  <div class="discount-modal-body">
+    <button class="discount-close-btn" id="discountCloseBtn" aria-label="Close discount offer">&times;</button>
+    <div class="discount-badge">Jai Shree Ram</div>
+    <h2 id="discountTitle" class="discount-title">Special Blessing Offer</h2>
+    <p class="discount-subtitle">Get Flat <strong>₹1,001 Off</strong> on your first family yatra booking!</p>
+    
+    <div class="discount-promo-box">
+      <span class="discount-promo-label">Use Coupon Code:</span>
+      <div class="discount-promo-code-container">
+        <span class="discount-promo-code" id="discountPromoCode">RAM1001</span>
+        <button class="discount-copy-btn" id="discountCopyBtn" aria-label="Copy coupon code">Copy Code</button>
+      </div>
+      <div class="discount-copy-msg" id="discountCopySuccess">Copied to clipboard!</div>
+    </div>
+    
+    <p class="discount-note">*Offer valid on all Ayodhya, Varanasi & Prayagraj packages.</p>
+    
+    <div class="discount-action-row">
+      <a href="https://book.ayodhyadharshan.com/" class="btn btn-primary discount-primary-btn" id="discountBookBtn">Book Yatra Now</a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.getElementById('discountDialog');
+  const closeBtn = document.getElementById('discountCloseBtn');
+  const copyBtn = document.getElementById('discountCopyBtn');
+  const bookBtn = document.getElementById('discountBookBtn');
+  
+  if (!dialog) return;
+
+  // Show dialog after 2.5 seconds if not already dismissed in this session
+  if (!sessionStorage.getItem('discountDismissed')) {
+    setTimeout(() => {
+      dialog.showModal();
+    }, 2500);
+  }
+
+  // Close function
+  const dismissDialog = () => {
+    dialog.close();
+    sessionStorage.setItem('discountDismissed', 'true');
+  };
+
+  closeBtn.addEventListener('click', dismissDialog);
+  bookBtn.addEventListener('click', dismissDialog);
+
+  // Fallback for browsers without closedby support
+  if (!('closedBy' in HTMLDialogElement.prototype)) {
+    dialog.addEventListener('click', (event) => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      const isDialogContent = (
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width
+      );
+      if (isDialogContent) return;
+      dismissDialog();
+    });
+  }
+
+  // Copy coupon code logic
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('RAM1001').then(() => {
+      const msg = document.getElementById('discountCopySuccess');
+      msg.classList.add('show');
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        msg.classList.remove('show');
+        copyBtn.textContent = 'Copy Code';
+      }, 2000);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  });
+});
+</script>
+
 <!-- Floating WhatsApp Button -->
 <a href="https://wa.me/919235222399?text=Jai%20Shree%20Ram!%20I%20want%20to%20enquire%20about%20Ayodhya%20Dharshan%20tour%20packages." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24">

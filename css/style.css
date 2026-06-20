@@ -410,15 +410,197 @@ image-slot{ --is-bg:#E9C98A; }
   height: 32px;
   fill: currentColor;
 }
-@media (max-width: 768px) {
-  .whatsapp-float {
-    width: 50px;
-    height: 50px;
-    bottom: 20px;
-    right: 20px;
-  }
-  .whatsapp-float svg {
-    width: 26px;
-    height: 26px;
+}
+
+/* ---------- Premium Discount Modal Dialog ---------- */
+dialog#discountDialog {
+  border: 2px solid var(--gold-soft);
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, #FEFCF7 0%, #FBF5EA 100%);
+  color: var(--ink);
+  padding: 0;
+  max-width: 440px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+  overflow: visible;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), display 0.35s allow-discrete;
+}
+
+dialog#discountDialog[open] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@starting-style {
+  dialog#discountDialog[open] {
+    opacity: 0;
+    transform: scale(0.9);
   }
 }
+
+/* Backdrop */
+dialog#discountDialog::backdrop {
+  background-color: rgba(42, 20, 14, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.35s ease, display 0.35s allow-discrete;
+}
+
+dialog#discountDialog[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog#discountDialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+.discount-modal-body {
+  padding: 40px 32px 36px;
+  text-align: center;
+  position: relative;
+}
+
+.discount-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: var(--ink-3);
+  cursor: pointer;
+  line-height: 1;
+  padding: 5px;
+  transition: color 0.2s, transform 0.2s;
+  z-index: 5;
+}
+.discount-close-btn:hover {
+  color: var(--maroon);
+  transform: scale(1.1);
+}
+
+.discount-badge {
+  display: inline-block;
+  background: rgba(221, 122, 31, 0.08);
+  color: var(--saffron-deep);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(221, 122, 31, 0.25);
+}
+
+.discount-title {
+  font-size: 2rem;
+  color: var(--maroon);
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  line-height: 1.1;
+}
+
+.discount-subtitle {
+  font-size: 1rem;
+  color: var(--ink-2);
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+.discount-subtitle strong {
+  color: var(--saffron-deep);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.discount-promo-box {
+  background: var(--cream);
+  border: 1px dashed var(--gold);
+  border-radius: var(--r-md);
+  padding: 16px;
+  margin-bottom: 14px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.discount-promo-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.discount-promo-code-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.discount-promo-code {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--saffron-deep);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.discount-copy-btn {
+  background: var(--maroon);
+  color: #fff;
+  border: none;
+  padding: 5px 12px;
+  border-radius: var(--r-sm);
+  font-size: 0.82rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+.discount-copy-btn:hover {
+  background: var(--maroon-2);
+}
+.discount-copy-btn:active {
+  transform: scale(0.95);
+}
+
+.discount-copy-msg {
+  font-size: 0.78rem;
+  color: #2e7d32;
+  margin-top: 4px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+.discount-copy-msg.show {
+  opacity: 1;
+}
+
+.discount-note {
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  margin-bottom: 22px;
+  font-style: italic;
+}
+
+.discount-primary-btn {
+  width: 100%;
+  display: block;
+  font-size: 1.05rem;
+  padding: 10px;
+  box-shadow: 0 4px 15px rgba(92, 26, 18, 0.2);
+  text-align: center;
+}
+
