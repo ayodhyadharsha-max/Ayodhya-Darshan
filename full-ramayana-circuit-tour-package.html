@@ -25,10 +25,45 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Full Ramayana Circuit Tour Package",
-  "description": "Book a complete 8-day Full Ramayana Circuit Tour Package. Guided visits to Ayodhya, Naimisharanya, Prayagraj, Chitrakoot, Varanasi, and Vindhyachal.",
-  "url": "https://www.ayodhyadharshan.com/full-ramayana-circuit-tour-package.html"
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.ayodhyadharshan.com/full-ramayana-circuit-tour-package.html",
+      "name": "Full Ramayana Circuit Tour Package",
+      "description": "Book a complete 8-day Full Ramayana Circuit Tour Package. Guided visits to Ayodhya, Naimisharanya, Prayagraj, Chitrakoot, Varanasi, and Vindhyachal.",
+      "url": "https://www.ayodhyadharshan.com/full-ramayana-circuit-tour-package.html"
+    },
+    {
+      "@type": "TouristTrip",
+      "name": "Full Ramayana Circuit Tour Package",
+      "description": "8 days / 7 nights across Ayodhya, Naimisharanya, Prayagraj, Chitrakoot, Varanasi and Vindhyachal.",
+      "touristType": "Pilgrimage",
+      "itinerary": {
+        "@type": "ItemList",
+        "numberOfItems": 8,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "item": { "@type": "Place", "name": "Ayodhya" } },
+          { "@type": "ListItem", "position": 2, "item": { "@type": "Place", "name": "Naimisharanya" } },
+          { "@type": "ListItem", "position": 3, "item": { "@type": "Place", "name": "Prayagraj" } },
+          { "@type": "ListItem", "position": 4, "item": { "@type": "Place", "name": "Chitrakoot" } },
+          { "@type": "ListItem", "position": 5, "item": { "@type": "Place", "name": "Varanasi" } },
+          { "@type": "ListItem", "position": 6, "item": { "@type": "Place", "name": "Vindhyachal" } }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "32900",
+        "priceCurrency": "INR",
+        "url": "https://www.ayodhyadharshan.com/full-ramayana-circuit-tour-package.html",
+        "eligibleRegion": "IN"
+      },
+      "provider": {
+        "@type": "TravelAgency",
+        "name": "Ayodhya Dharshan",
+        "url": "https://www.ayodhyadharshan.com/"
+      }
+    }
+  ]
 }
 </script>
 

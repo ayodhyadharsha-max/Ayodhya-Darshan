@@ -25,10 +25,42 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Mathura Vrindavan Tour Package",
-  "description": "Book a comfortable 3-day Mathura Vrindavan Tour Package. Covers Krishna Janmabhoomi, Vrindavan temples, and Govardhan.",
-  "url": "https://www.ayodhyadharshan.com/mathura-vrindavan-tour-package.html"
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.ayodhyadharshan.com/mathura-vrindavan-tour-package.html",
+      "name": "Mathura Vrindavan Tour Package",
+      "description": "Book a comfortable 3-day Mathura Vrindavan Tour Package. Covers Krishna Janmabhoomi, Vrindavan temples, and Govardhan.",
+      "url": "https://www.ayodhyadharshan.com/mathura-vrindavan-tour-package.html"
+    },
+    {
+      "@type": "TouristTrip",
+      "name": "Mathura Vrindavan Tour Package",
+      "description": "3 days / 2 nights covering Mathura, Vrindavan and Govardhan in Braj.",
+      "touristType": "Pilgrimage",
+      "itinerary": {
+        "@type": "ItemList",
+        "numberOfItems": 3,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "item": { "@type": "Place", "name": "Mathura" } },
+          { "@type": "ListItem", "position": 2, "item": { "@type": "Place", "name": "Vrindavan" } },
+          { "@type": "ListItem", "position": 3, "item": { "@type": "Place", "name": "Govardhan" } }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "11200",
+        "priceCurrency": "INR",
+        "url": "https://www.ayodhyadharshan.com/mathura-vrindavan-tour-package.html",
+        "eligibleRegion": "IN"
+      },
+      "provider": {
+        "@type": "TravelAgency",
+        "name": "Ayodhya Dharshan",
+        "url": "https://www.ayodhyadharshan.com/"
+      }
+    }
+  ]
 }
 </script>
 
