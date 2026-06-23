@@ -687,3 +687,34 @@ dialog#discountDialog[open]::backdrop {
   font-size: 0.95rem;
 }
 
+/* ---------- Skeleton Shimmer Screen Effect ---------- */
+.frame, .rf-photo, .bc-img, .pkg-top, .g-item {
+  background: var(--bg-panel) !important;
+  position: relative;
+  overflow: hidden;
+}
+.frame::after, .rf-photo::after, .bc-img::after, .pkg-top::after, .g-item::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: linear-gradient(90deg, 
+    rgba(244,232,212,0) 0%, 
+    rgba(255,255,255,0.4) 50%, 
+    rgba(244,232,212,0) 100%
+  ) !important;
+  transform: translateX(-100%);
+  animation: shimmer 1.8s infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+/* Ensure loaded images overlap the shimmer effect */
+.frame img, .rf-photo img, .bc-img img, .pkg-top img, .g-item img {
+  position: relative;
+  z-index: 3;
+}
+
