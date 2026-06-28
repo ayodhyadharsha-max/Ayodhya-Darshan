@@ -294,7 +294,8 @@ image-slot{ --is-bg:#E9C98A; }
 .faq summary .pm{ flex:none; width:30px; height:30px; border-radius:50%; border:1px solid var(--line);
   display:grid; place-items:center; color:var(--saffron-deep); transition:transform .3s, background .3s; }
 .faq[open] summary .pm{ transform:rotate(45deg); background:var(--saffron); color:#fff; border-color:var(--saffron); }
-.faq .ans{ padding:0 4px 24px; color:var(--ink-2); max-width:70ch; }
+.faq .ans{ padding:0 4px 24px; color:var(--ink-2); max-width:70ch; opacity:0; transform:translateY(-8px); transition:opacity .3s ease, transform .3s ease; }
+.faq[open] .ans{ opacity:1; transform:translateY(0); }
 
 /* ---------- Forms ---------- */
 .form-card{ background:var(--cream); border:1px solid var(--line); border-radius:var(--r-lg); padding:clamp(26px,3.5vw,40px); box-shadow:var(--shadow-md); }
