@@ -732,22 +732,22 @@ const CITIES=[
   <div class="discount-modal-body">
     <button class="discount-close-btn" id="discountCloseBtn" aria-label="Close discount offer">&times;</button>
     <div class="discount-badge">Jai Shree Ram</div>
-    <h2 id="discountTitle" class="discount-title">Special Blessing Offer</h2>
-    <p class="discount-subtitle">Get Flat <strong>₹1,001 Off</strong> on your first family yatra booking!</p>
+    <h2 id="discountTitle" class="discount-title">VIP Darshan Pass Upgrade</h2>
+    <p class="discount-subtitle">Get a <strong>Free Fast-Track VIP Entry Upgrade</strong> for your entire family!</p>
     
     <div class="discount-promo-box">
       <span class="discount-promo-label">Use Coupon Code:</span>
       <div class="discount-promo-code-container">
-        <span class="discount-promo-code" id="discountPromoCode">RAM1001</span>
+        <span class="discount-promo-code" id="discountPromoCode">VIPFREE</span>
         <button class="discount-copy-btn" id="discountCopyBtn" aria-label="Copy coupon code">Copy Code</button>
       </div>
       <div class="discount-copy-msg" id="discountCopySuccess">Copied to clipboard!</div>
     </div>
     
-    <p class="discount-note">*Offer valid on all Ayodhya, Varanasi & Prayagraj packages.</p>
+    <p class="discount-note">*Offer valid on all premium Ayodhya, Varanasi & Prayagraj packages.</p>
     
     <div class="discount-action-row">
-      <a href="https://book.ayodhyadharshan.com/" class="btn btn-primary discount-primary-btn" id="discountBookBtn">Book Yatra Now</a>
+      <a href="https://book.ayodhyadharshan.com/?promo=VIPFREE" class="btn btn-primary discount-primary-btn" id="discountBookBtn">Book Yatra Now</a>
     </div>
   </div>
 </dialog>
@@ -761,23 +761,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (!dialog) return;
 
-  // A/B Testing Logic for Popup CTA
-  let selectedVar = sessionStorage.getItem('discountVariation');
-  if (!selectedVar) {
-    selectedVar = Math.random() < 0.5 ? 'A' : 'B';
-    sessionStorage.setItem('discountVariation', selectedVar);
-  }
-
-  const promoCode = selectedVar === 'B' ? 'VIPFREE' : 'RAM1001';
-
-  // Customize Variation B (VIP Upgrade Variation)
-  if (selectedVar === 'B') {
-    document.getElementById('discountTitle').textContent = 'VIP Darshan Pass Upgrade';
-    document.querySelector('.discount-subtitle').innerHTML = 'Get a <strong>Free Fast-Track VIP Entry Upgrade</strong> for your entire family!';
-    document.getElementById('discountPromoCode').textContent = 'VIPFREE';
-    document.getElementById('discountBookBtn').href = 'https://book.ayodhyadharshan.com/?promo=VIPFREE';
-    document.querySelector('.discount-note').textContent = '*Offer valid on all premium Ayodhya, Varanasi & Prayagraj packages.';
-  }
+  // Standardized Offer: VIP Upgrade (Former Variation B)
+  const promoCode = 'VIPFREE';
+  const selectedVar = 'B';
 
   // Show dialog after 2.5 seconds if not already dismissed in this session
   if (!sessionStorage.getItem('discountDismissed')) {
