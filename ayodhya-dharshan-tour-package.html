@@ -124,56 +124,77 @@
        crossorigin="anonymous"></script>
   <!-- TouristTrip Schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "135"
-    },
-    "name": "Ayodhya Dharshan Tour Package (3 Days)",
-    "description": "Plan a perfect 3-Day family trip to Ayodhya. Package includes premium hotel stays, private AC cab, guided Ram Mandir darshan, Kanak Bhawan, and Saryu Aarti.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Ayodhya Dharshan"
-    },
-    "touristType": "Pilgrimage",
-    "offers": {
-      "@type": "Offer",
-      "price": "7900",
-      "priceCurrency": "INR",
-      "priceValidUntil": "2026-12-31",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2026-01-01"
-    },
-    "provider": {
-      "@type": "TravelAgency",
-      "name": "Ayodhya Dharshan",
-      "url": "https://www.ayodhyadharshan.com/",
-      "telephone": "+91-92352-22399",
-      "priceRange": "₹₹",
-      "image": "https://www.ayodhyadharshan.com/assets/reviews/ayodhya-night.jpg",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Near RTO Office",
-        "addressLocality": "Ayodhya",
-        "addressRegion": "Uttar Pradesh",
-        "postalCode": "224123",
-        "addressCountry": "IN"
-      }
-    },
-    "itinerary": {
-      "@type": "ItemList",
-      "numberOfItems": 3,
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Day 1: Arrival in Ayodhya, transfer to hotel, and evening Saryu River Aarti" },
-        { "@type": "ListItem", "position": 2, "name": "Day 2: Hanuman Garhi, Ram Janmabhoomi VIP Darshan, Kanak Bhawan & local sites" },
-        { "@type": "ListItem", "position": 3, "name": "Day 3: Surya Kund visit, souvenir shopping & transfer to station/airport for departure" }
-      ]
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "135"
+  },
+  "name": "Ayodhya Dharshan Tour Package (3 Days)",
+  "description": "Plan a perfect 3-Day family trip to Ayodhya. Package includes premium hotel stays, private AC cab, guided Ram Mandir darshan, Kanak Bhawan, and Saryu Aarti.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Ayodhya Dharshan"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "7900",
+    "priceCurrency": "INR",
+    "priceValidUntil": "2026-12-31",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-01-01"
+  },
+  "provider": {
+    "@type": "TravelAgency",
+    "name": "Ayodhya Dharshan",
+    "url": "https://www.ayodhyadharshan.com/",
+    "telephone": "+91-92352-22399",
+    "priceRange": "\u20b9\u20b9",
+    "image": "https://www.ayodhyadharshan.com/assets/reviews/ayodhya-night.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Near RTO Office",
+      "addressLocality": "Ayodhya",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "224123",
+      "addressCountry": "IN"
     }
-  }
-  </script>
+  },
+  "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ram_Mandir%2C_Ayodhya.png?width=1200"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Ayodhya Dharshan Tour Package (3 Days)",
+  "description": "Plan a perfect 3-Day family trip to Ayodhya. Package includes premium hotel stays, private AC cab, guided Ram Mandir darshan, Kanak Bhawan, and Saryu Aarti.",
+  "itinerary": {
+    "@type": "ItemList",
+    "numberOfItems": 3,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Day 1: Arrival in Ayodhya, transfer to hotel, and evening Saryu River Aarti"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Day 2: Hanuman Garhi, Ram Janmabhoomi VIP Darshan, Kanak Bhawan & local sites"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Day 3: Surya Kund visit, souvenir shopping & transfer to station/airport for departure"
+      }
+    ]
+  },
+  "touristType": "Pilgrimage"
+}
+</script>
 <!-- Breadcrumb Schema -->
 <script type="application/ld+json">
 {

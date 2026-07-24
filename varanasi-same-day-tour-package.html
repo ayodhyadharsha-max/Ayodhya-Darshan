@@ -133,57 +133,82 @@
        crossorigin="anonymous"></script>
   <!-- TouristTrip Schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "118"
-    },
-    "name": "Varanasi Same Day Tour Package",
-    "description": "Book a private 1-Day Varanasi tour package. Includes local Kashi Vishwanath temple guide, Sarnath excursion, Ganga boat ride, and VIP evening Aarti seating.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Ayodhya Dharshan"
-    },
-    "touristType": "Pilgrimage",
-    "offers": {
-      "@type": "Offer",
-      "price": "5500",
-      "priceCurrency": "INR",
-      "priceValidUntil": "2026-12-31",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2026-01-01"
-    },
-    "provider": {
-      "@type": "TravelAgency",
-      "name": "Ayodhya Dharshan",
-      "url": "https://www.ayodhyadharshan.com/",
-      "telephone": "+91-92352-22399",
-      "priceRange": "₹₹",
-      "image": "https://www.ayodhyadharshan.com/assets/reviews/ayodhya-night.jpg",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Near RTO Office",
-        "addressLocality": "Ayodhya",
-        "addressRegion": "Uttar Pradesh",
-        "postalCode": "224123",
-        "addressCountry": "IN"
-      }
-    },
-    "itinerary": {
-      "@type": "ItemList",
-      "numberOfItems": 4,
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Varanasi Airport/Station pickup and transfer to hotel/ghat" },
-        { "@type": "ListItem", "position": 2, "name": "Kashi Vishwanath Mandir & Annapurna Temple Darshan" },
-        { "@type": "ListItem", "position": 3, "name": "Sarnath archaeological site excursion & museum visit" },
-        { "@type": "ListItem", "position": 4, "name": "Evening Ganga Aarti boat ride experience & Departure" }
-      ]
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "118"
+  },
+  "name": "Varanasi Same Day Tour Package",
+  "description": "Book a private 1-Day Varanasi tour package. Includes local Kashi Vishwanath temple guide, Sarnath excursion, Ganga boat ride, and VIP evening Aarti seating.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Ayodhya Dharshan"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "5500",
+    "priceCurrency": "INR",
+    "priceValidUntil": "2026-12-31",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-01-01"
+  },
+  "provider": {
+    "@type": "TravelAgency",
+    "name": "Ayodhya Dharshan",
+    "url": "https://www.ayodhyadharshan.com/",
+    "telephone": "+91-92352-22399",
+    "priceRange": "\u20b9\u20b9",
+    "image": "https://www.ayodhyadharshan.com/assets/reviews/ayodhya-night.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Near RTO Office",
+      "addressLocality": "Ayodhya",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "224123",
+      "addressCountry": "IN"
     }
-  }
-  </script>
+  },
+  "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ram_Mandir%2C_Ayodhya.png?width=1200"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Varanasi Same Day Tour Package",
+  "description": "Book a private 1-Day Varanasi tour package. Includes local Kashi Vishwanath temple guide, Sarnath excursion, Ganga boat ride, and VIP evening Aarti seating.",
+  "itinerary": {
+    "@type": "ItemList",
+    "numberOfItems": 4,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Varanasi Airport/Station pickup and transfer to hotel/ghat"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Kashi Vishwanath Mandir & Annapurna Temple Darshan"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Sarnath archaeological site excursion & museum visit"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Evening Ganga Aarti boat ride experience & Departure"
+      }
+    ]
+  },
+  "touristType": "Pilgrimage"
+}
+</script>
 <!-- Breadcrumb Schema -->
 <script type="application/ld+json">
 {
