@@ -1,15 +1,19 @@
 #!/bin/bash
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 cd "$(dirname "$0")"
 echo "============================================================"
 echo "          AYODHYA DHARSHAN AUTOMATED SEO LAUNCHER          "
 echo "============================================================"
+
 
 # Check if python3 is installed
 if ! command -v python3 &> /dev/null
 then
     echo "❌ Python3 is not installed on this system."
     echo "💡 Please install Python 3 on your Mac to run these automated checks."
-    read -p "Press Enter to exit..."
+    if [ -t 0 ]; then
+        read -p "Press Enter to exit..."
+    fi
     exit 1
 fi
 
@@ -25,4 +29,7 @@ python3 scripts/seo_automation_hub.py
 
 echo ""
 echo "📄 Your master SEO report has been generated at: seo_health_report.md"
-read -p "Press Enter to close this window..."
+if [ -t 0 ]; then
+    read -p "Press Enter to close this window..."
+fi
+

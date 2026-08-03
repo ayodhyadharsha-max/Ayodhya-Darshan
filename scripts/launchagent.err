@@ -1,1 +1,14 @@
-/bin/bash: /Users/rishabhjaiswal/Downloads/work/ayodhya Darshan/run_seo_automation.command: Operation not permitted
++ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin
++ PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+++ dirname /Users/rishabhjaiswal/ayodhya-darshan/run_seo_automation.command
++ cd /Users/rishabhjaiswal/ayodhya-darshan
++ echo ============================================================
++ echo '          AYODHYA DHARSHAN AUTOMATED SEO LAUNCHER          '
++ echo ============================================================
++ command -v python3
++ python3 -c 'import PIL'
++ '[' 0 -ne 0 ']'
++ python3 scripts/seo_automation_hub.py
++ echo ''
++ echo '📄 Your master SEO report has been generated at: seo_health_report.md'
++ '[' -t 0 ']'
