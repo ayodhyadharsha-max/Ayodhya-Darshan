@@ -49,9 +49,9 @@ def audit_html_files(root_dir):
         schemas = re.findall(r'<script\s+type="application/ld\+json">(.*?)</script>', content, re.DOTALL | re.IGNORECASE)
         for schema in schemas:
             try:
-                # Clean up any potential parsing issues (e.g. smart quotes or comments)
-                clean_schema = re.sub(r'//.*', '', schema) # strip single line comments
-                json.loads(clean_schema.strip())
+                # Remove carriage returns and leading/trailing whitespace
+                clean_schema = schema.replace('\r', '').strip()
+                json.loads(clean_schema)
             except json.JSONDecodeError as e:
                 file_issues.append(f"JSON-LD Schema Syntax Error: {str(e)[:60]}")
                 
