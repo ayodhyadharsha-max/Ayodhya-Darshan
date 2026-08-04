@@ -71,6 +71,9 @@ def check_and_log_rankings(root_dir):
     print("Checking keyword ranks on Google...")
     results = []
     
+    import time
+    import random
+    
     for kw in KEYWORDS:
         print(f"  🔍 Checking rank for: '{kw}'...")
         rank = get_google_rank(kw, TARGET_DOMAIN)
@@ -81,6 +84,8 @@ def check_and_log_rankings(root_dir):
             'keyword': kw,
             'rank': rank
         })
+        # Add a random delay to prevent Google from blocking requests
+        time.sleep(random.uniform(6, 12))
         
     # Write to CSV
     file_exists = os.path.exists(csv_path)
