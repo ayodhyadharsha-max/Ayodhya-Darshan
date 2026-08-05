@@ -2,10 +2,11 @@ import os
 import re
 
 try:
-    from PIL import Image
+    from PIL import Image, ImageOps
     from PIL.ExifTags import TAGS
 except ImportError:
     Image = None
+    ImageOps = None
 
 
 def optimize_and_geotag_images(root_dir):
@@ -35,6 +36,7 @@ def optimize_and_geotag_images(root_dir):
             try:
                 print(f"Compressing and Geotagging: {filename} -> {webp_filename}")
                 img = Image.open(file_path)
+                img = ImageOps.exif_transpose(img)
                 
                 # Setup EXIF with Ayodhya coordinates (26.7956 N, 82.1943 E)
                 exif = img.getexif()

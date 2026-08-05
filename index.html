@@ -282,7 +282,7 @@
 @media(max-width:560px){ .gallery{ columns:2; column-gap:12px; } }
 .g-item{ break-inside:avoid; margin:0 0 16px; border-radius:14px; overflow:hidden; position:relative;
   box-shadow:var(--shadow-sm); border:1px solid var(--line-soft); }
-.g-item img{ width:100%; display:block; transition:transform .6s cubic-bezier(.2,.8,.2,1); }
+.g-item img{ width:100%; height:auto; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.2,.8,.2,1); }
 .g-item:hover img{ transform:scale(1.06); }
 .g-item .cap{ position:absolute; left:0; right:0; bottom:0; padding:26px 14px 11px; color:#fff;
   font-size:.84rem; font-weight:500; letter-spacing:.01em;
