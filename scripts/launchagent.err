@@ -12,3 +12,7 @@
 + echo ''
 + echo '📄 Your master SEO report has been generated at: seo_health_report.md'
 + '[' -t 0 ']'
+To https://github.com/ayodhyadharsha-max/Ayodhya-Darshan.git
+   f040e79..db1f4e9  main -> main
+fatal: unable to access 'https://github.com/ayodhyadharsha-max/Ayodhya-Darshan.git/': Could not resolve host: github.com
+fatal: unable to access 'https://github.com/ayodhyadharsha-max/Ayodhya-Darshan.git/': Could not resolve host: github.com

@@ -27,8 +27,13 @@ fi
 # Run the master automation script
 python3 scripts/seo_automation_hub.py
 
+echo "🚀 Starting Auto-Push to GitHub..."
+git add seo_rank_history.csv seo_health_report.md assets/* 2>/dev/null
+git commit -m "Auto-update: Daily SEO rankings, health report, and optimized assets"
+git push origin main
+
 echo ""
-echo "📄 Your master SEO report has been generated at: seo_health_report.md"
+echo "📄 Your master SEO report has been generated and pushed to GitHub!"
 if [ -t 0 ]; then
     read -p "Press Enter to close this window..."
 fi
