@@ -419,7 +419,7 @@ image-slot{ --is-bg:#E9C98A; }
 
 @media (max-width: 768px) {
   .mobile-sticky-cta {
-    display: flex;
+    display: flex !important;
     position: fixed;
     bottom: 0;
     left: 0;
