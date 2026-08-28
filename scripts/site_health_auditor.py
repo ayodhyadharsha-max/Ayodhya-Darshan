@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 
 def audit_html_files(root_dir):
     report = []
-    html_files = [f for f in os.listdir(root_dir) if f.endswith('.html')]
+    html_files = [f for f in os.listdir(root_dir) if f.endswith('.html') and not f.startswith('google')]
     
     print(f"Scanning {len(html_files)} HTML files for SEO health...")
     
