@@ -936,24 +936,23 @@ tags_block = "\n".join(tags_html_list)
 
 sleek_drawer_html = f"""
 <!-- January 2026 High-Converting Google Ads Search Index Cloud -->
-<section class="section search-index-section" style="background: var(--paper-2); padding: 32px 0; border-top: 1px solid rgba(212,175,55,0.25);">
+<section class="section search-index-section" style="background: var(--paper-2); padding: 24px 0; border-top: 1px solid rgba(212,175,55,0.25);">
   <div class="container" style="max-width: 1100px; margin: 0 auto;">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
       <div style="display: flex; align-items: center; gap: 10px;">
         <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--saffron-deep);"></span>
         <h3 style="color: var(--maroon); font-size: 1.1rem; margin: 0; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.3px;">Popular Ayodhya &amp; Kashi Yatra Topics</h3>
       </div>
-      <button id="toggleSearchIndexBtn" onclick="toggleSearchIndex()" style="background: transparent; border: 1px solid var(--saffron-deep); color: var(--saffron-deep); padding: 5px 16px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; font-family: var(--font-body); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
+      <button id="toggleSearchIndexBtn" onclick="toggleSearchIndex()" style="background: transparent; border: 1px solid var(--saffron-deep); color: var(--saffron-deep); padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; font-family: var(--font-body); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
         <span>Explore All 180+ Topics</span>
         <svg id="toggleSearchIndexIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px; transition: transform 0.3s ease;"><path d="M6 9l6 6 6-6"/></svg>
       </button>
     </div>
     
-    <div id="searchIndexContainer" style="max-height: 82px; overflow: hidden; transition: max-height 0.4s ease; position: relative;">
-      <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+    <div id="searchIndexContainer" style="max-height: 0px; overflow: hidden; transition: max-height 0.4s ease; position: relative;">
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 16px;">
 {tags_block}
       </div>
-      <div id="searchIndexFade" style="position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(to bottom, rgba(250,247,242,0), rgba(250,247,242,0.95)); pointer-events: none; transition: opacity 0.3s ease;"></div>
     </div>
   </div>
 </section>
@@ -963,18 +962,15 @@ function toggleSearchIndex() {{
   const container = document.getElementById('searchIndexContainer');
   const btnText = document.querySelector('#toggleSearchIndexBtn span');
   const icon = document.getElementById('toggleSearchIndexIcon');
-  const fade = document.getElementById('searchIndexFade');
   
-  if (!container.style.maxHeight || container.style.maxHeight === '82px') {{
+  if (!container.style.maxHeight || container.style.maxHeight === '0px' || container.style.maxHeight === '0') {{
     container.style.maxHeight = '2000px';
     btnText.textContent = 'Collapse Search Index';
     icon.style.transform = 'rotate(180deg)';
-    fade.style.opacity = '0';
   }} else {{
-    container.style.maxHeight = '82px';
+    container.style.maxHeight = '0px';
     btnText.textContent = 'Explore All 180+ Topics';
     icon.style.transform = 'rotate(0deg)';
-    fade.style.opacity = '1';
   }}
 }}
 </script>
