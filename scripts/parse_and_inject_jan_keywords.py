@@ -980,7 +980,24 @@ function toggleSearchIndex() {{
 </script>
 """
 
-# Inject into index.html, blog.html, services.html
+# Strip any old duplicate 'POPULAR YATRA SEARCHES (SEO INDEX)' sections first from index.html
+index_path = os.path.join(base_dir, "index.html")
+if os.path.exists(index_path):
+    with open(index_path, "r", encoding="utf-8") as f:
+        idx_txt = f.read()
+    
+    # Remove the old raw section if present
+    idx_txt = re.sub(
+        r'<!-- ===== POPULAR YATRA SEARCHES \(SEO INDEX\) ===== -->.*?<section class="section" style="background:var\(--bg-panel\); border-top:1px solid rgba\(212,175,55,0\.15\); padding: 48px 0;">.*?</section>',
+        '',
+        idx_txt,
+        flags=re.DOTALL
+    )
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(idx_txt)
+    print("✅ Cleaned old duplicate POPULAR YATRA SEARCHES section from index.html")
+
+# Now Inject single drawer into index.html, blog.html, services.html
 for page in ["index.html", "blog.html", "services.html"]:
     page_path = os.path.join(base_dir, page)
     if os.path.exists(page_path):
@@ -999,4 +1016,4 @@ for page in ["index.html", "blog.html", "services.html"]:
 
         with open(page_path, "w", encoding="utf-8") as f:
             f.write(content)
-        print(f"✅ Successfully updated {page} with Popular Ayodhya & Kashi Yatra Topics expandable drawer component!")
+        print(f"✅ Successfully updated {page} with clean, single Popular Ayodhya & Kashi Yatra Topics expandable drawer!")
