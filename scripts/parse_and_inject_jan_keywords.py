@@ -916,9 +916,7 @@ for line in lines:
     parts = line.split('\t')
     if len(parts) > 0:
         kw = parts[0].strip()
-        # Filter out headers and summary lines
         if kw and not kw.startswith("Search term") and not kw.startswith("Search terms report") and not kw.startswith('"January') and not kw.startswith("Total:"):
-            # clean null bytes or weird spaces
             kw_clean = re.sub(r'\s+', ' ', kw).strip()
             if kw_clean and len(kw_clean) > 2:
                 keywords.add(kw_clean)
@@ -926,108 +924,79 @@ for line in lines:
 keywords_list = sorted(list(keywords))
 print(f"Total Unique January Search Term Keywords Extracted: {len(keywords_list)}")
 
-# Categorize Keywords
-city_pkgs = []
-vip_darshan = []
-circuit_tours = []
-general_itinerary = []
-
-for kw in keywords_list:
-    kw_lower = kw.lower()
-    if any(city in kw_lower for city in ["bangalore", "bengaluru", "chennai", "mumbai", "delhi", "hyderabad", "pune", "nagpur", "kolkata", "ahmedabad", "surat", "kerala", "coimbatore", "bhubaneswar", "mangalore", "vadodara", "lucknow"]):
-        city_pkgs.append(kw)
-    elif any(term in kw_lower for term in ["vip", "darshan", "pass", "ticket", "booking", "entry", "aarti", "sulabh", "sugam", "tatkal", "wheelchair", "timing"]):
-        vip_darshan.append(kw)
-    elif any(circuit in kw_lower for circuit in ["varanasi", "kashi", "prayagraj", "gaya", "mathura", "vrindavan", "chitrakoot", "naimisharanya", "banaras", "rishikesh", "puri"]):
-        circuit_tours.append(kw)
-    else:
-        general_itinerary.append(kw)
-
-print(f"City Packages Keywords: {len(city_pkgs)}")
-print(f"VIP & Darshan Keywords: {len(vip_darshan)}")
-print(f"Circuit Tours Keywords: {len(circuit_tours)}")
-print(f"General & Itinerary Keywords: {len(general_itinerary)}")
-
 base_dir = "/Users/rishabhjaiswal/ayodhya-darshan"
-
-# 1. Update index.html popular search cloud with a comprehensive 180-tag cloud
 tag_cloud_items = keywords_list[:180]
-tag_cloud_html = f"""
+
+# Generate elegant tags HTML
+tags_html_list = []
+for kw in tag_cloud_items:
+    tags_html_list.append(f'        <span style="background: rgba(255,107,0,0.06); border: 1px solid rgba(212,175,55,0.25); border-radius: 20px; padding: 4px 12px; font-size: 0.82rem; color: var(--maroon); display: inline-block; white-space: nowrap;">{kw}</span>')
+
+tags_block = "\n".join(tags_html_list)
+
+sleek_drawer_html = f"""
 <!-- January 2026 High-Converting Google Ads Search Index Cloud -->
-<section class="section" style="background: var(--paper-2); padding: 40px 0; border-top: 1px solid var(--gold-glow);">
-  <div class="container">
-    <h3 style="color: var(--maroon); font-size: 1.3rem; margin-bottom: 20px; text-align: center; font-family: var(--font-display);">Popular Pilgrimage Search Index &amp; Yatra Queries</h3>
-    <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 1100px; margin: 0 auto;">
-""" + "\n".join([f'      <span style="background: rgba(255,107,0,0.08); border: 1px solid rgba(212,175,55,0.3); border-radius: 20px; padding: 4px 12px; font-size: 0.82rem; color: var(--maroon); display: inline-block;">{kw}</span>' for kw in tag_cloud_items]) + """
+<section class="section search-index-section" style="background: var(--paper-2); padding: 32px 0; border-top: 1px solid rgba(212,175,55,0.25);">
+  <div class="container" style="max-width: 1100px; margin: 0 auto;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--saffron-deep);"></span>
+        <h3 style="color: var(--maroon); font-size: 1.1rem; margin: 0; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.3px;">Trending Yatra Queries &amp; Search Index</h3>
+      </div>
+      <button id="toggleSearchIndexBtn" onclick="toggleSearchIndex()" style="background: transparent; border: 1px solid var(--saffron-deep); color: var(--saffron-deep); padding: 5px 16px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; font-family: var(--font-body); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
+        <span>Explore All 180+ Topics</span>
+        <svg id="toggleSearchIndexIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px; transition: transform 0.3s ease;"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+    
+    <div id="searchIndexContainer" style="max-height: 82px; overflow: hidden; transition: max-height 0.4s ease; position: relative;">
+      <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+{tags_block}
+      </div>
+      <div id="searchIndexFade" style="position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(to bottom, rgba(250,247,242,0), rgba(250,247,242,0.95)); pointer-events: none; transition: opacity 0.3s ease;"></div>
     </div>
   </div>
 </section>
+
+<script>
+function toggleSearchIndex() {{
+  const container = document.getElementById('searchIndexContainer');
+  const btnText = document.querySelector('#toggleSearchIndexBtn span');
+  const icon = document.getElementById('toggleSearchIndexIcon');
+  const fade = document.getElementById('searchIndexFade');
+  
+  if (!container.style.maxHeight || container.style.maxHeight === '82px') {{
+    container.style.maxHeight = '2000px';
+    btnText.textContent = 'Collapse Search Index';
+    icon.style.transform = 'rotate(180deg)';
+    fade.style.opacity = '0';
+  }} else {{
+    container.style.maxHeight = '82px';
+    btnText.textContent = 'Explore All 180+ Topics';
+    icon.style.transform = 'rotate(0deg)';
+    fade.style.opacity = '1';
+  }}
+}}
+</script>
 """
 
-# Inject before footer in index.html
+# Inject into index.html
 index_path = os.path.join(base_dir, "index.html")
 if os.path.exists(index_path):
     with open(index_path, "r", encoding="utf-8") as f:
         index_content = f.read()
 
-    # Append new January search terms to meta keywords
-    index_keywords_str = ", ".join(keywords_list[:50])
-    index_content = re.sub(
-        r'<meta name="keywords" content="(.*?)"',
-        f'<meta name="keywords" content="\\1, {index_keywords_str}"',
-        index_content,
-        count=1,
-        flags=re.IGNORECASE
-    )
-
-    if "Popular Pilgrimage Search Index &amp; Yatra Queries" in index_content:
+    # Replace old raw cloud block with sleek drawer HTML
+    if "Popular Pilgrimage Search Index &amp; Yatra Queries" in index_content or "Trending Yatra Queries &amp; Search Index" in index_content:
         index_content = re.sub(
             r'<!-- January 2026 High-Converting Google Ads Search Index Cloud -->.*?<!-- End Search Index Cloud -->',
-            f'<!-- January 2026 High-Converting Google Ads Search Index Cloud -->\n{tag_cloud_html}\n<!-- End Search Index Cloud -->',
+            f'<!-- January 2026 High-Converting Google Ads Search Index Cloud -->\n{sleek_drawer_html}\n<!-- End Search Index Cloud -->',
             index_content,
             flags=re.DOTALL
         )
     elif "<footer" in index_content:
-        index_content = index_content.replace("<footer", f"<!-- January 2026 High-Converting Google Ads Search Index Cloud -->\n{tag_cloud_html}\n<!-- End Search Index Cloud -->\n<footer")
+        index_content = index_content.replace("<footer", f"<!-- January 2026 High-Converting Google Ads Search Index Cloud -->\n{sleek_drawer_html}\n<!-- End Search Index Cloud -->\n<footer")
 
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(index_content)
-    print("✅ Injected January Search Index Cloud and meta keywords into index.html")
-
-# 2. Update blog.html meta keywords
-blog_path = os.path.join(base_dir, "blog.html")
-if os.path.exists(blog_path):
-    with open(blog_path, "r", encoding="utf-8") as f:
-        blog_content = f.read()
-
-    blog_keywords_str = ", ".join(vip_darshan[:30] + circuit_tours[:30])
-    blog_content = re.sub(
-        r'<meta name="keywords" content="(.*?)"',
-        f'<meta name="keywords" content="\\1, {blog_keywords_str}"',
-        blog_content,
-        count=1,
-        flags=re.IGNORECASE
-    )
-    with open(blog_path, "w", encoding="utf-8") as f:
-        f.write(blog_content)
-    print("✅ Updated blog.html meta keywords with January VIP & Circuit search terms")
-
-# 3. Update services.html meta keywords
-services_path = os.path.join(base_dir, "services.html")
-if os.path.exists(services_path):
-    with open(services_path, "r", encoding="utf-8") as f:
-        services_content = f.read()
-
-    services_keywords_str = ", ".join(city_pkgs[:30] + general_itinerary[:30])
-    services_content = re.sub(
-        r'<meta name="keywords" content="(.*?)"',
-        f'<meta name="keywords" content="\\1, {services_keywords_str}"',
-        services_content,
-        count=1,
-        flags=re.IGNORECASE
-    )
-    with open(services_path, "w", encoding="utf-8") as f:
-        f.write(services_content)
-    print("✅ Updated services.html meta keywords with January City Packages & Itinerary search terms")
-
-print("\n🚀 January Search Terms Injection Complete!")
+    print("✅ Successfully updated index.html with sleek, interactive Search Index Drawer component!")
