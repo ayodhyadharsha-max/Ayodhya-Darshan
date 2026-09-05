@@ -150,7 +150,7 @@ only ayodhya tour package	Exact match (close variant)	None	1	4	25.00%	INR	8.70	8
 ram mandir ayodhya vip darshan	Phrase match (close variant)	None	0	5	0.00%	INR	0	0.00	0.00%	0.00	0.00
 ayodhya travels tour packages	Exact match (close variant)	None	0	1	0.00%	INR	0	0.00	0.00%	0.00	0.00
 ayodhya tour packages from bangalore	Phrase match	None	2	20	10.00%	INR	6.00	12.00	0.00%	0.00	0.00
-visiting places near ayodhya ram mandir	Phrase match (close variant)	None	3	12	25.00%	INR	8.53	25.60	0.00%	0.00	0.00
+visiting places in ayodhya near ram mandir	Phrase match (close variant)	None	3	12	25.00%	INR	8.53	25.60	0.00%	0.00	0.00
 varanasi ayodhya lucknow tour	Phrase match (close variant)	None	0	1	0.00%	INR	0	0.00	0.00%	0.00	0.00
 ram darshan ayodhya	Exact match (close variant)	None	0	2	0.00%	INR	0	0.00	0.00%	0.00	0.00
 ram mandir online booking	Phrase match (close variant)	None	0	1	0.00%	INR	0	0.00	0.00%	0.00	0.00
@@ -689,7 +689,7 @@ delhi ayodhya tour package	Phrase match	None	0	5	0.00%	INR	0	0.00	0.00%	0.00	0.0
 bangalore to ayodhya flight package price	Phrase match (close variant)	None	0	18	0.00%	INR	0	0.00	0.00%	0.00	0.00
 ayodhya mandir pass	Phrase match (close variant)	None	0	1	0.00%	INR	0	0.00	0.00%	0.00	0.00
 ayodhya ram mandir sugam darshan	Phrase match (close variant)	None	0	1	0.00%	INR	0	0.00	0.00%	0.00	0.00
-irctc ayodhya tour package from bangalore	Phrase match (close variant)	None	0	1	0.00%	INR	0	0.00	0.00%	0.00	0.00
+irctc ayodhya package from bangalore	Phrase match (close variant)	None	0	1	0.00%	INR	0	0.00	0.00%	0.00	0.00
 ayodhya package tour	Exact match (close variant)	None	2	15	13.33%	INR	6.66	13.32	0.00%	0.00	0.00
 places to visit in ayodhya in one day	Exact match (close variant)	None	0	1	0.00%	INR	0	0.00	0.00%	0.00	0.00
 ayodhya ram mandir trip plan	Exact match (close variant)	None	0	2	0.00%	INR	0	0.00	0.00%	0.00	0.00
@@ -941,7 +941,7 @@ sleek_drawer_html = f"""
     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
       <div style="display: flex; align-items: center; gap: 10px;">
         <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--saffron-deep);"></span>
-        <h3 style="color: var(--maroon); font-size: 1.1rem; margin: 0; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.3px;">Trending Yatra Queries &amp; Search Index</h3>
+        <h3 style="color: var(--maroon); font-size: 1.1rem; margin: 0; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.3px;">Popular Ayodhya &amp; Kashi Yatra Topics</h3>
       </div>
       <button id="toggleSearchIndexBtn" onclick="toggleSearchIndex()" style="background: transparent; border: 1px solid var(--saffron-deep); color: var(--saffron-deep); padding: 5px 16px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; font-family: var(--font-body); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
         <span>Explore All 180+ Topics</span>
@@ -980,23 +980,23 @@ function toggleSearchIndex() {{
 </script>
 """
 
-# Inject into index.html
-index_path = os.path.join(base_dir, "index.html")
-if os.path.exists(index_path):
-    with open(index_path, "r", encoding="utf-8") as f:
-        index_content = f.read()
+# Inject into index.html, blog.html, services.html
+for page in ["index.html", "blog.html", "services.html"]:
+    page_path = os.path.join(base_dir, page)
+    if os.path.exists(page_path):
+        with open(page_path, "r", encoding="utf-8") as f:
+            content = f.read()
 
-    # Replace old raw cloud block with sleek drawer HTML
-    if "Popular Pilgrimage Search Index &amp; Yatra Queries" in index_content or "Trending Yatra Queries &amp; Search Index" in index_content:
-        index_content = re.sub(
-            r'<!-- January 2026 High-Converting Google Ads Search Index Cloud -->.*?<!-- End Search Index Cloud -->',
-            f'<!-- January 2026 High-Converting Google Ads Search Index Cloud -->\n{sleek_drawer_html}\n<!-- End Search Index Cloud -->',
-            index_content,
-            flags=re.DOTALL
-        )
-    elif "<footer" in index_content:
-        index_content = index_content.replace("<footer", f"<!-- January 2026 High-Converting Google Ads Search Index Cloud -->\n{sleek_drawer_html}\n<!-- End Search Index Cloud -->\n<footer")
+        if "<!-- January 2026 High-Converting Google Ads Search Index Cloud -->" in content:
+            content = re.sub(
+                r'<!-- January 2026 High-Converting Google Ads Search Index Cloud -->.*?<!-- End Search Index Cloud -->',
+                f'<!-- January 2026 High-Converting Google Ads Search Index Cloud -->\n{sleek_drawer_html}\n<!-- End Search Index Cloud -->',
+                content,
+                flags=re.DOTALL
+            )
+        elif "<footer" in content:
+            content = content.replace("<footer", f"<!-- January 2026 High-Converting Google Ads Search Index Cloud -->\n{sleek_drawer_html}\n<!-- End Search Index Cloud -->\n<footer")
 
-    with open(index_path, "w", encoding="utf-8") as f:
-        f.write(index_content)
-    print("✅ Successfully updated index.html with sleek, interactive Search Index Drawer component!")
+        with open(page_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        print(f"✅ Successfully updated {page} with Popular Ayodhya & Kashi Yatra Topics expandable drawer component!")
