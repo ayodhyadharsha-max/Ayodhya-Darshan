@@ -11,6 +11,7 @@ Thumbs.db
 *.sln
 *.sw?
 
-# Nested repositories / folders
-ayodhya-landing-main/
-
+# Dependencies
+node_modules/
+package-lock.json
+package.json
