@@ -1,0 +1,21 @@
+{
+  "name": "Ayodhya Dharshan Teerth Yatra",
+  "short_name": "Ayodhya Dharshan",
+  "description": "Guided Pilgrimage Tour Packages across Ayodhya, Kashi Varanasi, Prayagraj & Mathura Vrindavan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#7A1C1C",
+  "theme_color": "#7A1C1C",
+  "icons": [
+    {
+      "src": "/assets/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/assets/logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}
