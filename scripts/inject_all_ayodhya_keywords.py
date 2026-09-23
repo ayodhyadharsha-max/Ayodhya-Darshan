@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+import os
+
+file_path = "/Users/rishabhjaiswal/ayodhya-darshan/ayodhya-dharshan-tour-package.html"
+
+html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
@@ -595,4 +599,9 @@ form?.addEventListener('submit',(e)=>{
 
 <script src="conversion-tracker.js" defer></script>
 </body>
-</html>
+</html>"""
+
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Successfully injected all Ayodhya keywords into ayodhya-dharshan-tour-package.html!")
