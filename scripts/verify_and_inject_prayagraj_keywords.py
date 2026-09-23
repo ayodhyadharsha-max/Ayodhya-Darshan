@@ -1,5 +1,7 @@
 import os
+import re
 
+# Raw keywords pasted by the user
 raw_keywords_text = """
 prayagraj tour
 prayagraj tourism
@@ -1659,7 +1661,11 @@ things to do near prayagraj junction
 keywords_list = [k.strip() for k in raw_keywords_text.strip().split('\n') if k.strip()]
 print(f"Total Prayagraj Keywords Loaded: {len(keywords_list)}")
 
-file_path = "/Users/rishabhjaiswal/ayodhya-darshan/prayagraj-tour-package.html"
+backup_file = "/Users/rishabhjaiswal/ayodhya-darshan/prayagraj_backup.html"
+target_file = "/Users/rishabhjaiswal/ayodhya-darshan/prayagraj-tour-package.html"
+
+with open(backup_file, "r", encoding="utf-8") as f:
+    base_html = f.read()
 
 # Generate chip badges HTML
 chip_badges = []
@@ -1671,143 +1677,9 @@ for k in keywords_list:
 
 chips_html = "\n        ".join(chip_badges)
 
-enriched_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prayagraj Tour Package 2026: Triveni Sangam, Bade Hanuman & Kumbh Yatra</title>
-  <meta name="description" content="Book Prayagraj Tour Package 2026. Private boat to Triveni Sangam snan, Bade Hanumanji darshan, Akshayavat, Anand Bhawan & Kumbh Mela arrangements. Private AC cab & top hotel booking.">
-  <meta name="keywords" content="prayagraj tour package, triveni sangam boat booking, prayagraj same day tour, sangam snan package, prayagraj kumbh yatra, bade hanuman mandir prayagraj, anand bhawan tour">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.ayodhyadharshan.com/prayagraj-tour-package.html">
-
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="favicon.png" type="image/png" sizes="192x192">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/style.css">
-  <script src="conversion-tracker.js" defer></script>
-  <script src="image-slot.js" defer></script>
-
-  <script type="application/ld+json">
-  {{
-    "@context": "https://schema.org",
-    "@type": "TouristAttraction",
-    "name": "Tirtharaj Prayagraj Yatra & Triveni Sangam",
-    "description": "Guided pilgrimage yatra in Prayagraj covering Triveni Sangam snan, Bade Hanuman temple, Akshayavat, and Anand Bhawan.",
-    "url": "https://www.ayodhyadharshan.com/prayagraj-tour-package.html",
-    "touristType": ["Pilgrim", "Heritage Tourist"],
-    "geo": {{
-      "@type": "GeoCoordinates",
-      "latitude": 25.4358,
-      "longitude": 81.8463
-    }}
-  }}
-  </script>
-</head>
-<body>
-
-<!-- Header / Navigation -->
-<header class="hdr" id="siteHeader">
-  <div class="container hdr-in">
-    <a href="index.html" class="brand">
-      <img src="assets/logo.webp" alt="Ayodhya Dharshan Logo" width="44" height="44">
-      <div class="brand-txt">
-        <span class="b-title">AYODHYA DHARSHAN</span>
-        <span class="b-sub">Teerth Yatra Seva</span>
-      </div>
-    </a>
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="destinations.html" class="active">Destinations</a>
-      <a href="services.html">Packages</a>
-      <a href="yatra-cost-calculator.html">Cost Estimator</a>
-      <a href="about.html">About Us</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <a href="https://wa.me/919235222399?text=Jai%20Shree%20Ram!%20I%20want%20to%20book%20a%20Prayagraj%20Tour%20Package." class="btn btn-sm btn-gold" target="_blank" rel="noopener">Book Yatra ➔</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
-  </div>
-</header>
-
-<!-- Hero Section -->
-<section class="dest-hero" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.9) 100%), url('assets/destinations/triveni-sangam.webp') center/cover no-repeat; padding: 100px 0 60px; color: #fff; text-align: center;">
-  <div class="container">
-    <span class="tag" style="background: rgba(212, 175, 55, 0.2); color: var(--gold); border: 1px solid var(--gold); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Holy Confluence of Sacred Rivers</span>
-    <h1 style="font-family: var(--font-display); font-size: 2.8rem; margin: 20px 0 15px; color: #fff;">Prayagraj Tour Package — Triveni Sangam & Tirtharaj Yatra</h1>
-    <p style="max-width: 780px; margin: 0 auto 30px; font-size: 1.1rem; opacity: 0.95; line-height: 1.7;">Experience the divine energy of Tirtharaj Prayagraj (Allahabad). Enjoy a private motorboat ride to Triveni Sangam for holy snan (dip), VIP darshan at the legendary Bade Hanuman Mandir & Akshayavat, and seamless local AC cab transfers.</p>
-    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-      <a href="https://wa.me/919235222399?text=Jai%20Shree%20Ram!%20Please%20send%20Prayagraj%20tour%20package%20details." class="btn btn-gold btn-lg" target="_blank" rel="noopener">Book Prayagraj Tour (₹1,499) ➔</a>
-      <a href="tel:+919235222399" class="btn btn-outline btn-lg" style="color:#fff; border-color:#fff;">Call +91 92352 22399</a>
-    </div>
-  </div>
-</section>
-
-<!-- Content & Key Highlights -->
-<section class="section">
-  <div class="container">
-    <div style="max-width: 900px; margin: 0 auto;">
-      <h2 style="font-family: var(--font-display); color: var(--maroon); margin-bottom: 20px; text-align: center;">Sacred Highlights of Prayagraj Pilgrimage</h2>
-      <p style="text-align: center; font-size: 1.05rem; color: var(--ink-2); margin-bottom: 40px;">Prayagraj is the king of all pilgrimage sites (Tirtharaj), where the sacred Ganga, Yamuna, and mystical Saraswati meet. Our customized tour packages ensure comfort, priority boat rides, and hassle-free darshan.</p>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 50px;">
-        <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 24px; border-radius: var(--r-md); box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-          <h3 style="color: var(--maroon); font-size: 1.25rem; margin-bottom: 10px;">⛵ Triveni Sangam Private Boat Snan</h3>
-          <p style="font-size: 0.95rem; color: var(--ink-2); line-height: 1.6;">Board a private motorboat with life jackets and dedicated priests to reach the exact confluence point for holy bath and rituals.</p>
-        </div>
-        <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 24px; border-radius: var(--r-md); box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-          <h3 style="color: var(--maroon); font-size: 1.25rem; margin-bottom: 10px;">🚩 Bade Hanuman Ji & Akshayavat</h3>
-          <p style="font-size: 0.95rem; color: var(--ink-2); line-height: 1.6;">Seek blessings at the unique reclining (Letee Hue) Hanuman Temple on the banks of Sangam and visit the indestructible tree Akshayavat inside Patalpuri Mandir.</p>
-        </div>
-        <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 24px; border-radius: var(--r-md); box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-          <h3 style="color: var(--maroon); font-size: 1.25rem; margin-bottom: 10px;">🏛️ Anand Bhawan & Swaraj Bhawan</h3>
-          <p style="font-size: 0.95rem; color: var(--ink-2); line-height: 1.6;">Explore the ancestral home of the Nehru family, Jawahar Planetarium, and Chandra Shekhar Azad Park (Company Bagh).</p>
-        </div>
-        <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 24px; border-radius: var(--r-md); box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-          <h3 style="color: var(--maroon); font-size: 1.25rem; margin-bottom: 10px;">🛕 Alopi Devi & Mankameshwar Mandir</h3>
-          <p style="font-size: 0.95rem; color: var(--ink-2); line-height: 1.6;">Darshan at the sacred Alopi Devi Shakti Peeth, Nagvasuki Temple, and historic Mankameshwar Mahadev Temple.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Detailed Itinerary Section -->
-<section class="section" style="background: var(--bg-panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
-  <div class="container" style="max-width: 850px;">
-    <h2 style="font-family: var(--font-display); color: var(--maroon); text-align: center; margin-bottom: 30px;">Sample Prayagraj 1-Day Itinerary</h2>
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-      <div style="background: #fff; border-left: 4px solid var(--gold); padding: 20px; border-radius: 0 var(--r-md) var(--r-md) 0; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <strong style="color: var(--maroon); font-size: 1.1rem;">07:00 AM — Pick-up & Sangam Transfer</strong>
-        <p style="margin-top: 6px; font-size: 0.95rem; color: var(--ink-2);">Our private AC cab picks you up from Prayagraj Junction (PRYJ), Airport, or hotel and proceeds to VIP Sangam Ghat.</p>
-      </div>
-      <div style="background: #fff; border-left: 4px solid var(--gold); padding: 20px; border-radius: 0 var(--r-md) var(--r-md) 0; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <strong style="color: var(--maroon); font-size: 1.1rem;">08:00 AM — Triveni Sangam Holy Snan & Boat Ride</strong>
-        <p style="margin-top: 6px; font-size: 0.95rem; color: var(--ink-2);">Board a reserved motorboat for the holy confluence of Ganga, Yamuna & Saraswati. Perform snan, rituals, and bird feeding.</p>
-      </div>
-      <div style="background: #fff; border-left: 4px solid var(--gold); padding: 20px; border-radius: 0 var(--r-md) var(--r-md) 0; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <strong style="color: var(--maroon); font-size: 1.1rem;">10:30 AM — Bade Hanuman, Akshayavat & Patalpuri Darshan</strong>
-        <p style="margin-top: 6px; font-size: 0.95rem; color: var(--ink-2);">Darshan at Letee Hue Bade Hanuman Mandir, followed by Akshayavat tree and Patalpuri Temple inside Prayagraj Fort complex.</p>
-      </div>
-      <div style="background: #fff; border-left: 4px solid var(--gold); padding: 20px; border-radius: 0 var(--r-md) var(--r-md) 0; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <strong style="color: var(--maroon); font-size: 1.1rem;">01:30 PM — Sattvic Lunch & Heritage Sightseeing</strong>
-        <p style="margin-top: 6px; font-size: 0.95rem; color: var(--ink-2);">Enjoy traditional North Indian pure vegetarian lunch, then visit Anand Bhawan museum, Swaraj Bhawan, and Chandra Shekhar Azad Park.</p>
-      </div>
-      <div style="background: #fff; border-left: 4px solid var(--gold); padding: 20px; border-radius: 0 var(--r-md) var(--r-md) 0; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <strong style="color: var(--maroon); font-size: 1.1rem;">05:30 PM — Sangam Evening Ganga Aarti & Drop</strong>
-        <p style="margin-top: 6px; font-size: 0.95rem; color: var(--ink-2);">Witness divine evening Ganga Aarti on Triveni Sangam Ghat before drop back at Railway Station or Ayodhya / Varanasi transfer.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Collapsible Master Search Index Section (Collapsible Accordion with Visual Chip Tags) -->
-<section class="section" style="padding: 50px 0;">
+master_index_section = f"""
+<!-- Collapsible Master Search Index Section -->
+<section class="section" style="padding: 40px 0 60px;">
   <div class="container">
     <details style="background:var(--bg-card); border:1px solid var(--line); border-radius:var(--r-md); padding:22px 26px; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
       <summary style="display:flex; align-items:center; justify-content:space-between; list-style:none; outline:none; font-weight:700; color:var(--maroon); font-size:1.15rem; font-family:var(--font-display);">
@@ -1827,76 +1699,26 @@ enriched_html = f"""<!DOCTYPE html>
     </details>
   </div>
 </section>
-
-<!-- CTA Callout -->
-<section class="section" style="background: linear-gradient(135deg, var(--maroon) 0%, #4A1010 100%); color: #fff; text-align: center; padding: 60px 0;">
-  <div class="container">
-    <h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--gold); margin-bottom: 15px;">Plan Your Sacred Prayagraj Yatra Today</h2>
-    <p style="max-width: 650px; margin: 0 auto 30px; font-size: 1.05rem; opacity: 0.9;">Clean hotels, private AC cabs, boat booking at Sangam, and personalized assistance. Tailor-made for families and senior citizens.</p>
-    <a href="https://wa.me/919235222399?text=Jai%20Shree%20Ram!%20I%20want%20to%20plan%20my%20Prayagraj%20Yatra." class="btn btn-gold btn-lg" target="_blank" rel="noopener">Connect on WhatsApp (+91 92352 22399) ➔</a>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="foot">
-  <div class="container foot-grid">
-    <div>
-      <div class="brand-txt" style="margin-bottom: 12px;">
-        <span class="b-title" style="color:#fff;">AYODHYA DHARSHAN</span>
-      </div>
-      <p>Soulful, fully-managed pilgrimages across the holiest cities of Uttar Pradesh — guided with reverence and care.</p>
-    </div>
-    <div><h4>Explore</h4>
-      <a href="destinations.html">Destinations</a>
-      <a href="services.html">Services</a>
-      <a href="yatra-cost-calculator.html">Calculator</a>
-      <a href="about.html">About Us</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <div><h4>Cities</h4>
-      <a href="ayodhya-dharshan-tour-package.html">Ayodhya</a>
-      <a href="varanasi-same-day-tour-package.html">Varanasi</a>
-      <a href="prayagraj-tour-package.html">Prayagraj</a>
-      <a href="chitrakoot-tour-package.html">Chitrakoot</a>
-      <a href="naimisharanya-tour-package.html">Naimisharanya</a>
-      <a href="vindhyachal-tour-package.html">Vindhyachal</a>
-      <a href="mathura-tour-package.html">Mathura</a>
-      <a href="vrindavan-tour-package.html">Vrindavan</a>
-    </div>
-    <div><h4>Reach Us</h4>
-      <a href="tel:+919235222399">+91 92352 22399</a>
-      <a href="mailto:yatra@ayodhyadharshan.com">yatra@ayodhyadharshan.com</a>
-      <a href="contact.html">RTO Office, Ayodhya</a>
-      <a href="https://share.google/Q6wXLDvNd2VDOzNUp" target="_blank" rel="noopener">Find us on Google Maps</a>
-      <a href="https://wa.me/919235222399?text=Jai%20Shree%20Ram!%20I%20want%20to%20enquire%20about%20Prayagraj%20tour%20package." target="_blank" rel="noopener">WhatsApp · 24×7</a>
-    </div>
-  </div>
-  <div class="container foot-bottom">
-    <span>© 2026 Ayodhya Dharshan · Teerth Yatra Seva</span>
-    <span>॥ श्री राम जय राम जय जय राम ॥</span>
-  </div>
-</footer>
-
-<script>
-const navToggle=document.getElementById('navToggle'), navLinks=document.getElementById('navLinks');
-navToggle?.addEventListener('click',()=>navLinks.classList.toggle('open'));
-</script>
-
-</body>
-</html>
 """
 
-with open(file_path, "w", encoding="utf-8") as f:
-    f.write(enriched_html)
+# Insert Master Index section right before <footer class="site-foot">
+if '<footer class="site-foot">' in base_html:
+    final_html = base_html.replace('<footer class="site-foot">', master_index_section + '\n<footer class="site-foot">')
+elif '<footer>' in base_html:
+    final_html = base_html.replace('<footer>', master_index_section + '\n<footer>')
+else:
+    final_html = base_html.replace('</body>', master_index_section + '\n</body>')
 
-print("Enriched prayagraj-tour-package.html successfully!")
+with open(target_file, "w", encoding="utf-8") as f:
+    f.write(final_html)
+
+print("Restored original Prayagraj format and injected Master Search Index successfully!")
 
 # Verification step
 matched = 0
 missing = []
 for k in keywords_list:
-    if k.lower() in enriched_html.lower():
+    if k.lower() in final_html.lower():
         matched += 1
     else:
         missing.append(k)
