@@ -1,4 +1,383 @@
-<!DOCTYPE html>
+import os
+
+raw_keywords = """
+chitrakoot tour
+chitrakoot tourism
+chitrakoot darshan
+chitrakoot tour and travels
+mpt tourist bungalow chitrakoot
+cg tourism chitrakoot
+chitrakoot darshan hotel
+chitrakoot itinerary
+chitrakoot madhya pradesh tourism
+chitrakoot one day trip
+chitrakoot package
+chitrakoot tour itinerary
+chitrakoot tour package
+chitrakoot tour plan
+chitrakoot tourism places
+chitrakoot trip
+chitrakoot up tourism
+chitrakoot uttar pradesh tourism
+chitrakoot waterfalls package
+chitrakoot yatra
+hotel chitrakoot darshan
+mp tourist bungalow chitrakoot
+mp tourist bungalow chitrakoot madhya pradesh
+rahi tourist bungalow chitrakoot uttar pradesh
+sightseeing in chitrakoot
+tourist bungalow chitrakoot
+tourist bungalow chitrakoot contact no
+tourist places near chitrakoot
+up tourist bungalow chitrakoot
+chitrakoot darshan package
+chitrakoot travel
+chitrakoot travels
+chitrakoot trip package
+chitrakoot holiday package
+chitrakoot travel package
+chitrakoot travel agency
+chitrakoot travel agent
+chitrakoot tour operator
+chitrakoot tourist guide
+chitrakoot travel guide
+chitrakoot tourism guide
+chitrakoot travel information
+chitrakoot tourist information
+chitrakoot sightseeing tour
+chitrakoot local sightseeing
+chitrakoot sightseeing places
+chitrakoot sightseeing package
+chitrakoot city tour
+chitrakoot local tour
+chitrakoot pilgrimage tour
+chitrakoot religious tour
+chitrakoot spiritual tour
+chitrakoot family trip
+chitrakoot family tour
+chitrakoot weekend trip
+chitrakoot weekend tour
+chitrakoot short trip
+chitrakoot 2 day trip
+chitrakoot 3 day trip
+chitrakoot 2 days itinerary
+chitrakoot 3 days itinerary
+chitrakoot day tour
+chitrakoot day trip package
+places to visit in chitrakoot
+best places to visit in chitrakoot
+famous places in chitrakoot
+famous tourist places in chitrakoot
+chitrakoot tourist attractions
+chitrakoot attractions
+chitrakoot places to see
+places to see in chitrakoot
+best places in chitrakoot
+must visit places in chitrakoot
+chitrakoot sightseeing places list
+chitrakoot famous places
+chitrakoot famous tourist places
+chitrakoot hidden places
+chitrakoot historical places
+chitrakoot religious places
+chitrakoot spiritual places
+chitrakoot pilgrimage places
+chitrakoot scenic places
+chitrakoot nature places
+chitrakoot picnic spots
+chitrakoot tourist spots
+chitrakoot tourist attractions list
+chitrakoot places near ramghat
+places near ramghat chitrakoot
+ramghat chitrakoot
+ram ghat chitrakoot
+ramghat tourism
+ramghat chitrakoot tourism
+ramghat chitrakoot darshan
+ramghat chitrakoot timings
+ramghat chitrakoot aarti
+ramghat aarti timing
+ramghat chitrakoot evening aarti
+ramghat chitrakoot photos
+ramghat chitrakoot distance
+ramghat chitrakoot location
+ramghat chitrakoot nearby places
+things to do at ramghat
+ramghat sightseeing
+ramghat boat ride
+chitrakoot ramghat boat
+ramghat chitrakoot boating
+kamadgiri chitrakoot
+kamadgiri parikrama
+kamadgiri parikrama chitrakoot
+kamadgiri temple chitrakoot
+kamadgiri mandir
+kamadgiri chitrakoot darshan
+kamadgiri temple timings
+kamadgiri parikrama distance
+kamadgiri parikrama time
+kamadgiri parikrama route
+kamadgiri parikrama map
+kamadgiri chitrakoot distance
+kamadgiri temple location
+kamadgiri chitrakoot photos
+kamadgiri hill chitrakoot
+hanuman dhara chitrakoot
+hanuman dhara temple
+hanuman dhara chitrakoot darshan
+hanuman dhara chitrakoot timings
+hanuman dhara chitrakoot distance
+hanuman dhara chitrakoot location
+hanuman dhara chitrakoot history
+hanuman dhara chitrakoot story
+hanuman dhara chitrakoot photos
+hanuman dhara waterfall
+hanuman dhara chitrakoot waterfall
+hanuman dhara ropeway
+hanuman dhara chitrakoot stairs
+hanuman dhara how to reach
+gupt godavari chitrakoot
+gupt godavari caves
+gupt godavari chitrakoot darshan
+gupt godavari timings
+gupt godavari chitrakoot distance
+gupt godavari chitrakoot location
+gupt godavari cave chitrakoot
+gupt godavari history
+gupt godavari story
+gupt godavari chitrakoot photos
+gupt godavari water
+gupt godavari cave timing
+gupt godavari how to reach
+sati anusuya chitrakoot
+sati anusuya temple chitrakoot
+sati anusuya ashram chitrakoot
+sati anusuya chitrakoot timings
+sati anusuya chitrakoot distance
+sati anusuya chitrakoot history
+janki kund chitrakoot
+janki kund chitrakoot darshan
+janki kund timings
+janki kund chitrakoot distance
+janki kund history
+janki kund chitrakoot photos
+sphatik shila chitrakoot
+sphatik shila chitrakoot darshan
+sphatik shila timings
+sphatik shila chitrakoot distance
+sphatik shila history
+ganesh bagh chitrakoot
+ganesh bagh chitrakoot tourism
+kalinjar near chitrakoot
+gupt godavari hanuman dhara tour
+chitrakoot ram mandir
+chitrakoot ram temple
+ram vanvas chitrakoot
+lord ram chitrakoot
+ram sita chitrakoot
+ramayan chitrakoot
+chitrakoot ramayan places
+ram ji ne chitrakoot me kitne din bitaye
+ram vanvas chitrakoot history
+chitrakoot ram van gaman
+chitrakoot religious history
+chitrakoot dharmik sthal
+chitrakoot mandir
+chitrakoot temples
+famous temples in chitrakoot
+famous temples near chitrakoot
+chitrakoot temple tour
+chitrakoot mandir darshan
+chitrakoot mandir list
+chitrakoot religious places list
+how to reach chitrakoot
+how to reach chitrakoot from delhi
+how to reach chitrakoot from lucknow
+how to reach chitrakoot from prayagraj
+how to reach chitrakoot from ayodhya
+how to reach chitrakoot from varanasi
+how to reach chitrakoot from kanpur
+how to reach chitrakoot from satna
+chitrakoot railway station
+nearest railway station to chitrakoot
+chitrakoot nearest railway station
+chitrakoot railway station distance
+chitrakoot bus stand
+chitrakoot bus service
+chitrakoot bus route
+chitrakoot road route
+chitrakoot train
+trains to chitrakoot
+chitrakoot train route
+chitrakoot transport
+local transport in chitrakoot
+chitrakoot taxi
+chitrakoot cab service
+chitrakoot cab booking
+chitrakoot taxi fare
+chitrakoot auto fare
+chitrakoot distance
+distance to chitrakoot
+chitrakoot distance from prayagraj
+chitrakoot distance from ayodhya
+chitrakoot distance from varanasi
+chitrakoot distance from lucknow
+chitrakoot distance from kanpur
+chitrakoot distance from delhi
+chitrakoot distance from satna
+prayagraj to chitrakoot distance
+ayodhya to chitrakoot distance
+varanasi to chitrakoot distance
+lucknow to chitrakoot distance
+kanpur to chitrakoot distance
+satna to chitrakoot distance
+delhi to chitrakoot distance
+chitrakoot hotels
+hotels in chitrakoot
+best hotels in chitrakoot
+chitrakoot hotel booking
+chitrakoot hotels booking
+chitrakoot accommodation
+chitrakoot stay
+where to stay in chitrakoot
+best place to stay in chitrakoot
+chitrakoot budget hotels
+chitrakoot cheap hotels
+chitrakoot family hotels
+hotels near ramghat chitrakoot
+hotels near kamadgiri chitrakoot
+hotels near hanuman dhara
+hotels near gupt godavari
+chitrakoot dharamshala
+chitrakoot ashram stay
+chitrakoot guest house
+chitrakoot rooms
+chitrakoot lodging
+best time to visit chitrakoot
+chitrakoot best time to visit
+best season to visit chitrakoot
+chitrakoot weather
+chitrakoot weather today
+chitrakoot weather tomorrow
+chitrakoot weather forecast
+chitrakoot temperature
+chitrakoot climate
+chitrakoot in summer
+chitrakoot in winter
+chitrakoot in monsoon
+chitrakoot in rainy season
+chitrakoot in october
+chitrakoot in november
+chitrakoot in december
+chitrakoot in january
+chitrakoot in february
+chitrakoot in march
+chitrakoot travel itinerary
+chitrakoot sightseeing itinerary
+chitrakoot trip itinerary
+chitrakoot itinerary for 1 day
+chitrakoot itinerary for 2 days
+chitrakoot itinerary for 3 days
+one day chitrakoot itinerary
+two day chitrakoot itinerary
+chitrakoot day plan
+chitrakoot sightseeing plan
+chitrakoot travel plan
+chitrakoot trip plan for family
+chitrakoot darshan plan
+chitrakoot mandir darshan plan
+chitrakoot tour schedule
+chitrakoot sightseeing route
+chitrakoot tourist places in one day
+how many days required for chitrakoot
+how long to stay in chitrakoot
+places near chitrakoot
+places to visit near chitrakoot
+tourist attractions near chitrakoot
+places around chitrakoot
+places near chitrakoot dham
+chitrakoot nearby tourist places
+chitrakoot and ayodhya tour
+chitrakoot and prayagraj tour
+chitrakoot and varanasi tour
+chitrakoot ayodhya package
+chitrakoot prayagraj package
+chitrakoot varanasi package
+prayagraj chitrakoot tour
+ayodhya chitrakoot tour
+varanasi chitrakoot tour
+lucknow chitrakoot tour
+chitrakoot me ghumne ki jagah
+chitrakoot mein ghumne ki jagah
+chitrakoot me kya dekhe
+chitrakoot mein kya dekhen
+chitrakoot kaise jaye
+chitrakoot kaise jaen
+chitrakoot me kaha ghume
+chitrakoot mein kahan ghume
+chitrakoot me darshan
+chitrakoot ke darshan
+chitrakoot ke prasiddh mandir
+chitrakoot ke prasiddh sthan
+chitrakoot ke tourist place
+chitrakoot me ghumne layak jagah
+chitrakoot kitne din me ghume
+chitrakoot yatra kaise kare
+chitrakoot yatra plan
+chitrakoot darshan kaise kare
+chitrakoot parikrama
+kamadgiri parikrama kaise kare
+chitrakoot me rukne ki jagah
+chitrakoot me kaha ruke
+chitrakoot jane ka rasta
+chitrakoot jane kaise
+chitrakoot tour booking
+chitrakoot tour online booking
+chitrakoot package booking
+chitrakoot trip booking
+chitrakoot darshan booking
+chitrakoot darshan tour
+chitrakoot darshan tour package
+chitrakoot pilgrimage package
+chitrakoot family tour package
+chitrakoot group tour package
+chitrakoot holiday packages
+chitrakoot travel packages
+chitrakoot sightseeing package
+chitrakoot cab package
+chitrakoot taxi tour package
+chitrakoot local tour package
+chitrakoot temple tour package
+what is chitrakoot famous for
+why is chitrakoot famous
+what is famous in chitrakoot
+is chitrakoot worth visiting
+how many days are enough for chitrakoot
+what can i see in chitrakoot
+what should i visit in chitrakoot
+what are the famous places in chitrakoot
+what are the famous temples in chitrakoot
+what to do in chitrakoot
+things to do in chitrakoot
+things to see in chitrakoot
+places to visit in chitrakoot in one day
+best things to do in chitrakoot
+chitrakoot travel tips
+chitrakoot travel guide for family
+chitrakoot trip cost
+chitrakoot travel cost
+chitrakoot tour cost
+chitrakoot trip budget
+chitrakoot tour budget
+"""
+
+keywords_list = [k.strip() for k in raw_keywords.strip().split("\n") if k.strip()]
+keywords_str = ", ".join(keywords_list)
+
+file_path = "/Users/rishabhjaiswal/ayodhya-darshan/chitrakoot-tour-package.html"
+
+# Enrich page with complete structured sections & Master Search Index
+enriched_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
@@ -32,85 +411,85 @@
 
 <!-- WebSite Schema -->
 <script type="application/ld+json">
-{
+{{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Chitrakoot Tour Package 2026: Kamadgiri, Ramghat & Gupt Godavari Yatra",
   "description": "Book 1 & 2-Day Chitrakoot Tour Packages. Kamadgiri Parikrama, Ramghat Mandakini Aarti, Gupt Godavari, Hanuman Dhara Ropeway, Hotel Stay & AC Cab.",
   "url": "https://www.ayodhyadharshan.com/chitrakoot-tour-package.html"
-}
+}}
 </script>
 
 <!-- Product Schema -->
 <script type="application/ld+json">
-{
+{{
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Chitrakoot Tour Package — Land of Ram's 11-Year Exile",
   "description": "Book 1 & 2-Day Chitrakoot Tour Packages. Kamadgiri Parikrama, Ramghat Mandakini Aarti, Gupt Godavari, Hanuman Dhara Ropeway, Hotel Stay & AC Cab.",
-  "brand": {
+  "brand": {{
     "@type": "Brand",
     "name": "Ayodhya Dharshan"
-  },
-  "aggregateRating": {
+  }},
+  "aggregateRating": {{
     "@type": "AggregateRating",
     "ratingValue": "4.9",
     "reviewCount": "156"
-  },
-  "offers": {
+  }},
+  "offers": {{
     "@type": "Offer",
     "priceCurrency": "INR",
     "price": "1499",
     "availability": "https://schema.org/InStock"
-  }
-}
+  }}
+}}
 </script>
 
 <!-- FAQ Schema -->
 <script type="application/ld+json">
-{
+{{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
+    {{
       "@type": "Question",
       "name": "What are the top places to visit in Chitrakoot?",
-      "acceptedAnswer": {
+      "acceptedAnswer": {{
         "@type": "Answer",
         "text": "The top places to visit in Chitrakoot include Ramghat on Mandakini River, Kamadgiri Hill Parikrama, Gupt Godavari Caves, Hanuman Dhara Waterfall & Ropeway, Sati Anusuya Ashram, Sphatik Shila, and Janki Kund."
-      }
-    },
-    {
+      }}
+    }},
+    {{
       "@type": "Question",
       "name": "How to perform Kamadgiri Parikrama in Chitrakoot?",
-      "acceptedAnswer": {
+      "acceptedAnswer": {{
         "@type": "Answer",
         "text": "Kamadgiri Parikrama is a 5 km circular barefoot walk around the sacred Kamadgiri hill. Shaded paved walkways, battery e-rickshaws, and palanquins (doli) are available for senior citizens."
-      }
-    },
-    {
+      }}
+    }},
+    {{
       "@type": "Question",
       "name": "chitrakoot me ghumne ki jagah aur kitne din me ghume?",
-      "acceptedAnswer": {
+      "acceptedAnswer": {{
         "@type": "Answer",
         "text": "Chitrakoot me Ramghat, Kamadgiri, Gupt Godavari, Hanuman Dhara aur Sati Anusuya Ashram dekhne ke liye 1 se 2 din ka tour sabse best rehta hai."
-      }
-    }
+      }}
+    }}
   ]
-}
+}}
 </script>
 
 <!-- Breadcrumb Schema -->
 <script type="application/ld+json">
-{
+{{
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.ayodhyadharshan.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Destinations", "item": "https://www.ayodhyadharshan.com/destinations.html" },
-    { "@type": "ListItem", "position": 3, "name": "Chitrakoot Tour Package", "item": "https://www.ayodhyadharshan.com/chitrakoot-tour-package.html" }
+    {{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.ayodhyadharshan.com/" }},
+    {{ "@type": "ListItem", "position": 2, "name": "Destinations", "item": "https://www.ayodhyadharshan.com/destinations.html" }},
+    {{ "@type": "ListItem", "position": 3, "name": "Chitrakoot Tour Package", "item": "https://www.ayodhyadharshan.com/chitrakoot-tour-package.html" }}
   ]
-}
+}}
 </script>
 
   <!-- Google AdSense -->
@@ -256,7 +635,7 @@
         Complete directory of all official search queries, travel itineraries, temple timings, hotels near Ramghat, and local transport options for Chitrakoot Dham:
       </p>
       <div style="font-size:0.86rem; color:var(--ink-3); line-height:1.8; word-break:break-word;">
-        chitrakoot tour, chitrakoot tourism, chitrakoot darshan, chitrakoot tour and travels, mpt tourist bungalow chitrakoot, cg tourism chitrakoot, chitrakoot darshan hotel, chitrakoot itinerary, chitrakoot madhya pradesh tourism, chitrakoot one day trip, chitrakoot package, chitrakoot tour itinerary, chitrakoot tour package, chitrakoot tour plan, chitrakoot tourism places, chitrakoot trip, chitrakoot up tourism, chitrakoot uttar pradesh tourism, chitrakoot waterfalls package, chitrakoot yatra, hotel chitrakoot darshan, mp tourist bungalow chitrakoot, mp tourist bungalow chitrakoot madhya pradesh, rahi tourist bungalow chitrakoot uttar pradesh, sightseeing in chitrakoot, tourist bungalow chitrakoot, tourist bungalow chitrakoot contact no, tourist places near chitrakoot, up tourist bungalow chitrakoot, chitrakoot darshan package, chitrakoot travel, chitrakoot travels, chitrakoot trip package, chitrakoot holiday package, chitrakoot travel package, chitrakoot travel agency, chitrakoot travel agent, chitrakoot tour operator, chitrakoot tourist guide, chitrakoot travel guide, chitrakoot tourism guide, chitrakoot travel information, chitrakoot tourist information, chitrakoot sightseeing tour, chitrakoot local sightseeing, chitrakoot sightseeing places, chitrakoot sightseeing package, chitrakoot city tour, chitrakoot local tour, chitrakoot pilgrimage tour, chitrakoot religious tour, chitrakoot spiritual tour, chitrakoot family trip, chitrakoot family tour, chitrakoot weekend trip, chitrakoot weekend tour, chitrakoot short trip, chitrakoot 2 day trip, chitrakoot 3 day trip, chitrakoot 2 days itinerary, chitrakoot 3 days itinerary, chitrakoot day tour, chitrakoot day trip package, places to visit in chitrakoot, best places to visit in chitrakoot, famous places in chitrakoot, famous tourist places in chitrakoot, chitrakoot tourist attractions, chitrakoot attractions, chitrakoot places to see, places to see in chitrakoot, best places in chitrakoot, must visit places in chitrakoot, chitrakoot sightseeing places list, chitrakoot famous places, chitrakoot famous tourist places, chitrakoot hidden places, chitrakoot historical places, chitrakoot religious places, chitrakoot spiritual places, chitrakoot pilgrimage places, chitrakoot scenic places, chitrakoot nature places, chitrakoot picnic spots, chitrakoot tourist spots, chitrakoot tourist attractions list, chitrakoot places near ramghat, places near ramghat chitrakoot, ramghat chitrakoot, ram ghat chitrakoot, ramghat tourism, ramghat chitrakoot tourism, ramghat chitrakoot darshan, ramghat chitrakoot timings, ramghat chitrakoot aarti, ramghat aarti timing, ramghat chitrakoot evening aarti, ramghat chitrakoot photos, ramghat chitrakoot distance, ramghat chitrakoot location, ramghat chitrakoot nearby places, things to do at ramghat, ramghat sightseeing, ramghat boat ride, chitrakoot ramghat boat, ramghat chitrakoot boating, kamadgiri chitrakoot, kamadgiri parikrama, kamadgiri parikrama chitrakoot, kamadgiri temple chitrakoot, kamadgiri mandir, kamadgiri chitrakoot darshan, kamadgiri temple timings, kamadgiri parikrama distance, kamadgiri parikrama time, kamadgiri parikrama route, kamadgiri parikrama map, kamadgiri chitrakoot distance, kamadgiri temple location, kamadgiri chitrakoot photos, kamadgiri hill chitrakoot, hanuman dhara chitrakoot, hanuman dhara temple, hanuman dhara chitrakoot darshan, hanuman dhara chitrakoot timings, hanuman dhara chitrakoot distance, hanuman dhara chitrakoot location, hanuman dhara chitrakoot history, hanuman dhara chitrakoot story, hanuman dhara chitrakoot photos, hanuman dhara waterfall, hanuman dhara chitrakoot waterfall, hanuman dhara ropeway, hanuman dhara chitrakoot stairs, hanuman dhara how to reach, gupt godavari chitrakoot, gupt godavari caves, gupt godavari chitrakoot darshan, gupt godavari timings, gupt godavari chitrakoot distance, gupt godavari chitrakoot location, gupt godavari cave chitrakoot, gupt godavari history, gupt godavari story, gupt godavari chitrakoot photos, gupt godavari water, gupt godavari cave timing, gupt godavari how to reach, sati anusuya chitrakoot, sati anusuya temple chitrakoot, sati anusuya ashram chitrakoot, sati anusuya chitrakoot timings, sati anusuya chitrakoot distance, sati anusuya chitrakoot history, janki kund chitrakoot, janki kund chitrakoot darshan, janki kund timings, janki kund chitrakoot distance, janki kund history, janki kund chitrakoot photos, sphatik shila chitrakoot, sphatik shila chitrakoot darshan, sphatik shila timings, sphatik shila chitrakoot distance, sphatik shila history, ganesh bagh chitrakoot, ganesh bagh chitrakoot tourism, kalinjar near chitrakoot, gupt godavari hanuman dhara tour, chitrakoot ram mandir, chitrakoot ram temple, ram vanvas chitrakoot, lord ram chitrakoot, ram sita chitrakoot, ramayan chitrakoot, chitrakoot ramayan places, ram ji ne chitrakoot me kitne din bitaye, ram vanvas chitrakoot history, chitrakoot ram van gaman, chitrakoot religious history, chitrakoot dharmik sthal, chitrakoot mandir, chitrakoot temples, famous temples in chitrakoot, famous temples near chitrakoot, chitrakoot temple tour, chitrakoot mandir darshan, chitrakoot mandir list, chitrakoot religious places list, how to reach chitrakoot, how to reach chitrakoot from delhi, how to reach chitrakoot from lucknow, how to reach chitrakoot from prayagraj, how to reach chitrakoot from ayodhya, how to reach chitrakoot from varanasi, how to reach chitrakoot from kanpur, how to reach chitrakoot from satna, chitrakoot railway station, nearest railway station to chitrakoot, chitrakoot nearest railway station, chitrakoot railway station distance, chitrakoot bus stand, chitrakoot bus service, chitrakoot bus route, chitrakoot road route, chitrakoot train, trains to chitrakoot, chitrakoot train route, chitrakoot transport, local transport in chitrakoot, chitrakoot taxi, chitrakoot cab service, chitrakoot cab booking, chitrakoot taxi fare, chitrakoot auto fare, chitrakoot distance, distance to chitrakoot, chitrakoot distance from prayagraj, chitrakoot distance from ayodhya, chitrakoot distance from varanasi, chitrakoot distance from lucknow, chitrakoot distance from kanpur, chitrakoot distance from delhi, chitrakoot distance from satna, prayagraj to chitrakoot distance, ayodhya to chitrakoot distance, varanasi to chitrakoot distance, lucknow to chitrakoot distance, kanpur to chitrakoot distance, satna to chitrakoot distance, delhi to chitrakoot distance, chitrakoot hotels, hotels in chitrakoot, best hotels in chitrakoot, chitrakoot hotel booking, chitrakoot hotels booking, chitrakoot accommodation, chitrakoot stay, where to stay in chitrakoot, best place to stay in chitrakoot, chitrakoot budget hotels, chitrakoot cheap hotels, chitrakoot family hotels, hotels near ramghat chitrakoot, hotels near kamadgiri chitrakoot, hotels near hanuman dhara, hotels near gupt godavari, chitrakoot dharamshala, chitrakoot ashram stay, chitrakoot guest house, chitrakoot rooms, chitrakoot lodging, best time to visit chitrakoot, chitrakoot best time to visit, best season to visit chitrakoot, chitrakoot weather, chitrakoot weather today, chitrakoot weather tomorrow, chitrakoot weather forecast, chitrakoot temperature, chitrakoot climate, chitrakoot in summer, chitrakoot in winter, chitrakoot in monsoon, chitrakoot in rainy season, chitrakoot in october, chitrakoot in november, chitrakoot in december, chitrakoot in january, chitrakoot in february, chitrakoot in march, chitrakoot travel itinerary, chitrakoot sightseeing itinerary, chitrakoot trip itinerary, chitrakoot itinerary for 1 day, chitrakoot itinerary for 2 days, chitrakoot itinerary for 3 days, one day chitrakoot itinerary, two day chitrakoot itinerary, chitrakoot day plan, chitrakoot sightseeing plan, chitrakoot travel plan, chitrakoot trip plan for family, chitrakoot darshan plan, chitrakoot mandir darshan plan, chitrakoot tour schedule, chitrakoot sightseeing route, chitrakoot tourist places in one day, how many days required for chitrakoot, how long to stay in chitrakoot, places near chitrakoot, places to visit near chitrakoot, tourist attractions near chitrakoot, places around chitrakoot, places near chitrakoot dham, chitrakoot nearby tourist places, chitrakoot and ayodhya tour, chitrakoot and prayagraj tour, chitrakoot and varanasi tour, chitrakoot ayodhya package, chitrakoot prayagraj package, chitrakoot varanasi package, prayagraj chitrakoot tour, ayodhya chitrakoot tour, varanasi chitrakoot tour, lucknow chitrakoot tour, chitrakoot me ghumne ki jagah, chitrakoot mein ghumne ki jagah, chitrakoot me kya dekhe, chitrakoot mein kya dekhen, chitrakoot kaise jaye, chitrakoot kaise jaen, chitrakoot me kaha ghume, chitrakoot mein kahan ghume, chitrakoot me darshan, chitrakoot ke darshan, chitrakoot ke prasiddh mandir, chitrakoot ke prasiddh sthan, chitrakoot ke tourist place, chitrakoot me ghumne layak jagah, chitrakoot kitne din me ghume, chitrakoot yatra kaise kare, chitrakoot yatra plan, chitrakoot darshan kaise kare, chitrakoot parikrama, kamadgiri parikrama kaise kare, chitrakoot me rukne ki jagah, chitrakoot me kaha ruke, chitrakoot jane ka rasta, chitrakoot jane kaise, chitrakoot tour booking, chitrakoot tour online booking, chitrakoot package booking, chitrakoot trip booking, chitrakoot darshan booking, chitrakoot darshan tour, chitrakoot darshan tour package, chitrakoot pilgrimage package, chitrakoot family tour package, chitrakoot group tour package, chitrakoot holiday packages, chitrakoot travel packages, chitrakoot sightseeing package, chitrakoot cab package, chitrakoot taxi tour package, chitrakoot local tour package, chitrakoot temple tour package, what is chitrakoot famous for, why is chitrakoot famous, what is famous in chitrakoot, is chitrakoot worth visiting, how many days are enough for chitrakoot, what can i see in chitrakoot, what should i visit in chitrakoot, what are the famous places in chitrakoot, what are the famous temples in chitrakoot, what to do in chitrakoot, things to do in chitrakoot, things to see in chitrakoot, places to visit in chitrakoot in one day, best things to do in chitrakoot, chitrakoot travel tips, chitrakoot travel guide for family, chitrakoot trip cost, chitrakoot travel cost, chitrakoot tour cost, chitrakoot trip budget, chitrakoot tour budget
+        {keywords_str}
       </div>
     </div>
   </div>
@@ -310,3 +689,22 @@ navToggle?.addEventListener('click',()=>navLinks.classList.toggle('open'));
 
 </body>
 </html>
+"""
+
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write(enriched_html)
+
+print("Enriched chitrakoot-tour-package.html!")
+
+# Verify exact match count
+matched = 0
+missing = []
+for k in keywords_list:
+    if k.lower() in enriched_html.lower():
+        matched += 1
+    else:
+        missing.append(k)
+
+print(f"Total Chitrakoot Keywords Verified: {matched}/{len(keywords_list)} ({matched/len(keywords_list)*100:.1f}%)")
+if missing:
+    print(f"Missing ({len(missing)}): {missing[:10]}")
