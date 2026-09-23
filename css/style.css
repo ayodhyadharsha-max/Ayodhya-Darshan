@@ -774,3 +774,68 @@ dialog#discountDialog[open]::backdrop {
   z-index: 3;
 }
 
+
+
+/* ============================================================
+   Mobile Optimization & Responsive Enhancements
+   ============================================================ */
+
+/* Details & Collapsible Master Search Index Mobile Styles */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Adjust Details Padding on Mobile */
+  details[style*="padding"] {
+    padding: 16px 14px !important;
+    border-radius: var(--r-sm) !important;
+  }
+  
+  /* Stack Summary Title & Badge cleanly on Mobile */
+  details summary {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  
+  details summary > span {
+    width: 100%;
+  }
+
+  details summary > span:last-child {
+    align-self: flex-start;
+    font-size: 0.78rem !important;
+    padding: 4px 10px !important;
+  }
+
+  /* Chip Badges Mobile Touch & Wrap */
+  details span[style*="display:inline-flex"] {
+    font-size: 0.78rem !important;
+    padding: 4px 9px !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  /* Ensure Sticky Bottom CTA Bar doesn't cover footer content */
+  body {
+    padding-bottom: 65px !important;
+  }
+
+  /* Stack Sticky Sidebars cleanly below main content on Mobile */
+  div[style*="position:sticky"],
+  div[style*="position: sticky"] {
+    position: static !important;
+    top: auto !important;
+    width: 100% !important;
+    margin-top: 30px !important;
+  }
+
+  /* 2-Column Grids convert to 1 Column on Mobile */
+  div[style*="grid-template-columns:1fr 340px"],
+  div[style*="grid-template-columns: 1fr 340px"] {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+}
