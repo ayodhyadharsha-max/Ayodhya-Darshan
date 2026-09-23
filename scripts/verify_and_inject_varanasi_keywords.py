@@ -1,7 +1,7 @@
 import os
 import re
 
-# Raw keyword list pasted by the user for Varanasi / Kashi / Banaras
+# Combined raw keywords pasted by the user for Varanasi / Kashi / Banaras across both requests
 raw_keywords_text = """
 varanasi tour
 varanasi tourism
@@ -17,7 +17,6 @@ things to do in varanasi
 places to see in varanasi
 varanasi travel guide
 varanasi tourism guide
-varanasi travel guide
 varanasi holiday
 varanasi vacation
 varanasi pilgrimage
@@ -187,7 +186,6 @@ varanasi sightseeing cost
 varanasi one day tour cost
 varanasi 2 day tour cost
 varanasi 3 day tour cost
-varanasi tour package price
 varanasi darshan package price
 varanasi yatra package price
 banaras tour package price
@@ -948,7 +946,6 @@ best street food near godowlia
 food near kashi vishwanath temple
 food near dashashwamedh ghat
 food near assi ghat
-varanasi famous sweets
 varanasi food near godowlia
 varanasi food near assi
 varanasi food near kashi vishwanath
@@ -1414,7 +1411,6 @@ varanasi solo trip cost
 varanasi group trip cost
 
 varanasi me ghumne ki jagah
-varanasi me ghumne ki jagah
 banaras me ghumne ki jagah
 kashi me ghumne ki jagah
 varanasi me kya dekhe
@@ -1474,7 +1470,6 @@ varanasi tour and travel
 varanasi tour and travels
 varanasi tourism company
 varanasi sightseeing agency
-varanasi tour operator
 varanasi local tour operator
 varanasi pilgrimage tour operator
 varanasi travel company
@@ -1755,7 +1750,6 @@ unexplored tourist places in varanasi
 unexplored places to visit in varanasi
 less explored places in varanasi
 less explored tourist places in varanasi
-less explored places in varanasi
 less crowded places in varanasi
 less crowded tourist places in varanasi
 less crowded places to visit in varanasi
@@ -1986,7 +1980,6 @@ offbeat religious places in varanasi
 varanasi hidden places hindi
 varanasi ke hidden places
 varanasi ke hidden places kaha hai
-varanasi ke hidden places
 varanasi ke secret places
 varanasi ke secret places kaha hai
 varanasi ke unknown places
@@ -2094,20 +2087,343 @@ what are the hidden temples in varanasi
 what are the hidden ghats in varanasi
 what are the unexplored temples in varanasi
 what are the unexplored ghats in varanasi
+
+most sacred city in india
+most sacred city of india
+sacred city in india
+holiest city in india
+holiest city of india
+most holy city in india
+most spiritual city in india
+spiritual capital of india
+religious capital of india
+spiritual capital of india varanasi
+varanasi most sacred city
+varanasi sacred city
+varanasi holy city
+varanasi holiest city
+varanasi most holy city
+varanasi most spiritual city
+varanasi spiritual city
+varanasi religious city
+varanasi sacred city india
+varanasi holy city india
+banaras most sacred city
+banaras sacred city
+banaras holy city
+banaras holiest city
+kashi most sacred city
+kashi sacred city
+kashi holy city
+kashi holiest city
+
+oldest city in india
+oldest living city in the world
+oldest living city
+oldest city in the world
+one of the oldest cities in the world
+one of the oldest cities in india
+oldest continuously inhabited city
+oldest continuously inhabited city in the world
+oldest continuously inhabited city in india
+ancient city of india
+ancient cities in india
+most ancient city in india
+most ancient city of india
+varanasi oldest city
+varanasi oldest city in india
+varanasi oldest city in the world
+varanasi oldest living city
+varanasi oldest living city in the world
+varanasi ancient city
+varanasi ancient city history
+varanasi one of the oldest cities
+banaras oldest city
+banaras oldest city in india
+banaras oldest living city
+kashi oldest city
+kashi oldest city in india
+kashi ancient city
+
+most historical city in india
+historical city in india
+most historic city in india
+historic cities in india
+most ancient historical city in india
+oldest historical city in india
+varanasi most historical city
+varanasi historical city
+varanasi historic city
+varanasi historical places
+varanasi historical significance
+varanasi history
+history of varanasi
+history of banaras
+history of kashi
+ancient history of varanasi
+varanasi ancient history
+varanasi historical importance
+varanasi historical significance
+varanasi cultural history
+banaras historical city
+banaras historic city
+banaras historical significance
+kashi historical city
+kashi historical significance
+
+most spiritual city in india
+spiritual city of india
+spiritual cities in india
+most religious city in india
+religious city in india
+most religious place in india
+most spiritual place in india
+most sacred place in india
+sacred places in india
+holiest places in india
+holiest place in india
+most holy place in india
+varanasi spiritual capital
+varanasi spiritual capital of india
+varanasi religious capital
+varanasi religious capital of india
+varanasi spiritual significance
+varanasi religious significance
+varanasi spiritual importance
+varanasi religious importance
+varanasi sacred significance
+varanasi holy significance
+varanasi spiritual heritage
+varanasi religious heritage
+banaras spiritual capital
+banaras spiritual significance
+banaras religious significance
+kashi spiritual capital
+kashi spiritual significance
+kashi religious significance
+
+why varanasi is sacred
+why is varanasi sacred
+why varanasi is holy
+why is varanasi holy
+why varanasi is considered sacred
+why is varanasi considered sacred
+why varanasi is the holiest city
+why is varanasi considered the holiest city
+why varanasi is a holy city
+why varanasi is a sacred city
+why varanasi is spiritual
+why is varanasi spiritual
+why varanasi is famous as a spiritual city
+why varanasi is famous
+why banaras is sacred
+why is banaras holy
+why kashi is sacred
+why is kashi holy
+why kashi is considered sacred
+why kashi is spiritually important
+
+why varanasi is historically important
+why is varanasi historically important
+why varanasi is historically significant
+why is varanasi historically significant
+why varanasi is an ancient city
+why is varanasi an ancient city
+why varanasi is one of the oldest cities
+why is varanasi one of the oldest cities
+why varanasi is called the oldest city
+why is varanasi called the oldest city
+how old is varanasi
+how old is banaras
+how old is kashi
+age of varanasi
+age of banaras
+age of kashi
+history and culture of varanasi
+ancient history of kashi
+ancient history of banaras
+
+varanasi city of temples
+banaras city of temples
+kashi city of temples
+city of temples varanasi
+city of temples india
+varanasi city of lord shiva
+kashi city of lord shiva
+banaras city of lord shiva
+city of lord shiva varanasi
+city of lord shiva kashi
+varanasi city of moksha
+kashi city of moksha
+banaras city of moksha
+moksha city varanasi
+moksha nagari varanasi
+moksha nagari kashi
+moksha nagari banaras
+city of salvation varanasi
+city of salvation kashi
+spiritual city of lord shiva
+lord shiva city varanasi
+lord shiva city kashi
+
+kashi moksha
+moksha in kashi
+moksha in varanasi
+moksha city kashi
+why kashi is famous for moksha
+why varanasi is famous for moksha
+varanasi moksha significance
+kashi moksha significance
+kashi moksha bhoomi
+varanasi moksha bhoomi
+kashi moksha nagari
+varanasi moksha nagari
+kashi spiritual significance
+varanasi spiritual significance
+
+varanasi city of light
+kashi city of light
+city of light varanasi
+city of light kashi
+varanasi meaning city of light
+kashi meaning city of light
+why kashi is called city of light
+why varanasi is called city of light
+varanasi name meaning
+banaras name meaning
+kashi name meaning
+meaning of kashi
+meaning of varanasi
+meaning of banaras
+
+varanasi cultural capital
+varanasi cultural heritage
+varanasi cultural city
+varanasi cultural significance
+varanasi cultural importance
+banaras cultural heritage
+banaras cultural significance
+kashi cultural heritage
+kashi cultural significance
+varanasi heritage city
+varanasi heritage tourism
+varanasi cultural tourism
+varanasi religious tourism
+varanasi spiritual tourism
+varanasi heritage tour
+banaras heritage tourism
+kashi heritage tourism
+
+varanasi unesco heritage
+varanasi world heritage
+varanasi heritage city india
+varanasi ancient heritage
+varanasi religious heritage
+varanasi architectural heritage
+varanasi cultural heritage sites
+varanasi historical heritage sites
+varanasi ancient heritage sites
+
+varanasi famous in india
+why varanasi is famous in india
+what is varanasi famous for
+what is banaras famous for
+what is kashi famous for
+why banaras is famous
+why kashi is famous
+varanasi importance in india
+varanasi importance
+importance of varanasi
+importance of kashi
+importance of banaras
+significance of varanasi
+significance of kashi
+significance of banaras
+
+varanasi facts
+interesting facts about varanasi
+interesting facts about banaras
+interesting facts about kashi
+varanasi history and facts
+varanasi ancient facts
+varanasi religious facts
+varanasi spiritual facts
+varanasi culture and history
+varanasi history and culture
+banaras history and culture
+kashi history and culture
+varanasi civilization
+varanasi ancient civilization
+varanasi historical facts
+varanasi religious history
+varanasi spiritual history
+
+varanasi ko sabse pavitra shahar kyu kaha jata hai
+varanasi ko pavitra shahar kyu kaha jata hai
+varanasi sabse pavitra shahar
+varanasi pavitra shahar
+varanasi bharat ka sabse pavitra shahar
+bharat ka sabse pavitra shahar
+bharat ka sabse pavitra sthan
+varanasi sabse purana shahar
+varanasi bharat ka sabse purana shahar
+varanasi duniya ka sabse purana shahar
+varanasi duniya ke sabse purane shahron me se ek
+varanasi sabse prachin shahar
+banaras sabse purana shahar
+kashi sabse purana shahar
+kashi sabse pavitra shahar
+kashi bharat ka sabse pavitra shahar
+kashi ko pavitra kyu mana jata hai
+varanasi ko pavitra kyu mana jata hai
+kashi ko sabse pavitra kyu mana jata hai
+varanasi ko moksha ki nagari kyu kaha jata hai
+kashi ko moksha ki nagari kyu kaha jata hai
+varanasi ko shiv ki nagari kyu kaha jata hai
+kashi ko shiv ki nagari kyu kaha jata hai
+varanasi ko city of light kyu kaha jata hai
+kashi ko city of light kyu kaha jata hai
+varanasi kitna purana hai
+banaras kitna purana hai
+kashi kitna purana hai
+varanasi ka itihas
+banaras ka itihas
+kashi ka itihas
+varanasi ka dharmik mahatva
+kashi ka dharmik mahatva
+varanasi ka adhyatmik mahatva
+kashi ka adhyatmik mahatva
+varanasi ka aitihasik mahatva
+kashi ka aitihasik mahatva
+varanasi ki sanskriti
+banaras ki sanskriti
+kashi ki sanskriti
+varanasi ki dharmik virasat
+kashi ki dharmik virasat
+varanasi ki prachin virasat
 """
 
 target_file = "/Users/rishabhjaiswal/ayodhya-darshan/varanasi-same-day-tour-package.html"
 
 # Extract & deduplicate keywords
-keywords_list = [k.strip() for k in raw_keywords_text.strip().split('\n') if k.strip()]
-keywords_list = [k for k in keywords_list if not k.startswith("http") and not k.endswith(".html")]
-print(f"Total Varanasi Keywords Loaded: {len(keywords_list)}")
+raw_list = [k.strip() for k in raw_keywords_text.strip().split('\n') if k.strip()]
+# Filter out non-keyword lines
+keywords_list = []
+seen = set()
+for k in raw_list:
+    if k.startswith("http") or k.endswith(".html") or k.startswith("ya bhi"):
+        continue
+    if k not in seen:
+        seen.add(k)
+        keywords_list.append(k)
+
+print(f"Total Unique Varanasi Keywords Loaded: {len(keywords_list)}")
 
 with open(target_file, "r", encoding="utf-8") as f:
     current_html = f.read()
 
-# Remove existing Master Search Index section if already present
-master_index_pattern = r'<section class="section" style="padding: 40px 0 60px;">.*?</section>'
+# Remove existing Master Search Index section if present
+master_index_pattern = r'<!-- Collapsible Master Search Index Section -->.*?</section>'
 cleaned_html = re.sub(master_index_pattern, '', current_html, flags=re.DOTALL)
 
 # Generate chip badges HTML
@@ -2134,7 +2450,7 @@ master_index_section = f"""
       </summary>
       
       <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--line);">
-        <p style="font-size:0.9rem; color:var(--ink-2); margin-bottom:18px; line-height:1.5;">Comprehensive index of search queries, destinations, temples, ghats, boat rides, Sarnath excursions, food, shopping, and booking details for Varanasi (Kashi / Banaras) pilgrimages:</p>
+        <p style="font-size:0.9rem; color:var(--ink-2); margin-bottom:18px; line-height:1.5;">Comprehensive index of search queries, destinations, temples, ghats, boat rides, Sarnath excursions, history, spiritual significance, food, shopping, and booking details for Varanasi (Kashi / Banaras) pilgrimages:</p>
         <div style="display:flex; flex-wrap:wrap; gap:8px;">
         {chips_html}
         </div>
