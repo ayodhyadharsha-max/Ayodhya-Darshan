@@ -1,7 +1,7 @@
 import os
 import re
 
-# Raw keywords pasted by the user
+# Raw keyword list pasted by the user
 raw_keywords_text = """
 prayagraj tour
 prayagraj tourism
@@ -718,6 +718,7 @@ maha kumbh hotel
 maha kumbh tent
 maha kumbh camp
 maha kumbh stay
+maha kumbh sangam
 maha kumbh snan
 maha kumbh bathing
 maha kumbh kalpavas
@@ -857,27 +858,263 @@ prayagraj rambagh station
 prayagraj chheoki
 prayagraj chheoki railway station
 prayagraj railway stations
+railway station near sangam prayagraj
+nearest railway station to sangam prayagraj
 
-varanasi to prayagraj
+prayagraj airport
+prayagraj airport to sangam
+prayagraj airport to triveni sangam
+prayagraj airport to prayagraj city
+prayagraj airport to railway station
+prayagraj airport to anand bhawan
+prayagraj airport to allahabad fort
+prayagraj airport to sangam distance
+prayagraj airport distance from sangam
+prayagraj airport taxi
+prayagraj airport cab
+prayagraj airport transport
+prayagraj airport to city
+allahabad airport
+allahabad airport to sangam
+allahabad airport to prayagraj
+bamhrauli airport prayagraj
+bamrauli airport allahabad
+bamrauli airport to sangam
+nearest airport to prayagraj
+nearest airport to triveni sangam
+nearest airport to allahabad
+
+prayagraj bus stand
+prayagraj bus station
+prayagraj civil lines bus stand
+prayagraj bus stand to sangam
+prayagraj bus stand to railway station
+prayagraj bus stand to triveni sangam
+prayagraj bus service
+prayagraj bus route
+prayagraj bus booking
+bus to prayagraj
+bus for prayagraj
+allahabad bus stand
+allahabad bus station
+allahabad bus service
+
+how to reach prayagraj
+how to reach allahabad
+how to go prayagraj
+how to go allahabad
+prayagraj how to reach
+prayagraj how to go
+allahabad how to reach
+allahabad how to go
+prayagraj by road
+prayagraj by train
+prayagraj by flight
+prayagraj by bus
+prayagraj travel by train
+prayagraj travel by road
+prayagraj travel by air
+how to reach triveni sangam
+how to reach prayagraj sangam
+how to reach sangam from railway station
+how to reach sangam from airport
+how to reach sangam by road
+how to reach sangam by train
+how to reach sangam by bus
+sangam route prayagraj
+sangam route allahabad
+triveni sangam route
+triveni sangam map
+prayagraj map
+allahabad map
+
+prayagraj local sightseeing
+prayagraj local tour
+prayagraj city tour
+prayagraj city sightseeing
+prayagraj sightseeing tour
+prayagraj sightseeing package
+prayagraj sightseeing cab
+prayagraj sightseeing taxi
+prayagraj local cab
+prayagraj local taxi
+prayagraj cab booking
+prayagraj taxi booking
+prayagraj cab service
+prayagraj taxi service
+prayagraj tour cab
+prayagraj tour taxi
+prayagraj darshan cab
+prayagraj darshan taxi
+prayagraj temple tour cab
+prayagraj temple tour taxi
+prayagraj sightseeing by car
+prayagraj sightseeing by cab
+prayagraj one day sightseeing
+prayagraj one day sightseeing package
+prayagraj local sightseeing package
+prayagraj local sightseeing taxi
+prayagraj local sightseeing cab
+allahabad sightseeing cab
+allahabad taxi service
+allahabad cab service
+allahabad sightseeing tour
+allahabad local tour
+allahabad city tour
+
+prayagraj tour package
+prayagraj travel package
+prayagraj trip package
+prayagraj holiday package
+prayagraj tourism package
+prayagraj darshan package
+prayagraj yatra package
+prayagraj pilgrimage package
+prayagraj religious tour package
+prayagraj temple tour package
+prayagraj sightseeing package
+prayagraj one day package
+prayagraj 1 day package
+prayagraj 2 day package
+prayagraj 3 day package
+prayagraj family tour package
+prayagraj group tour package
+prayagraj weekend package
+prayagraj tour package from varanasi
+prayagraj tour package from ayodhya
+prayagraj tour package from lucknow
+prayagraj tour package from chitrakoot
+prayagraj tour package from kanpur
+prayagraj tour package from delhi
+prayagraj tour package from noida
+prayagraj travel package from varanasi
+prayagraj travel package from ayodhya
+prayagraj travel package from lucknow
+prayagraj travel package from chitrakoot
+prayagraj darshan package from varanasi
+prayagraj darshan package from ayodhya
+prayagraj darshan package from lucknow
+prayagraj yatra package from varanasi
+prayagraj yatra package from ayodhya
+prayagraj yatra package from chitrakoot
+prayagraj trip package from varanasi
+prayagraj trip package from ayodhya
+prayagraj trip package from lucknow
+allahabad tour package
+allahabad travel package
+allahabad trip package
+allahabad tour package from varanasi
+allahabad tour package from ayodhya
+allahabad tour package from lucknow
+allahabad sightseeing package
+allahabad darshan package
+allahabad yatra package
+
+prayagraj tour package price
+prayagraj travel package price
+prayagraj trip cost
+prayagraj tour cost
+prayagraj travel cost
+prayagraj tour budget
+prayagraj trip budget
+prayagraj travel budget
+prayagraj darshan cost
+prayagraj sightseeing cost
+prayagraj one day trip cost
+prayagraj two day trip cost
+prayagraj three day trip cost
+prayagraj tour package cost
+prayagraj package cost
+prayagraj trip expenses
+prayagraj travel expenses
+prayagraj budget trip
+cheap prayagraj trip
+budget prayagraj tour
+prayagraj affordable tour
+prayagraj low budget trip
+prayagraj family trip cost
+prayagraj family tour cost
+prayagraj couple trip cost
+prayagraj group tour cost
+
+prayagraj best time to visit
+best time to visit prayagraj
+prayagraj best season
+best season to visit prayagraj
+prayagraj weather
+prayagraj weather today
+prayagraj weather forecast
+prayagraj temperature
+prayagraj temperature today
+prayagraj climate
+prayagraj winter
+prayagraj summer
+prayagraj monsoon
+prayagraj rainy season
+prayagraj winter trip
+prayagraj summer trip
+prayagraj monsoon trip
+prayagraj trip in winter
+prayagraj trip in summer
+prayagraj trip in monsoon
+best month to visit prayagraj
+best month for prayagraj trip
+which month is best for prayagraj
+best time for sangam visit
+best time to visit triveni sangam
+best time for prayagraj darshan
+best time for prayagraj sightseeing
+prayagraj tourism season
+
+prayagraj me 1 din me kya dekhe
+prayagraj mein 1 din mein kya dekhen
+prayagraj me 2 din me kya dekhe
+prayagraj mein 2 din mein kya dekhen
+prayagraj me 3 din me kya dekhe
+prayagraj mein 3 din mein kya dekhen
+prayagraj one day itinerary
+prayagraj 1 day itinerary
+prayagraj 2 day itinerary
+prayagraj 3 day itinerary
+prayagraj one day tour plan
+prayagraj two day tour plan
+prayagraj three day tour plan
+prayagraj one day sightseeing plan
+prayagraj two day sightseeing plan
+prayagraj temple tour itinerary
+prayagraj religious itinerary
+prayagraj pilgrimage itinerary
+prayagraj family itinerary
+prayagraj travel itinerary in hindi
+prayagraj tour itinerary in hindi
+prayagraj trip plan in hindi
+prayagraj tour plan in hindi
+prayagraj darshan itinerary
+prayagraj darshan plan
+prayagraj mandir darshan plan
+prayagraj sangam itinerary
+prayagraj sangam tour plan
+
 prayagraj to varanasi
-varanasi prayagraj trip
+varanasi to prayagraj
 prayagraj varanasi trip
-varanasi prayagraj tour
+varanasi prayagraj trip
 prayagraj varanasi tour
-varanasi prayagraj tour package
+varanasi prayagraj tour
 prayagraj varanasi tour package
-varanasi to prayagraj distance
+varanasi prayagraj tour package
 prayagraj to varanasi distance
-varanasi to prayagraj road distance
+varanasi to prayagraj distance
 prayagraj to varanasi road distance
-varanasi to prayagraj train
+varanasi to prayagraj road distance
 prayagraj to varanasi train
-varanasi to prayagraj bus
+varanasi to prayagraj train
 prayagraj to varanasi bus
-varanasi to prayagraj taxi
+varanasi to prayagraj bus
 prayagraj to varanasi taxi
-varanasi to prayagraj cab
+varanasi to prayagraj taxi
 prayagraj to varanasi cab
+varanasi to prayagraj cab
 prayagraj to varanasi by road
 varanasi to prayagraj by road
 prayagraj varanasi one day trip
@@ -1637,6 +1874,53 @@ old temples in allahabad
 famous religious places in prayagraj
 holy temples in prayagraj
 
+prayagraj darshan
+prayagraj mandir darshan
+prayagraj temple darshan
+prayagraj religious darshan
+prayagraj sangam darshan
+prayagraj hanuman darshan
+prayagraj shiv darshan
+prayagraj devi darshan
+prayagraj mandir yatra
+prayagraj temple yatra
+prayagraj mandir tour
+prayagraj temple tour
+prayagraj religious tour
+prayagraj pilgrimage tour
+prayagraj dham tour
+prayag dham tour
+prayag teerth yatra
+prayagraj teerth yatra
+prayagraj teerth darshan
+prayag teerth darshan
+
+prayagraj tour and travels
+prayagraj tours and travels
+prayagraj tours travels
+prayagraj travel services
+prayagraj tourism services
+prayagraj tour services
+prayagraj sightseeing services
+prayagraj travel packages
+prayagraj holiday tours
+prayagraj religious tour operator
+prayagraj pilgrimage tour operator
+prayagraj local tour operator
+prayagraj cab tour
+prayagraj taxi tour
+prayagraj car tour
+prayagraj private cab
+prayagraj private taxi
+prayagraj private tour
+prayagraj customized tour
+prayagraj custom tour package
+prayagraj customized travel package
+prayagraj private sightseeing
+prayagraj private sightseeing tour
+prayagraj private darshan tour
+prayagraj private temple tour
+
 what to see in prayagraj
 things to do in prayagraj
 things to do in allahabad
@@ -1657,15 +1941,20 @@ things to do near triveni sangam
 things to do near prayagraj junction
 """
 
-# Extract & deduplicate keywords
-keywords_list = [k.strip() for k in raw_keywords_text.strip().split('\n') if k.strip()]
-print(f"Total Prayagraj Keywords Loaded: {len(keywords_list)}")
-
-backup_file = "/Users/rishabhjaiswal/ayodhya-darshan/prayagraj_backup.html"
 target_file = "/Users/rishabhjaiswal/ayodhya-darshan/prayagraj-tour-package.html"
 
-with open(backup_file, "r", encoding="utf-8") as f:
-    base_html = f.read()
+# Extract & deduplicate keywords
+keywords_list = [k.strip() for k in raw_keywords_text.strip().split('\n') if k.strip()]
+# Filter out non-keyword instruction line if present
+keywords_list = [k for k in keywords_list if not k.startswith("bina kuch")]
+print(f"Total Prayagraj Keywords Loaded: {len(keywords_list)}")
+
+with open(target_file, "r", encoding="utf-8") as f:
+    current_html = f.read()
+
+# Remove existing Master Search Index section if already present
+master_index_pattern = r'<section class="section" style="padding: 40px 0 60px;">.*?</section>'
+cleaned_html = re.sub(master_index_pattern, '', current_html, flags=re.DOTALL)
 
 # Generate chip badges HTML
 chip_badges = []
@@ -1701,18 +1990,17 @@ master_index_section = f"""
 </section>
 """
 
-# Insert Master Index section right before <footer class="site-foot">
-if '<footer class="site-foot">' in base_html:
-    final_html = base_html.replace('<footer class="site-foot">', master_index_section + '\n<footer class="site-foot">')
-elif '<footer>' in base_html:
-    final_html = base_html.replace('<footer>', master_index_section + '\n<footer>')
+if '<footer class="site-foot">' in cleaned_html:
+    final_html = cleaned_html.replace('<footer class="site-foot">', master_index_section + '\n<footer class="site-foot">')
+elif '<footer>' in cleaned_html:
+    final_html = cleaned_html.replace('<footer>', master_index_section + '\n<footer>')
 else:
-    final_html = base_html.replace('</body>', master_index_section + '\n</body>')
+    final_html = cleaned_html.replace('</body>', master_index_section + '\n</body>')
 
 with open(target_file, "w", encoding="utf-8") as f:
     f.write(final_html)
 
-print("Restored original Prayagraj format and injected Master Search Index successfully!")
+print("Updated prayagraj-tour-package.html with all keywords!")
 
 # Verification step
 matched = 0
