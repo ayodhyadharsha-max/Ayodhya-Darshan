@@ -1,7 +1,7 @@
 /**
  * AYODHYA DHARSHAN - PANDIT JI AI YATRA AGENT WIDGET
  * Smart Multi-Lingual Reasoning Engine (Hindi, Hinglish, English)
- * Strict City & Topic Disambiguation Architecture
+ * Robust Spelling & Fuzzy NLP Intent Matcher
  */
 
 (function() {
@@ -251,8 +251,8 @@
         </div>
 
         <div class="pj-quick-prompts">
+          <div class="pj-chip" onclick="pjAskPrompt('Subah kitne baje nikalna chahiye darshan ke liye?')">🕐 Minimum Rush & Departure Time</div>
           <div class="pj-chip" onclick="pjAskPrompt('Kashi Vishwanath Sugam Darshan rules kya hain?')">🛕 Kashi Sugam Darshan (₹300)</div>
-          <div class="pj-chip" onclick="pjAskPrompt('Subah kitne baje jana chahiye jisse rush kam mile?')">🕐 Minimum Rush Timing</div>
           <div class="pj-chip" onclick="pjAskPrompt('Ram Mandir VIP Pass kaise milta hai?')">🚩 Ayodhya Ram Mandir Pass (Free)</div>
           <div class="pj-chip" onclick="pjAskPrompt('Ayodhya Varanasi Prayagraj 3 day tour price?')">🚗 3-City Package Cost</div>
           <div class="pj-chip" onclick="pjAskPrompt('Mathura Vrindavan best 1-day itinerary')">🛺 Mathura Vrindavan Plan</div>
@@ -321,11 +321,31 @@
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 
-  // Disambiguated Natural Language NLP AI Response Engine
+  // Robust NLP Intent Engine (Handles Spelling Variations & Conversational Queries)
   function generateSmartAIResponse(query) {
     const q = query.toLowerCase();
 
-    // 1. KASHI / VARANASI SPECIFIC QUERY (Highest Priority Disambiguation for Kashi / Varanasi)
+    // Normalizing common spelling variations
+    const isMorning = q.includes('subah') || q.includes('subha') || q.includes('subh') || q.includes('morn');
+    const isDeparture = q.includes('nikle') || q.includes('nikal') || q.includes('nikale') || q.includes('nikake') || q.includes('baje') || q.includes('jana') || q.includes('jaye') || q.includes('time') || q.includes('samay');
+    const isCrowd = q.includes('rush') || q.includes('bheed') || q.includes('crowd') || q.includes('kam') || q.includes('line');
+
+    // 1. RUSH & DEPARTURE TIMING QUERY (Subah kitne baje nikalna / jana chahiye jisse rush kam mile)
+    if (isCrowd || (isMorning && isDeparture) || (q.includes('kitne baje') || q.includes('kitna baje') || q.includes('kab nikal') || q.includes('kab jana') || q.includes('kab nikalna'))) {
+      return `<strong>🌅 Minimum Rush & Best Departure Timing Guide:</strong><br><br>
+      Darshan ke liye sabse <strong>kam rush (minimum crowd)</strong> paane ke liye aapko in nirdharit timings par hotel se nikalna chahiye:<br><br>
+      1. <strong>Ayodhya Ram Mandir:</strong><br>
+         • <strong>Best Subah Timing:</strong> Hotel se subah <strong>6:00 AM se 6:30 AM</strong> tak nikal jayein, taaki 6:30 AM se 8:00 AM ke beech line mein lag sakein (~20-30 minutes mein aaram se darshan ho jate hain).<br>
+         • <strong>Afternoon Slot:</strong> Duphahar <strong>1:45 PM</strong> par pahunchein (12 PM - 2 PM Vishram break khulne ke turant baad bheed kafi kam rehti hai).<br><br>
+      2. <strong>Hanuman Garhi:</strong><br>
+         • Subah <strong>5:30 AM se 6:30 AM</strong> tak pahunchein. Iss samay 76 seedhiyan bina rush ke aaram se chadh sakte hain.<br><br>
+      3. <strong>Kashi Vishwanath (Varanasi):</strong><br>
+         • Sugam Darshan pass ke sath subah <strong>6:00 AM - 7:30 AM</strong> ya Mangala Aarti ke turant baad Gate No. 4 se fastest entry milti hai.<br><br>
+      4. <strong>Best Days:</strong> Wednesday, Thursday aur Friday ko sabse kam bheed hoti hai. (Tuesday, Saturday & Sunday ko heavy rush hota hai).<br><br>
+      📞 Private AC Cab & VIP Darshan assistance ke liye call karein: <strong>+91 92352 22399</strong>.`;
+    }
+
+    // 2. KASHI / VARANASI SPECIFIC QUERY
     if (q.includes('kashi') || q.includes('varanasi') || q.includes('banaras') || q.includes('vishwanath') || q.includes('sarnath')) {
       if (q.includes('sugam') || q.includes('pass') || q.includes('ticket') || q.includes('rule') || q.includes('vip') || q.includes('gate') || q.includes('cost') || q.includes('fee')) {
         return `<strong>🛕 Kashi Vishwanath Sugam Darshan Rules & Pass Details (Varanasi):</strong><br><br>
@@ -344,7 +364,7 @@
       📞 Varanasi 1-Day & 2-Night packages ke liye: <strong>+91 92352 22399</strong>.`;
     }
 
-    // 2. AYODHYA RAM MANDIR SPECIFIC QUERY
+    // 3. AYODHYA RAM MANDIR SPECIFIC QUERY
     if (q.includes('ayodhya') || q.includes('ram mandir') || q.includes('ram janmabhoomi') || q.includes('hanuman garhi')) {
       if (q.includes('pass') || q.includes('vip') || q.includes('sugam') || q.includes('token') || q.includes('ticket') || q.includes('booking') || q.includes('cost') || q.includes('free')) {
         return `<strong>🚩 Ayodhya Ram Mandir VIP & Sugam Darshan Details:</strong><br><br>
@@ -366,19 +386,6 @@
         2. Hanuman Garhi ke liye 76 seedhiyan hain (palanquin/doli facility available).<br>
         3. Humare packages mein senior citizens ke liye priority assistance aur door-step cab drop shamil rehta hai.`;
       }
-    }
-
-    // 3. RUSH & TIMING QUERY (When no specific city mentioned or generic rush question)
-    if (q.includes('rush') || q.includes('bheed') || q.includes('crowd') || q.includes('kam rush') || q.includes('kam bheed') || (q.includes('subah') && (q.includes('baje') || q.includes('jana') || q.includes('time')))) {
-      return `<strong>🌅 Minimum Rush & Best Darshan Timing Tips:</strong><br><br>
-      Aapko sabse <strong>kam rush (minimum crowd)</strong> paane ke liye ye timing best rehte hain:<br><br>
-      1. <strong>Ram Mandir (Ayodhya):</strong><br>
-         • <strong>Early Morning Slot:</strong> Subah <strong>6:30 AM se 8:00 AM</strong> ke beech entry lein. Iss samay regular line bahut fast chalti hai (~20-30 mins mein darshan).<br>
-         • <strong>Afternoon Slot:</strong> Duphahar <strong>1:45 PM se 2:30 PM</strong> (Vishram break 12-2 PM khulne ke turant baad) bheed kafi kam hoti hai.<br><br>
-      2. <strong>Hanuman Garhi:</strong><br>
-         • Subah <strong>5:30 AM se 7:00 AM</strong> sabse best hai.<br><br>
-      3. <strong>Best Days:</strong> Wednesday, Thursday aur Friday ko sabse kam bheed rehti hai. (Tuesday, Saturday & Sunday ko heavy rush hota hai).<br><br>
-      📞 Priority guidance ke liye: <strong>+91 92352 22399</strong>.`;
     }
 
     // 4. PRAYAGRAJ / TRIVENI SANGAM
