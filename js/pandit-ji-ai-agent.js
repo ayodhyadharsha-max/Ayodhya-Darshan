@@ -1,7 +1,7 @@
 /**
  * AYODHYA DHARSHAN - PANDIT JI AI YATRA AGENT WIDGET
  * Smart Multi-Lingual Reasoning Engine (Hindi, Hinglish, English)
- * Ingests 1000+ Master Knowledge Base Prompts & Calculation Rules
+ * Strict City & Topic Disambiguation Architecture
  */
 
 (function() {
@@ -247,14 +247,14 @@
       <div class="pj-chat-body" id="pjChatBody">
         <div class="pj-msg pj-msg-bot">
           <strong>॥ जय श्री राम ॥</strong><br>
-          Pranam! Main Ayodhya Dharshan ka <strong>Smart AI Yatra Agent</strong> hu. Aap Hindi, Hinglish ya English mein kuch bhi poochhein — <em>Rush kam kab milega, Ram Mandir timings, VIP pass, Kashi Vishwanath, Mathura, Prayagraj, Hotels ya Cab fares!</em>
+          Pranam! Main Ayodhya Dharshan ka <strong>Smart AI Yatra Agent</strong> hu. Aap Hindi, Hinglish ya English mein kuch bhi poochhein — <em>Rush kam kab milega, Kashi Vishwanath Sugam Darshan rules, Ram Mandir timings, Mathura, Prayagraj, Hotels ya Cab fares!</em>
         </div>
 
         <div class="pj-quick-prompts">
+          <div class="pj-chip" onclick="pjAskPrompt('Kashi Vishwanath Sugam Darshan rules kya hain?')">🛕 Kashi Sugam Darshan (₹300)</div>
           <div class="pj-chip" onclick="pjAskPrompt('Subah kitne baje jana chahiye jisse rush kam mile?')">🕐 Minimum Rush Timing</div>
-          <div class="pj-chip" onclick="pjAskPrompt('Ram Mandir VIP Pass kaise milta hai?')">🚩 Ram Mandir VIP Pass (Free)</div>
+          <div class="pj-chip" onclick="pjAskPrompt('Ram Mandir VIP Pass kaise milta hai?')">🚩 Ayodhya Ram Mandir Pass (Free)</div>
           <div class="pj-chip" onclick="pjAskPrompt('Ayodhya Varanasi Prayagraj 3 day tour price?')">🚗 3-City Package Cost</div>
-          <div class="pj-chip" onclick="pjAskPrompt('Kashi Vishwanath Sugam Darshan rules kya hain?')">🛕 Kashi Vishwanath Guide</div>
           <div class="pj-chip" onclick="pjAskPrompt('Mathura Vrindavan best 1-day itinerary')">🛺 Mathura Vrindavan Plan</div>
         </div>
       </div>
@@ -321,11 +321,54 @@
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 
-  // Smart Reasoning NLP AI Response Engine
+  // Disambiguated Natural Language NLP AI Response Engine
   function generateSmartAIResponse(query) {
     const q = query.toLowerCase();
 
-    // 1. RUSH & TIMING SPECIFIC QUERY (Subah kitne baje jayein jisse bheed/rush kam mile)
+    // 1. KASHI / VARANASI SPECIFIC QUERY (Highest Priority Disambiguation for Kashi / Varanasi)
+    if (q.includes('kashi') || q.includes('varanasi') || q.includes('banaras') || q.includes('vishwanath') || q.includes('sarnath')) {
+      if (q.includes('sugam') || q.includes('pass') || q.includes('ticket') || q.includes('rule') || q.includes('vip') || q.includes('gate') || q.includes('cost') || q.includes('fee')) {
+        return `<strong>🛕 Kashi Vishwanath Sugam Darshan Rules & Pass Details (Varanasi):</strong><br><br>
+        1. <strong>Direct Entry Gate:</strong> Sugam Darshan ticket dharakon ko <strong>Gate No. 4 (Chhatta Dwar)</strong> se direct priority entry milti hai bina aam lambi line mein khade hue (Darshan time ~15-20 mins).<br>
+        2. <strong>Official Ticket Fee:</strong> Shri Kashi Vishwanath Temple Trust dwara Sugam Darshan ka official ticket fee <strong>₹300 per person</strong> hai.<br>
+        3. <strong>Online Booking:</strong> Trust ki official website <em>shrikashivishwanath.org</em> par Aadhar Card / ID details se online slot book hota hai.<br>
+        4. <strong>Dress Code:</strong> Dhoti-Kurta (Male) aur Saree/Salwar Suit (Female) recommended hai. Sparsh Darshan ke liye Dhoti/Saree mandatory hai.<br>
+        5. <strong>Prohibited Items:</strong> Mobile phone, camera, smartwatches, leather belts aur metal objects Corridor ke andar allowed nahi hain (Lockers Gate No. 4 par available hain).<br>
+        6. <strong>Humari Seva:</strong> Humare Varanasi tour packages mein Sugam Darshan ticket assistance aur local guide support shamil rehta hai! 📞 <strong>+91 92352 22399</strong>.`;
+      }
+      return `<strong>🛕 Kashi Vishwanath & Varanasi Yatra Guide:</strong><br><br>
+      • <strong>Sugam Darshan:</strong> Gate No. 4 (Chhatta Dwar) se direct entry milti hai (Official Trust ticket ₹300 per person shrikashivishwanath.org par).<br>
+      • <strong>Ganga Aarti:</strong> Dashashwamedh Ghat shaam 6:30 PM (Boat se sabse sundar view). Assi Ghat Subah-e-Banaras 5:00 AM.<br>
+      • <strong>Kaal Bhairav:</strong> Kashi ke Kotwal Kaal Bhairav darshan zaroori hota hai.<br>
+      • <strong>Sarnath:</strong> Varanasi se 10 km door Dhamek Stupa & Buddha complex.<br>
+      📞 Varanasi 1-Day & 2-Night packages ke liye: <strong>+91 92352 22399</strong>.`;
+    }
+
+    // 2. AYODHYA RAM MANDIR SPECIFIC QUERY
+    if (q.includes('ayodhya') || q.includes('ram mandir') || q.includes('ram janmabhoomi') || q.includes('hanuman garhi')) {
+      if (q.includes('pass') || q.includes('vip') || q.includes('sugam') || q.includes('token') || q.includes('ticket') || q.includes('booking') || q.includes('cost') || q.includes('free')) {
+        return `<strong>🚩 Ayodhya Ram Mandir VIP & Sugam Darshan Details:</strong><br><br>
+        1. <strong>100% Free Pass (Official ₹0):</strong> Shri Ram Janmabhoomi Teerth Kshetra Trust dwara Sugam Darshan, Aarti aur Wheelchair passes bilkul <strong>FREE OF COST (₹0)</strong> hote hain.<br>
+        2. <strong>Online Booking:</strong> Trust ki official website <em>srjbtkshetra.org</em> par free Sugam Darshan / Aarti pass 15-30 din pehle book hota hai.<br>
+        3. <strong>Offline Token Desk:</strong> Subah 6 AM par Mandir entrance token desk par limited free offline slots milte hain (Aadhar Card mandatory).<br>
+        4. <strong>Humari Seva:</strong> Humare Deluxe/VIP yatra packages mein Sugam Darshan guidance, slot assistance aur door-step AC cab service free shamil hai! 📞 <strong>+91 92352 22399</strong>.`;
+      }
+      if (q.includes('timing') || q.includes('time') || q.includes('khulta') || q.includes('aarti')) {
+        return `<strong>⏰ Ram Mandir & Hanuman Garhi Timings:</strong><br><br>
+        • <strong>Ram Mandir:</strong> Subah 6:00 AM se Raat 10:00 PM (Duphahar 12:00 PM - 2:00 PM Vishram break).<br>
+        • <strong>Aarti Timings:</strong> Mangala Aarti (4:30 AM), Shringar Aarti (6:30 AM), Sandhya Aarti (7:30 PM).<br>
+        • <strong>Hanuman Garhi:</strong> Subah 5:00 AM se Raat 10:00 PM (76 seedhiyan).<br>
+        • <strong>Sarayu Aarti (Ram Ki Paidi):</strong> Har shaam 6:30 PM.`;
+      }
+      if (q.includes('wheelchair') || q.includes('bujurg') || q.includes('senior')) {
+        return `<strong>♿ Senior Citizen & Accessibility Support (Ayodhya):</strong><br><br>
+        1. Ram Mandir entrance gate par Free Wheelchair + Golf Cart Battery Car facility available hai.<br>
+        2. Hanuman Garhi ke liye 76 seedhiyan hain (palanquin/doli facility available).<br>
+        3. Humare packages mein senior citizens ke liye priority assistance aur door-step cab drop shamil rehta hai.`;
+      }
+    }
+
+    // 3. RUSH & TIMING QUERY (When no specific city mentioned or generic rush question)
     if (q.includes('rush') || q.includes('bheed') || q.includes('crowd') || q.includes('kam rush') || q.includes('kam bheed') || (q.includes('subah') && (q.includes('baje') || q.includes('jana') || q.includes('time')))) {
       return `<strong>🌅 Minimum Rush & Best Darshan Timing Tips:</strong><br><br>
       Aapko sabse <strong>kam rush (minimum crowd)</strong> paane ke liye ye timing best rehte hain:<br><br>
@@ -333,58 +376,12 @@
          • <strong>Early Morning Slot:</strong> Subah <strong>6:30 AM se 8:00 AM</strong> ke beech entry lein. Iss samay regular line bahut fast chalti hai (~20-30 mins mein darshan).<br>
          • <strong>Afternoon Slot:</strong> Duphahar <strong>1:45 PM se 2:30 PM</strong> (Vishram break 12-2 PM khulne ke turant baad) bheed kafi kam hoti hai.<br><br>
       2. <strong>Hanuman Garhi:</strong><br>
-         • Subah <strong>5:30 AM se 7:00 AM</strong> sabse best hai (76 seedhiyan aaram se bina rush ke chadh sakte hain).<br><br>
+         • Subah <strong>5:30 AM se 7:00 AM</strong> sabse best hai.<br><br>
       3. <strong>Best Days:</strong> Wednesday, Thursday aur Friday ko sabse kam bheed rehti hai. (Tuesday, Saturday & Sunday ko heavy rush hota hai).<br><br>
-      💡 <em>Tip:</em> Agar aap senior citizens ya bacchon ke sath hain, toh hum Sugam Darshan entry guide aur door-step cab pickup arrange karte hain! 📞 Call: <strong>+91 92352 22399</strong>.`;
+      📞 Priority guidance ke liye: <strong>+91 92352 22399</strong>.`;
     }
 
-    // 2. VIP PASS & SUGAM DARSHAN COST / PROCESS
-    if (q.includes('vip') || q.includes('sugam') || q.includes('pass') || q.includes('token') || (q.includes('free') && q.includes('pass'))) {
-      return `<strong>🚩 Ram Mandir VIP & Sugam Darshan Details:</strong><br><br>
-      1. <strong>100% Free Pass (Official ₹0):</strong> Shri Ram Janmabhoomi Teerth Kshetra Trust dwara Sugam Darshan, Aarti aur Wheelchair passes bilkul <strong>FREE OF COST (₹0)</strong> hote hain.<br>
-      2. <strong>Online Booking:</strong> Trust ki official website <em>srjbtkshetra.org</em> par free Sugam Darshan / Aarti pass 15-30 din pehle book hota hai.<br>
-      3. <strong>Offline Token Desk:</strong> Subah 6 AM par Mandir entrance token desk par limited free offline slots milte hain (Aadhar Card mandatory).<br>
-      4. <strong>Humari Seva:</strong> Humare Deluxe/VIP packages mein Sugam Darshan guidance, slot assistance aur door-step AC cab service free shamil hai! 📞 <strong>+91 92352 22399</strong>.`;
-    }
-
-    // 3. AARTI TIMINGS
-    if (q.includes('aarti') || q.includes('mangala') || q.includes('shringar') || q.includes('sandhya')) {
-      return `<strong>🔔 Temple Aarti Timings:</strong><br><br>
-      • <strong>Mangala Aarti:</strong> Subah 4:30 AM (Ram Mandir)<br>
-      • <strong>Shringar Aarti:</strong> Subah 6:30 AM (Ram Mandir)<br>
-      • <strong>Sandhya Aarti:</strong> Shaam 7:30 PM (Ram Mandir)<br>
-      • <strong>Sarayu Nadi Aarti:</strong> Shaam 6:30 PM (Ram Ki Paidi Ghat)<br>
-      • <strong>Kashi Vishwanath Mangala Aarti:</strong> Subah 3:00 AM (Varanasi)<br>
-      • <strong>Dashashwamedh Ganga Aarti:</strong> Shaam 6:30 PM (Varanasi)`;
-    }
-
-    // 4. GENERAL TIMINGS & LOCKER / RULES
-    if (q.includes('timing') || q.includes('time') || q.includes('khulta') || q.includes('mobile') || q.includes('locker') || q.includes('belt') || q.includes('phone') || q.includes('rules')) {
-      return `<strong>📋 Ram Mandir Rules & Facilities:</strong><br><br>
-      • <strong>Timings:</strong> Subah 6:00 AM se Raat 10:00 PM (12:00 PM - 2:00 PM Vishram break).<br>
-      • <strong>Strictly Prohibited:</strong> Mobile phones, smartwatches, leather belts, electronic keys, purses mandir ke andar mana hain.<br>
-      • <strong>Free Lockers & Shoes Stand:</strong> Mandir entrance par free digital lockers aur shoe stand available hai.<br>
-      • <strong>Dress Code:</strong> Traditional Indian wear (Dhoti-Kurta, Kurta-Pyjama, Saree, Salwar Suit recommended).`;
-    }
-
-    // 5. SENIOR CITIZEN & WHEELCHAIR
-    if (q.includes('wheelchair') || q.includes('bujurg') || q.includes('senior') || q.includes('elderly') || q.includes('parent')) {
-      return `<strong>♿ Senior Citizen & Accessibility Support:</strong><br><br>
-      1. <strong>Free Wheelchair & Battery Cars:</strong> Ram Mandir entrance gate par Free Wheelchair aur Golf Cart battery cars available hain.<br>
-      2. <strong>Hanuman Garhi:</strong> 76 seedhiyan hain, bujurgon ke liye Palanquin/Doli facility available rehti hai.<br>
-      3. <strong>Doorstep Pick & Drop:</strong> Humari cabs mandir parking ke close drop karti hain. 📞 Call: <strong>+91 92352 22399</strong>.`;
-    }
-
-    // 6. KASHI / VARANASI
-    if (q.includes('kashi') || q.includes('varanasi') || q.includes('banaras') || q.includes('sarnath')) {
-      return `<strong>🛕 Kashi Vishwanath & Varanasi Guide:</strong><br><br>
-      • <strong>Sugam Darshan:</strong> Gate No. 4 se direct entry milti hai (Official Trust ticket ₹300 per person shrikashivishwanath.org par).<br>
-      • <strong>Ganga Aarti:</strong> Dashashwamedh Ghat shaam 6:30 PM (Boat se sabse sundar dikhta hai). Assi Ghat Subah-e-Banaras 5:00 AM.<br>
-      • <strong>Kaal Bhairav:</strong> Kashi ke Kotwal Kaal Bhairav darshan zaroori hota hai.<br>
-      📞 Varanasi 1-Day & 2-Night packages ke liye: <strong>+91 92352 22399</strong>.`;
-    }
-
-    // 7. PRAYAGRAJ / TRIVENI SANGAM
+    // 4. PRAYAGRAJ / TRIVENI SANGAM
     if (q.includes('prayagraj') || q.includes('sangam') || q.includes('triveni') || q.includes('allahabad')) {
       return `<strong>🌊 Prayagraj Triveni Sangam Guide:</strong><br><br>
       • <strong>Sangam Snan:</strong> Private boat se Ganga, Yamuna & Saraswati milan sthal par 1.5 ghante ka snan tour.<br>
@@ -392,7 +389,7 @@
       • <strong>Ayodhya to Prayagraj:</strong> 165 km (~3.5 hrs drive).`;
     }
 
-    // 8. MATHURA & VRINDAVAN
+    // 5. MATHURA & VRINDAVAN
     if (q.includes('mathura') || q.includes('vrindavan') || q.includes('bihari') || q.includes('prem mandir') || q.includes('nidhivan')) {
       return `<strong>🛺 Mathura & Vrindavan Braj Yatra Guide:</strong><br><br>
       • <strong>Shri Krishna Janmabhoomi:</strong> Subah 5 AM - 12 PM & 4 PM - 9.30 PM.<br>
@@ -401,7 +398,7 @@
       • <strong>Nidhivan:</strong> Shaam 5 PM ke baad entry closed (Raas Leela mystery).`;
     }
 
-    // 9. CHITRAKOOT
+    // 6. CHITRAKOOT
     if (q.includes('chitrakoot') || q.includes('kamadgiri') || q.includes('godavari')) {
       return `<strong>🏹 Chitrakoot Dham Yatra Guide:</strong><br><br>
       • <strong>Ramghat Aarti:</strong> Har shaam 6:30 PM Mandakini river bank.<br>
@@ -410,7 +407,7 @@
       • <strong>Hanuman Dhara:</strong> Hilltop shrine (360 steps ya Ropeway).`;
     }
 
-    // 10. NAIMISHARANYA
+    // 7. NAIMISHARANYA
     if (q.includes('naimisharanya') || q.includes('neemsar') || q.includes('chakra tirth')) {
       return `<strong>📜 Naimisharanya (Neemsar) Guide:</strong><br><br>
       • 88,000 Rishiyon ki tapobhoomi jahan Ved Vyas ji ne 18 Puranon ki rachna ki.<br>
@@ -418,7 +415,7 @@
       • <strong>Distance:</strong> Lucknow se 90 km (~2.5 hrs drive). 1-day trip ideal hai.`;
     }
 
-    // 11. VINDHYACHAL
+    // 8. VINDHYACHAL
     if (q.includes('vindhyachal') || q.includes('vindhyavasini')) {
       return `<strong>🔱 Vindhyachal Dham Guide:</strong><br><br>
       • <strong>Maa Vindhyavasini Shaktipeeth:</strong> VIP Darshan & Pucca Ghat Ganga Snan.<br>
@@ -426,7 +423,7 @@
       • <strong>Distance:</strong> Varanasi se 65 km (~1.5 hrs drive).`;
     }
 
-    // 12. GAYA
+    // 9. GAYA
     if (q.includes('gaya') || q.includes('bodhgaya') || q.includes('vishnupad')) {
       return `<strong>🪔 Gaya Pitru Pind Daan Guide:</strong><br><br>
       • <strong>Vishnupad Mandir:</strong> Bhagwan Vishnu ke 40cm charan chinha par pinda daan.<br>
@@ -434,7 +431,7 @@
       • <strong>Distance:</strong> Varanasi se 250 km (NH 19).`;
     }
 
-    // 13. COST & CAB CALCULATION / HOTEL ALLOCATION RULES
+    // 10. COST & CAB CALCULATION / HOTEL ALLOCATION RULES
     if (q.includes('cost') || q.includes('price') || q.includes('rate') || q.includes('cab') || q.includes('hotel') || q.includes('package') || q.includes('car') || q.includes('sedan') || q.includes('ertiga') || q.includes('innova') || q.includes('tempo') || q.includes('budget') || q.includes('kharcha')) {
       return `<strong>🚗 Pricing, Vehicle & Hotel Allocation Rules:</strong><br><br>
       • <strong>1 to 3 Pax:</strong> Private AC Sedan (Dzire/Etios) assign hoti hai.<br>
@@ -450,7 +447,7 @@
       📞 Custom Quote ke liye call/WhatsApp: <strong>+91 92352 22399</strong>.`;
     }
 
-    // 14. GENERAL GREETING OR GENERAL QUERY
+    // 11. GENERAL GREETING OR GENERAL QUERY
     if (q.includes('hi') || q.includes('hello') || q.includes('pranam') || q.includes('ram ram') || q.includes('jai shree ram') || q.includes('namaste')) {
       return `<strong>॥ जय श्री राम ॥</strong><br><br>
       Pranam! Main Pt. Ram Shastri, Ayodhya Dharshan ka <strong>AI Yatra Assistant</strong> hu. Aapko Ayodhya Ram Mandir, Kashi Vishwanath, Triveni Sangam Prayagraj, Mathura, Vrindavan, Chitrakoot, Naimisharanya, Vindhyachal ya Gaya ke baare mein jo bhi jaankari chahiye, poochhein!`;
@@ -460,7 +457,7 @@
     return `<strong>🚩 Pt. Ram Shastri (AI Agent Response):</strong><br><br>
     Aapne pucha: <em>"${query}"</em><br><br>
     Humare pass Uttar Pradesh ke sabhi 8 major teerth sthalon (Ayodhya, Varanasi, Prayagraj, Mathura, Vrindavan, Chitrakoot, Naimisharanya, Vindhyachal, Gaya) ki complete jaankari aur yatra packages available hain.<br><br>
-    Aap specific mandir timings, VIP pass, minimum rush hours, cabs ya hotels ke baare mein poochh sakte hain, ya humare Yatra Desk se direct baat karein:<br>
+    Aap specific mandir timings, VIP pass, Kashi Vishwanath Sugam Darshan, minimum rush hours, cabs ya hotels ke baare mein poochh sakte hain, ya humare Yatra Desk se direct baat karein:<br>
     📞 <strong>Call:</strong> <a href="tel:+919235222399">+91 92352 22399</a><br>
     💬 <strong>WhatsApp:</strong> <a href="https://wa.me/919235222399?text=Jai%20Shree%20Ram!%20I%20have%20a%20query." target="_blank">Direct Chat With Yatra Desk</a>`;
   }
