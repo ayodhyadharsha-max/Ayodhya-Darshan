@@ -251,7 +251,7 @@
         </div>
 
         <div class="pj-quick-prompts">
-          <div class="pj-chip" onclick="pjAskPrompt('Ram Mandir VIP Pass kaise book karein?')">🚩 Ram Mandir VIP Pass</div>
+          <div class="pj-chip" onclick="pjAskPrompt('Ram Mandir VIP Pass kaise book karein?')">🚩 Ram Mandir VIP Pass (100% Free)</div>
           <div class="pj-chip" onclick="pjAskPrompt('Ayodhya Varanasi Prayagraj 3-Day Tour cost kitna hai?')">🚗 3-City Tour Budget</div>
           <div class="pj-chip" onclick="pjAskPrompt('Kashi Vishwanath Sugam Darshan rules kya hain?')">🛕 Kashi Sugam Darshan</div>
           <div class="pj-chip" onclick="pjAskPrompt('Mathura Vrindavan 1 Day tour plan bataiye')">🛺 Mathura Vrindavan Tour</div>
@@ -330,12 +330,12 @@
 
     // 1. Ayodhya Ram Mandir & VIP Pass Queries
     if (q.includes('ram mandir') || q.includes('ayodhya') || q.includes('vip pass') || q.includes('sugam darshan')) {
-      if (q.includes('pass') || q.includes('vip') || q.includes('token') || q.includes('booking')) {
+      if (q.includes('pass') || q.includes('vip') || q.includes('token') || q.includes('booking') || q.includes('sugam') || q.includes('cost') || q.includes('charge') || q.includes('free')) {
         return `<strong>🚩 Ram Mandir VIP & Sugam Darshan Pass Details:</strong><br>
-        1. <strong>Online Pass:</strong> Ram Janmabhoomi Trust ki official website <em>srjbtkshetra.org</em> par free Shringar/Sandhya Aarti pass 15-30 din pehle book hota hai.<br>
-        2. <strong>Sugam Darshan Ticket:</strong> ₹300 per person pass se Gate No. 11 se priority entry milati hai (Darshan time ~20-30 mins).<br>
-        3. <strong>Offline Token:</strong> Subah 6 AM par Mandir entrance token desk par limited offline slots milte hain (Aadhar Card mandatory).<br>
-        4. <strong>Humari Seva:</strong> Humare sabhi Deluxe/VIP packages mein Sugam Darshan assistance shamil hai! 📞 <strong>+91 92352 22399</strong> par call karein.`;
+        1. <strong>100% Free Pass (Official ₹0):</strong> Shri Ram Janmabhoomi Teerth Kshetra Trust dwara Sugam Darshan, Aarti aur Wheelchair passes bilkul <strong>FREE OF COST (₹0)</strong> hote hain.<br>
+        2. <strong>Online Booking:</strong> Trust ki official website <em>srjbtkshetra.org</em> par free Sugam Darshan / Aarti pass 15-30 din pehle book hota hai.<br>
+        3. <strong>Offline Token Desk:</strong> Subah 6 AM par Mandir entrance token desk par limited free offline slots milte hain (Aadhar Card mandatory).<br>
+        4. <strong>Humari Seva:</strong> Humare sabhi Deluxe/VIP yatra packages mein Sugam Darshan guidance, slot assistance aur door-step AC cab service free shamil hai! 📞 <strong>+91 92352 22399</strong> par call karein.`;
       }
       if (q.includes('timing') || q.includes('time') || q.includes('khulta') || q.includes('aarti')) {
         return `<strong>⏰ Ram Mandir & Hanuman Garhi Timings:</strong><br>
@@ -353,9 +353,9 @@
     }
 
     // 2. Kashi Vishwanath & Varanasi Queries
-    if (q.includes('kashi') || q.includes('varanasi') || q.includes('banaras') || q.includes('ganga aarti') || q.includes('sugam')) {
+    if (q.includes('kashi') || q.includes('varanasi') || q.includes('banaras') || q.includes('ganga aarti')) {
       return `<strong>🛕 Kashi Vishwanath & Varanasi Yatra Guide:</strong><br>
-      • <strong>Sugam Darshan:</strong> Gate No. 4 se direct entry milti hai (Online pass ₹300 shrikashivishwanath.org par).<br>
+      • <strong>Sugam Darshan:</strong> Gate No. 4 se direct entry milti hai (Kashi Vishwanath Trust ticket ₹300 per person shrikashivishwanath.org par).<br>
       • <strong>Ganga Aarti:</strong> Dashashwamedh Ghat shaam 6:30 PM (Boat se dekhna sabse best hai). Assi Ghat Subah-e-Banaras 5:00 AM.<br>
       • <strong>Kaal Bhairav:</strong> Kashi ke Kotwal Kaal Bhairav darshan zaroori mana jata hai.<br>
       • <strong>Sarnath:</strong> Varanasi se 10 km door Dhamek Stupa & Buddha complex.<br>
