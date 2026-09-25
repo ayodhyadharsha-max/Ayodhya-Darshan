@@ -139,29 +139,48 @@
       </div>
     </div>
 
-    <!-- Sidebar Widget -->
-    <div>
-      <div style="position:sticky; top:100px; background:var(--bg-card); border:1px solid var(--line); border-radius:var(--r-md); padding:28px;">
-        <h3 style="color:var(--maroon); margin-bottom:12px;">Package Pricing & Summary</h3>
-        <p style="font-size:0.95rem; color:var(--ink-2); margin-bottom:18px;">All-inclusive pricing with private AC car, guide, and temple assistance.</p>
-
-        <div style="border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:14px;">
-          <div style="font-weight:600; color:var(--saffron-deep);">Standard Cab & Guide</div>
-          <div style="font-size:1.4rem; font-weight:700; color:var(--ink);">From ₹1,499 <small style="font-size:0.8rem; font-weight:400; color:var(--ink-3);">/ person</small></div>
+        <!-- Right Column: Sidebar Form & Pricing Card -->
+    <div id="booking-form" class="form-card reveal" style="position:sticky; top:100px; height:fit-content;">
+      <h2 style="color:var(--maroon);font-size:1.8rem;margin-bottom:6px;">Book Prayagraj Package</h2>
+      <p class="muted" style="margin-bottom:18px; font-size:0.92rem;">Get customized quotes within minutes. 24x7 Support. ॥ ॐ नमः शिवाय ॥</p>
+      
+      <div class="form-ok" id="formOk">🙏 Thank you! Your enquiry has been received — a yatra guide will reach out to you shortly.</div>
+      
+      <form id="yatraForm" novalidate>
+        <div class="field-row">
+          <div class="field"><label for="name">Full Name</label><input id="name" name="name" type="text" placeholder="Your Name" required></div>
+          <div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" name="phone" type="tel" placeholder="+91 ..." required></div>
+        </div>
+        
+        <div class="field"><label for="email">Email Address</label><input id="email" name="email" type="email" placeholder="you@email.com"></div>
+        <input type="hidden" name="city" id="city" value="Prayagraj Tour Package & Triveni Sangam Yatra">
+        
+        <div class="field-row">
+          <div class="field"><label for="people">Travellers</label>
+            <select id="people" name="people">
+              <option>1–2</option><option>3–5</option><option>6–10</option><option>10+ (group)</option>
+            </select>
+          </div>
+          <div class="field"><label for="budget">Comfort Tier</label>
+            <select id="budget" name="budget">
+              <option value="Standard">Standard Tier (3-Star Hotel + Cab)</option>
+              <option value="Budget">Budget Tier (Clean Hotel + Cab)</option>
+              <option value="Premium">Premium Tier (4-Star Luxury + VIP)</option>
+            </select>
+          </div>
         </div>
 
-        <div style="border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:14px;">
-          <div style="font-weight:600; color:var(--saffron-deep);">Deluxe AC Hotel + Cab</div>
-          <div style="font-size:1.4rem; font-weight:700; color:var(--ink);">From ₹3,499 <small style="font-size:0.8rem; font-weight:400; color:var(--ink-3);">/ person</small></div>
-        </div>
+        <div class="field"><label for="date">Travel Date</label><input id="date" name="date" type="text" placeholder="e.g. 15 Oct 2026" required></div>
+        <div class="field"><label for="msg">Special Requests (Seniors, wheelchair, pickup point...)</label><textarea id="msg" name="msg" placeholder="Tell us if you need Sangam boat ride, Bade Hanuman darshan or custom pickup"></textarea></div>
+        
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Book Package Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="muted" style="font-size:.82rem;text-align:center;margin:12px 0 0;">No obligation · Direct Call: +91 92352 22399</p>
+      </form>
 
-        <div style="margin-bottom:24px;">
-          <div style="font-weight:600; color:var(--saffron-deep);">VIP Executive Package</div>
-          <div style="font-size:1.4rem; font-weight:700; color:var(--ink);">From ₹5,999 <small style="font-size:0.8rem; font-weight:400; color:var(--ink-3);">/ person</small></div>
-        </div>
-
-        <a href="contact.html" class="btn btn-primary" style="width:100%; text-align:center; margin-bottom:12px;">Get Custom Quote</a>
-        <a href="tel:+919235222399" class="btn btn-ghost" style="width:100%; text-align:center;">📞 Call +91 92352 22399</a>
+      <div style="margin-top:24px; padding-top:18px; border-top:1px solid var(--line);">
+        <div style="font-weight:600; color:var(--saffron-deep); margin-bottom:4px;">Direct WhatsApp Support</div>
+        <a href="https://wa.me/919235222399?text=Jai%20Shree%20Ram!%20I%20want%20to%20enquire%20about%20Prayagraj%20Tour%20Package." target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%; text-align:center; border-color:var(--saffron);">💬 Chat on WhatsApp</a>
       </div>
     </div>
   </div>
@@ -2107,6 +2126,70 @@
 <script>
 const navToggle=document.getElementById('navToggle'), navLinks=document.getElementById('navLinks');
 navToggle?.addEventListener('click',()=>navLinks.classList.toggle('open'));
+
+// Form submission handler
+const form=document.getElementById('yatraForm'), ok=document.getElementById('formOk');
+form?.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  if(!form.name.value.trim()||!form.phone.value.trim()||!form.date.value.trim()){ form.reportValidity&&form.reportValidity(); return; }
+  
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalText = submitButton.innerHTML;
+  submitButton.disabled = true;
+  submitButton.innerHTML = 'Sending... <svg class="spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;animation:spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="8"/><path d="M12 2v4M12 18v4M4 12H2M22 12h-2"/></svg>';
+  
+  const nameVal = form.name.value;
+  const phoneVal = form.phone.value;
+  const emailVal = form.email.value;
+  const cityVal = form.city.value;
+  const peopleVal = form.people.value;
+  const dateVal = form.date.value;
+  const budgetVal = form.budget.value;
+  const msgVal = form.msg.value;
+
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { 
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      access_key: "eb6a0bc1-cc9b-48a4-8cee-7cd94d93ac27",
+      name: nameVal,
+      phone: phoneVal,
+      email: emailVal,
+      destination: cityVal,
+      travellers: peopleVal,
+      dates: dateVal,
+      budget: budgetVal,
+      message: msgVal,
+      subject: "New Tour Enquiry from Ayodhya Dharshan Website"
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      form.reset();
+      const nameEnc = encodeURIComponent(nameVal);
+      const phoneEnc = encodeURIComponent(phoneVal);
+      const cityEnc = encodeURIComponent(cityVal);
+      const travellersEnc = encodeURIComponent(peopleVal);
+      const datesEnc = encodeURIComponent(dateVal);
+      window.location.href = `thankyou.html?name=${nameEnc}&phone=${phoneEnc}&city=${cityEnc}&people=${travellersEnc}&dates=${datesEnc}`;
+    } else {
+      alert("Something went wrong. Please try again.");
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalText;
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    alert("Connection error. Please try again.");
+    submitButton.disabled = false;
+    submitButton.innerHTML = originalText;
+  });
+});
+
 </script>
 
 
