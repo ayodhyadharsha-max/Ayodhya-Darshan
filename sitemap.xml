@@ -396,4 +396,10 @@
     <priority>0.5</priority>
     <lastmod>2026-09-25</lastmod>
   </url>
+  <url>
+    <loc>https://www.ayodhyadharshan.com/ayodhya-guide.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2026-09-25</lastmod>
+  </url>
 </urlset>
