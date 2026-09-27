@@ -757,6 +757,25 @@
 
 <!-- ===== HERO ===== -->
 <header class="hero">
+  <!-- ===== 3 HANGING TEMPLE BELLS FROM NAV ===== -->
+  <div class="nav-hanging-bells-container">
+    <!-- Bell 1: Under Calculator link -->
+    <div class="hanging-bell-item bell-calc" id="hangingBellCalc" onclick="ringTempleBell('calc')" title="Ring Temple Bell (Calculator)">
+      <div class="nav-bell-chain"></div>
+      <div class="nav-bell-body">🔔</div>
+    </div>
+    <!-- Bell 2: Under About link (hangs down to above Ayodhya Darshan title) -->
+    <div class="hanging-bell-item bell-about" id="hangingBellAbout" onclick="ringTempleBell('about')" title="Ring Temple Bell (About)">
+      <div class="nav-bell-chain"></div>
+      <div class="nav-bell-body">🔔</div>
+    </div>
+    <!-- Bell 3: Under Blog link -->
+    <div class="hanging-bell-item bell-blog" id="hangingBellBlog" onclick="ringTempleBell('blog')" title="Ring Temple Bell (Blog)">
+      <div class="nav-bell-chain"></div>
+      <div class="nav-bell-body">🔔</div>
+    </div>
+  </div>
+
   <div class="container hero-grid">
     <div class="hero-copy reveal in">
       <div class="govt-badge">
@@ -3302,7 +3321,7 @@ function getBellData() {
   return { clicks, lastTime };
 }
 
-function ringTempleBell() {
+function ringTempleBell(bellType) {
   const data = getBellData();
   const now = Date.now();
   const elapsed = now - data.lastTime;
@@ -3317,13 +3336,17 @@ function ringTempleBell() {
   
   playTempleBellSound();
   
-  // Trigger hanging bell strike animation
-  const hangingBody = document.getElementById('hangingBellBody');
-  if (hangingBody) {
-    hangingBody.classList.remove('strike');
-    void hangingBody.offsetWidth; // Trigger reflow
-    hangingBody.classList.add('strike');
-    setTimeout(() => hangingBody.classList.remove('strike'), 700);
+  // Strike animation on target bell element
+  const targetId = bellType === 'calc' ? 'hangingBellCalc' :
+                   bellType === 'about' ? 'hangingBellAbout' :
+                   bellType === 'blog' ? 'hangingBellBlog' : 'hangingBellBody';
+                   
+  const el = document.getElementById(targetId) || document.getElementById('hangingBellBody');
+  if (el) {
+    el.classList.remove('strike');
+    void el.offsetWidth; // Trigger reflow
+    el.classList.add('strike');
+    setTimeout(() => el.classList.remove('strike'), 700);
   }
   
   updateTempleBellUI();

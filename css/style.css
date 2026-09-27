@@ -292,6 +292,93 @@ image-slot{
   100% { transform: rotate(0deg); }
 }
 
+/* ===== 3 Nandi / Temple Hanging Bells from Header ===== */
+.nav-hanging-bells-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 15;
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+.hanging-bell-item {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  cursor: pointer;
+}
+.hanging-bell-item.bell-calc {
+  left: 32%;
+  top: -6px;
+  animation: bellSway1 3.2s ease-in-out infinite alternate;
+}
+.hanging-bell-item.bell-about {
+  left: 45%;
+  top: -6px;
+  animation: bellSway2 3.8s ease-in-out infinite alternate;
+}
+.hanging-bell-item.bell-blog {
+  left: 56%;
+  top: -6px;
+  animation: bellSway3 4.4s ease-in-out infinite alternate;
+}
+
+@keyframes bellSway1 {
+  0% { transform: rotate(-7deg); }
+  100% { transform: rotate(7deg); }
+}
+@keyframes bellSway2 {
+  0% { transform: rotate(8deg); }
+  100% { transform: rotate(-8deg); }
+}
+@keyframes bellSway3 {
+  0% { transform: rotate(-6deg); }
+  100% { transform: rotate(6deg); }
+}
+
+.hanging-bell-item.strike {
+  animation: ringStrike 0.65s ease-in-out !important;
+}
+
+.nav-bell-chain {
+  width: 3px;
+  background: linear-gradient(180deg, #92400E 0%, #F59E0B 60%, #B45309 100%);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+  border-radius: 2px;
+}
+.hanging-bell-item.bell-calc .nav-bell-chain { height: 38px; }
+.hanging-bell-item.bell-about .nav-bell-chain { height: 62px; }
+.hanging-bell-item.bell-blog .nav-bell-chain { height: 42px; }
+
+.nav-bell-body {
+  width: 44px;
+  height: 44px;
+  background: radial-gradient(circle at 35% 30%, #FFE9B8, #F59E0B 55%, #8A3408);
+  border: 2px solid #FFF3D6;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+  box-shadow: 0 6px 18px rgba(180,83,9,0.4), inset 0 -3px 6px rgba(0,0,0,0.25);
+  user-select: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.nav-bell-body:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 24px rgba(220,122,31,0.65);
+}
+
+@media(max-width: 990px) {
+  .nav-hanging-bells-container { display: none; }
+}
+
 .bell-icon-btn {
   background: linear-gradient(135deg, #FF9E2C, #DD7A1F);
   border: 2px solid #FFE6AD;
