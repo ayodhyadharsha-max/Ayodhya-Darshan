@@ -217,11 +217,13 @@ image-slot{
 .foot-grid{ position:relative; display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; gap:40px; }
 .site-foot h4{ font-family:var(--font-body); font-weight:700; font-size:.82rem; letter-spacing:.2em;
   text-transform:uppercase; color:var(--gold-soft); margin-bottom:18px; }
-.site-foot a{ color:#D8C3AB; display:block; padding:5px 0; font-size:.97rem; transition:color .2s,transform .2s; }
-.site-foot a:hover{ color:#fff; transform:translateX(3px); }
+.foot-grid a{ color:#D8C3AB; display:block; padding:5px 0; font-size:.97rem; transition:color .2s,transform .2s; }
+.foot-grid a:hover{ color:#fff; transform:translateX(3px); }
 .foot-brand p{ color:#C3AD93; max-width:30ch; }
 .foot-bottom{ position:relative; margin-top:48px; padding-top:24px; border-top:1px solid rgba(255,255,255,.12);
   display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.85rem; color:#B49C82; }
+.foot-bottom a{ display:inline !important; padding:0 !important; color:inherit; text-decoration:underline; transition:color .2s; }
+.foot-bottom a:hover{ color:#fff; transform:none !important; }
 @media(max-width:820px){ .foot-grid{ grid-template-columns:1fr 1fr; gap:32px; } .foot-brand{ grid-column:1/-1; } }
 
 /* ---------- Utility grids ---------- */
