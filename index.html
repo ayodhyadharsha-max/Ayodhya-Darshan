@@ -782,39 +782,58 @@
 
       <!-- ===== DIVINE TEMPLE BELL REWARD WIDGET ===== -->
       <div class="divine-bell-widget" id="divineBellWidget">
-        <div class="bell-header">
-          <div class="bell-title-wrap">
+        <div class="hanging-bell-container">
+          <div class="bell-chain"></div>
+          <div class="bell-hanging-body" id="hangingBellBody">
             <button class="bell-icon-btn" id="templeBellBtn" onclick="ringTempleBell()" aria-label="Ring Temple Bell for Yatra Blessings">🔔</button>
-            <div class="bell-info">
-              <h4>🛕 Temple Blessing Bell (पुण्य घंटी)</h4>
-              <p>Ring every 10 min! Collect 1,000 clicks for <strong>₹2,100 Coupon</strong> or 2,500 clicks for <strong>30% OFF</strong>.</p>
-            </div>
           </div>
         </div>
-        <div class="bell-stats-row">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
+
+        <div class="bell-header" style="text-align:center; justify-content:center; flex-direction:column; margin-top:4px;">
+          <div class="bell-info" style="text-align:center;">
+            <h4>🛕 Temple Blessing Bell (पुण्य घंटी)</h4>
+            <p id="bellSubtext">Ring the bell every 10 min! Complete 1,000 clicks to unlock <strong>Level 1: ₹2,100 Coupon</strong>!</p>
+          </div>
+        </div>
+
+        <div class="bell-stats-row" style="margin-top:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
             <div class="bell-timer-badge" id="bellStatusBadge">🔔 Ring Bell (+1 Blessing)</div>
             <span style="font-size:0.82rem; font-weight:700; color:var(--maroon);" id="totalClicksDisplay">🚩 0 Blessings Collected</span>
           </div>
-          <div class="bell-progress-wrap">
+
+          <!-- Level 1 Progress Bar (1,000 Clicks) -->
+          <div class="bell-progress-wrap" id="level1ProgressWrap">
             <div class="bell-progress-label">
-              <span>₹2,100 Coupon Target (1,000 Clicks)</span>
+              <span>🎯 Level 1: ₹2,100 Discount Coupon (1,000 Clicks)</span>
               <span id="target2100Percent">0%</span>
             </div>
             <div class="bell-progress-bar">
               <div class="bell-progress-fill" id="target2100Fill" style="width:0%;"></div>
             </div>
           </div>
-          <div class="bell-progress-wrap">
+
+          <!-- Level 1 Coupon Badge Container -->
+          <div id="level1CouponContainer"></div>
+
+          <!-- Level 2 Progress Bar (2,500 Clicks) - Shown ONLY after Level 1 is unlocked! -->
+          <div class="bell-progress-wrap" id="level2ProgressWrap" style="display:none; margin-top:6px;">
             <div class="bell-progress-label">
-              <span>30% Flat Discount Target (2,500 Clicks)</span>
+              <span>👑 Level 2: 30% Flat Discount (2,500 Clicks)</span>
               <span id="target30Percent">0%</span>
             </div>
             <div class="bell-progress-bar">
               <div class="bell-progress-fill" id="target30Fill" style="width:0%; background:linear-gradient(90deg, #10B981, #059669);"></div>
             </div>
           </div>
-          <div id="couponsContainer"></div>
+
+          <!-- Level 2 Locked Indicator -->
+          <div id="level2LockedBadge" style="font-size:0.78rem; color:var(--ink-3); text-align:center; padding:4px; background:rgba(0,0,0,0.03); border-radius:4px; margin-top:4px;">
+            🔒 <strong>Level 2 (30% Discount)</strong> unlocks after completing Level 1!
+          </div>
+
+          <!-- Level 2 Coupon Badge Container -->
+          <div id="level2CouponContainer"></div>
         </div>
       </div>
     </div>
@@ -3297,10 +3316,14 @@ function ringTempleBell() {
   localStorage.setItem('yatra_bell_last_time', now.toString());
   
   playTempleBellSound();
-  const bellBtn = document.getElementById('templeBellBtn');
-  if (bellBtn) {
-    bellBtn.classList.add('ringing');
-    setTimeout(() => bellBtn.classList.remove('ringing'), 800);
+  
+  // Trigger hanging bell strike animation
+  const hangingBody = document.getElementById('hangingBellBody');
+  if (hangingBody) {
+    hangingBody.classList.remove('strike');
+    void hangingBody.offsetWidth; // Trigger reflow
+    hangingBody.classList.add('strike');
+    setTimeout(() => hangingBody.classList.remove('strike'), 700);
   }
   
   updateTempleBellUI();
@@ -3315,14 +3338,22 @@ function updateTempleBellUI() {
   const bellBtn = document.getElementById('templeBellBtn');
   const badge = document.getElementById('bellStatusBadge');
   const totalDisplay = document.getElementById('totalClicksDisplay');
+  const bellSubtext = document.getElementById('bellSubtext');
+  
   const fill2100 = document.getElementById('target2100Fill');
   const pct2100 = document.getElementById('target2100Percent');
   const fill30 = document.getElementById('target30Fill');
   const pct30 = document.getElementById('target30Percent');
-  const couponsContainer = document.getElementById('couponsContainer');
+  
+  const level1ProgressWrap = document.getElementById('level1ProgressWrap');
+  const level1CouponContainer = document.getElementById('level1CouponContainer');
+  const level2ProgressWrap = document.getElementById('level2ProgressWrap');
+  const level2LockedBadge = document.getElementById('level2LockedBadge');
+  const level2CouponContainer = document.getElementById('level2CouponContainer');
   
   if (totalDisplay) totalDisplay.textContent = `🚩 ${data.clicks} Blessings Collected`;
   
+  // Progress calculations
   const p2100 = Math.min(100, Math.round((data.clicks / 1000) * 100));
   if (fill2100) fill2100.style.width = p2100 + '%';
   if (pct2100) pct2100.textContent = `${data.clicks}/1,000 (${p2100}%)`;
@@ -3331,6 +3362,45 @@ function updateTempleBellUI() {
   if (fill30) fill30.style.width = p30 + '%';
   if (pct30) pct30.textContent = `${data.clicks}/2,500 (${p30}%)`;
   
+  // Sequential Level Logic
+  if (data.clicks < 1000) {
+    if (bellSubtext) bellSubtext.innerHTML = `Ring the bell every 10 min! Complete 1,000 clicks to unlock <strong>Level 1: ₹2,100 Coupon</strong>!`;
+    if (level1ProgressWrap) level1ProgressWrap.style.display = 'flex';
+    if (level1CouponContainer) level1CouponContainer.innerHTML = '';
+    if (level2ProgressWrap) level2ProgressWrap.style.display = 'none';
+    if (level2LockedBadge) level2LockedBadge.style.display = 'block';
+    if (level2CouponContainer) level2CouponContainer.innerHTML = '';
+  } else {
+    // Level 1 Completed (1,000+ Clicks)
+    const waMsg1000 = encodeURIComponent(`Jai Shree Ram 🙏 I completed 1,000 Temple Bell Blessings! Please claim my ₹2,100 Yatra Discount Coupon (Code: RAMBHAKTI2100).`);
+    if (level1CouponContainer) {
+      level1CouponContainer.innerHTML = `
+        <div class="coupon-unlocked-badge" style="margin-top:6px;">
+          <span>🎉 Level 1 Unlocked! ₹2,100 OFF: <strong>RAMBHAKTI2100</strong></span>
+          <a href="https://wa.me/919235222399?text=${waMsg1000}" target="_blank" rel="noopener">Claim on WhatsApp →</a>
+        </div>`;
+    }
+    
+    // Unlock Level 2 Display
+    if (bellSubtext) bellSubtext.innerHTML = `🎉 Level 1 Complete! Now complete 2,500 clicks to unlock <strong>Level 2: FLAT 30% OFF</strong>!`;
+    if (level2ProgressWrap) level2ProgressWrap.style.display = 'flex';
+    if (level2LockedBadge) level2LockedBadge.style.display = 'none';
+    
+    if (data.clicks >= 2500) {
+      const waMsg2500 = encodeURIComponent(`Jai Shree Ram 🙏 I completed 2,500 Temple Bell Blessings! Please claim my 30% FLAT Discount Coupon (Code: MAHADARSHAN30).`);
+      if (level2CouponContainer) {
+        level2CouponContainer.innerHTML = `
+          <div class="coupon-unlocked-badge" style="background:linear-gradient(135deg,#D97706,#B45309); margin-top:6px;">
+            <span>👑 Level 2 Unlocked! 30% FLAT OFF: <strong>MAHADARSHAN30</strong></span>
+            <a href="https://wa.me/919235222399?text=${waMsg2500}" target="_blank" rel="noopener">Claim on WhatsApp →</a>
+          </div>`;
+      }
+    } else {
+      if (level2CouponContainer) level2CouponContainer.innerHTML = '';
+    }
+  }
+  
+  // Cooldown status
   if (data.lastTime > 0 && remainingMs > 0) {
     if (bellBtn) bellBtn.disabled = true;
     const mins = Math.floor(remainingMs / 60000);
@@ -3349,25 +3419,6 @@ function updateTempleBellUI() {
       badge.style.color = '#ffffff';
     }
   }
-  
-  let couponHTML = '';
-  if (data.clicks >= 1000) {
-    const waMsg1000 = encodeURIComponent(`Jai Shree Ram 🙏 I completed 1,000 Temple Bell Blessings! Please claim my ₹2,100 Yatra Discount Coupon (Code: RAMBHAKTI2100).`);
-    couponHTML += `
-      <div class="coupon-unlocked-badge">
-        <span>🎉 ₹2,100 OFF Unlocked! Code: <strong>RAMBHAKTI2100</strong></span>
-        <a href="https://wa.me/919235222399?text=${waMsg1000}" target="_blank" rel="noopener">Claim on WhatsApp →</a>
-      </div>`;
-  }
-  if (data.clicks >= 2500) {
-    const waMsg2500 = encodeURIComponent(`Jai Shree Ram 🙏 I completed 2,500 Temple Bell Blessings! Please claim my 30% FLAT Discount Coupon (Code: MAHADARSHAN30).`);
-    couponHTML += `
-      <div class="coupon-unlocked-badge" style="background:linear-gradient(135deg,#D97706,#B45309);">
-        <span>👑 30% FLAT OFF Unlocked! Code: <strong>MAHADARSHAN30</strong></span>
-        <a href="https://wa.me/919235222399?text=${waMsg2500}" target="_blank" rel="noopener">Claim on WhatsApp →</a>
-      </div>`;
-  }
-  if (couponsContainer) couponsContainer.innerHTML = couponHTML;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

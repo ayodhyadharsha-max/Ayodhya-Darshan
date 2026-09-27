@@ -255,11 +255,43 @@ image-slot{
   justify-content: space-between;
   gap: 12px;
 }
-.bell-title-wrap {
+/* ===== Hanging Temple Bell Animation ===== */
+.hanging-bell-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  position: relative;
+  margin-bottom: 4px;
 }
+.bell-chain {
+  width: 4px;
+  height: 22px;
+  background: linear-gradient(180deg, #92400E 0%, #F59E0B 50%, #92400E 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.bell-hanging-body {
+  transform-origin: top center;
+  animation: gentleSway 3.5s ease-in-out infinite alternate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@keyframes gentleSway {
+  0% { transform: rotate(-6deg); }
+  100% { transform: rotate(6deg); }
+}
+.bell-hanging-body.strike {
+  animation: ringStrike 0.65s ease-in-out !important;
+}
+@keyframes ringStrike {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-26deg) scale(1.1); }
+  50% { transform: rotate(26deg) scale(1.1); }
+  75% { transform: rotate(-14deg) scale(1.05); }
+  100% { transform: rotate(0deg); }
+}
+
 .bell-icon-btn {
   background: linear-gradient(135deg, #FF9E2C, #DD7A1F);
   border: 2px solid #FFE6AD;
