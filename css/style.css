@@ -238,6 +238,144 @@ image-slot{
 .reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
 .reveal.in{ opacity:1; transform:none; }
 
+/* ===== Divine Temple Bell Reward Widget ===== */
+.divine-bell-widget {
+  margin-top: 24px;
+  background: linear-gradient(145deg, #FFF9F0 0%, #FDF0D8 100%);
+  border: 1.5px solid var(--saffron);
+  border-radius: var(--r-md);
+  padding: 16px 20px;
+  box-shadow: 0 10px 28px -10px rgba(220,122,31,0.22);
+  position: relative;
+  overflow: hidden;
+}
+.bell-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.bell-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bell-icon-btn {
+  background: linear-gradient(135deg, #FF9E2C, #DD7A1F);
+  border: 2px solid #FFE6AD;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(220,122,31,0.4);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, background 0.2s;
+  user-select: none;
+  flex-shrink: 0;
+}
+.bell-icon-btn:hover:not(:disabled) {
+  transform: scale(1.1) rotate(-8deg);
+  box-shadow: 0 8px 22px rgba(220,122,31,0.6);
+}
+.bell-icon-btn:active:not(:disabled) {
+  transform: scale(0.92) rotate(12deg);
+}
+.bell-icon-btn:disabled {
+  background: #E2D5C3;
+  border-color: #D3C2AB;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.8;
+}
+.bell-icon-btn.ringing {
+  animation: bellRingAnim 0.5s ease-in-out infinite alternate;
+}
+@keyframes bellRingAnim {
+  0% { transform: rotate(-18deg) scale(1.12); }
+  100% { transform: rotate(18deg) scale(1.12); }
+}
+
+.bell-info h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--maroon);
+  margin: 0 0 2px;
+}
+.bell-info p {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  margin: 0;
+  line-height: 1.35;
+}
+.bell-stats-row {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bell-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bell-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  font-weight: 600;
+}
+.bell-progress-bar {
+  height: 7px;
+  background: rgba(124,38,26,0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.bell-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--saffron), var(--maroon));
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+.bell-timer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--maroon);
+  background: rgba(124,38,26,0.08);
+  padding: 4px 10px;
+  border-radius: 999px;
+  width: fit-content;
+}
+.coupon-unlocked-badge {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: var(--r-sm);
+  font-size: 0.84rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.coupon-unlocked-badge a {
+  color: #fff;
+  background: rgba(255,255,255,0.25);
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+.coupon-unlocked-badge a:hover {
+  background: rgba(255,255,255,0.4);
+}
+
 /* ---------- Inner page hero ---------- */
 .page-hero{ background:var(--bg-panel); border-bottom:1px solid var(--line-soft); padding-block:clamp(48px,7vw,92px); position:relative; overflow:hidden; }
 .page-hero::before{ content:"ॐ"; position:absolute; right:4%; top:50%; transform:translateY(-50%);

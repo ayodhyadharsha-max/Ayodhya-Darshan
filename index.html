@@ -779,6 +779,44 @@
         <div class="t"><b>8 Sacred Cities</b><span>Ayodhya · Kashi · Vrindavan</span></div>
         <div class="t"><b>24×7</b><span>On-yatra support</span></div>
       </div>
+
+      <!-- ===== DIVINE TEMPLE BELL REWARD WIDGET ===== -->
+      <div class="divine-bell-widget" id="divineBellWidget">
+        <div class="bell-header">
+          <div class="bell-title-wrap">
+            <button class="bell-icon-btn" id="templeBellBtn" onclick="ringTempleBell()" aria-label="Ring Temple Bell for Yatra Blessings">🔔</button>
+            <div class="bell-info">
+              <h4>🛕 Temple Blessing Bell (पुण्य घंटी)</h4>
+              <p>Ring every 10 min! Collect 1,000 clicks for <strong>₹2,100 Coupon</strong> or 2,500 clicks for <strong>30% OFF</strong>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bell-stats-row">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="bell-timer-badge" id="bellStatusBadge">🔔 Ring Bell (+1 Blessing)</div>
+            <span style="font-size:0.82rem; font-weight:700; color:var(--maroon);" id="totalClicksDisplay">🚩 0 Blessings Collected</span>
+          </div>
+          <div class="bell-progress-wrap">
+            <div class="bell-progress-label">
+              <span>₹2,100 Coupon Target (1,000 Clicks)</span>
+              <span id="target2100Percent">0%</span>
+            </div>
+            <div class="bell-progress-bar">
+              <div class="bell-progress-fill" id="target2100Fill" style="width:0%;"></div>
+            </div>
+          </div>
+          <div class="bell-progress-wrap">
+            <div class="bell-progress-label">
+              <span>30% Flat Discount Target (2,500 Clicks)</span>
+              <span id="target30Percent">0%</span>
+            </div>
+            <div class="bell-progress-bar">
+              <div class="bell-progress-fill" id="target30Fill" style="width:0%; background:linear-gradient(90deg, #10B981, #059669);"></div>
+            </div>
+          </div>
+          <div id="couponsContainer"></div>
+        </div>
+      </div>
     </div>
 
     <div class="hero-map reveal in">
@@ -3202,6 +3240,141 @@ function toggleModalMute(e) {
     </div>
   </div>
 </div>
+
+<script>
+/* ===== DIVINE TEMPLE BELL REWARD CONTROLLER ===== */
+const BELL_COOLDOWN_MS = 10 * 60 * 1000; // 10 minutes
+
+function playTempleBellSound() {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+    gain.gain.setValueAtTime(0.6, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 2.5);
+    
+    const osc2 = ctx.createOscillator();
+    const gain2 = ctx.createGain();
+    osc2.type = 'sine';
+    osc2.frequency.setValueAtTime(1174.66, ctx.currentTime);
+    gain2.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain2.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.8);
+    
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc2.connect(gain2);
+    gain2.connect(ctx.destination);
+    
+    osc.start();
+    osc2.start();
+    osc.stop(ctx.currentTime + 2.5);
+    osc2.stop(ctx.currentTime + 1.8);
+  } catch(e) { console.warn('Audio synthesis not supported', e); }
+}
+
+function getBellData() {
+  const clicks = parseInt(localStorage.getItem('yatra_bell_clicks') || '0', 10);
+  const lastTime = parseInt(localStorage.getItem('yatra_bell_last_time') || '0', 10);
+  return { clicks, lastTime };
+}
+
+function ringTempleBell() {
+  const data = getBellData();
+  const now = Date.now();
+  const elapsed = now - data.lastTime;
+  
+  if (data.lastTime > 0 && elapsed < BELL_COOLDOWN_MS) {
+    return; // Still in cooldown
+  }
+  
+  const newClicks = data.clicks + 1;
+  localStorage.setItem('yatra_bell_clicks', newClicks.toString());
+  localStorage.setItem('yatra_bell_last_time', now.toString());
+  
+  playTempleBellSound();
+  const bellBtn = document.getElementById('templeBellBtn');
+  if (bellBtn) {
+    bellBtn.classList.add('ringing');
+    setTimeout(() => bellBtn.classList.remove('ringing'), 800);
+  }
+  
+  updateTempleBellUI();
+}
+
+function updateTempleBellUI() {
+  const data = getBellData();
+  const now = Date.now();
+  const elapsed = now - data.lastTime;
+  const remainingMs = BELL_COOLDOWN_MS - elapsed;
+  
+  const bellBtn = document.getElementById('templeBellBtn');
+  const badge = document.getElementById('bellStatusBadge');
+  const totalDisplay = document.getElementById('totalClicksDisplay');
+  const fill2100 = document.getElementById('target2100Fill');
+  const pct2100 = document.getElementById('target2100Percent');
+  const fill30 = document.getElementById('target30Fill');
+  const pct30 = document.getElementById('target30Percent');
+  const couponsContainer = document.getElementById('couponsContainer');
+  
+  if (totalDisplay) totalDisplay.textContent = `🚩 ${data.clicks} Blessings Collected`;
+  
+  const p2100 = Math.min(100, Math.round((data.clicks / 1000) * 100));
+  if (fill2100) fill2100.style.width = p2100 + '%';
+  if (pct2100) pct2100.textContent = `${data.clicks}/1,000 (${p2100}%)`;
+  
+  const p30 = Math.min(100, Math.round((data.clicks / 2500) * 100));
+  if (fill30) fill30.style.width = p30 + '%';
+  if (pct30) pct30.textContent = `${data.clicks}/2,500 (${p30}%)`;
+  
+  if (data.lastTime > 0 && remainingMs > 0) {
+    if (bellBtn) bellBtn.disabled = true;
+    const mins = Math.floor(remainingMs / 60000);
+    const secs = Math.floor((remainingMs % 60000) / 1000);
+    const timeStr = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    if (badge) {
+      badge.textContent = `⏳ Next Ring in ${timeStr}`;
+      badge.style.background = 'rgba(124,38,26,0.08)';
+      badge.style.color = 'var(--maroon)';
+    }
+  } else {
+    if (bellBtn) bellBtn.disabled = false;
+    if (badge) {
+      badge.textContent = '🔔 Ring Bell Now (+1 Blessing)';
+      badge.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+      badge.style.color = '#ffffff';
+    }
+  }
+  
+  let couponHTML = '';
+  if (data.clicks >= 1000) {
+    const waMsg1000 = encodeURIComponent(`Jai Shree Ram 🙏 I completed 1,000 Temple Bell Blessings! Please claim my ₹2,100 Yatra Discount Coupon (Code: RAMBHAKTI2100).`);
+    couponHTML += `
+      <div class="coupon-unlocked-badge">
+        <span>🎉 ₹2,100 OFF Unlocked! Code: <strong>RAMBHAKTI2100</strong></span>
+        <a href="https://wa.me/919235222399?text=${waMsg1000}" target="_blank" rel="noopener">Claim on WhatsApp →</a>
+      </div>`;
+  }
+  if (data.clicks >= 2500) {
+    const waMsg2500 = encodeURIComponent(`Jai Shree Ram 🙏 I completed 2,500 Temple Bell Blessings! Please claim my 30% FLAT Discount Coupon (Code: MAHADARSHAN30).`);
+    couponHTML += `
+      <div class="coupon-unlocked-badge" style="background:linear-gradient(135deg,#D97706,#B45309);">
+        <span>👑 30% FLAT OFF Unlocked! Code: <strong>MAHADARSHAN30</strong></span>
+        <a href="https://wa.me/919235222399?text=${waMsg2500}" target="_blank" rel="noopener">Claim on WhatsApp →</a>
+      </div>`;
+  }
+  if (couponsContainer) couponsContainer.innerHTML = couponHTML;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateTempleBellUI();
+  setInterval(updateTempleBellUI, 1000);
+});
+</script>
 
 <script src="conversion-tracker.js" defer></script>
 </body>
