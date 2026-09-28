@@ -68,3 +68,8 @@ To https://github.com/ayodhyadharsha-max/Ayodhya-Darshan.git
    f6e73ec..2bd76f8  main -> main
 To https://github.com/ayodhyadharsha-max/Ayodhya-Darshan.git
    2265034..3b20525  main -> main
+To https://github.com/ayodhyadharsha-max/Ayodhya-Darshan.git
+   9c5c55a..ca51b49  main -> main
+fatal: unable to access 'https://github.com/ayodhyadharsha-max/Ayodhya-Darshan.git/': Could not resolve host: github.com
+To https://github.com/ayodhyadharsha-max/Ayodhya-Darshan.git
+   e358dfe..856191b  main -> main
