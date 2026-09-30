@@ -348,9 +348,9 @@ image-slot{
 }
 
 .nav-bell-chain {
-  width: 3.5px;
-  background: linear-gradient(180deg, #92400E 0%, #F59E0B 50%, #B45309 100%);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+  width: 4px;
+  background: linear-gradient(180deg, #78350F 0%, #F59E0B 50%, #B45309 100%);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   border-radius: 2px;
 }
 .hanging-bell-item.bell-calc .nav-bell-chain { height: 56px; }
@@ -358,21 +358,16 @@ image-slot{
 .hanging-bell-item.bell-blog .nav-bell-chain { height: 56px; }
 
 .nav-bell-body {
-  width: 48px;
-  height: 48px;
-  background: radial-gradient(circle at 35% 30%, #FFE9B8, #F59E0B 55%, #8A3408);
-  border: 2.5px solid #FFF3D6;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 1.5rem;
-  box-shadow: 0 8px 22px rgba(180,83,9,0.45), inset 0 -3px 6px rgba(0,0,0,0.25);
+  display: inline-block;
+  font-size: 2.2rem;
+  line-height: 1;
+  filter: drop-shadow(0 6px 14px rgba(180, 83, 9, 0.45));
   user-select: none;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s;
+  margin-top: -3px;
 }
 .nav-bell-body:hover {
-  transform: scale(1.16);
-  box-shadow: 0 10px 28px rgba(220,122,31,0.7);
+  transform: scale(1.2);
 }
 
 @media(max-width: 990px) {
@@ -397,6 +392,24 @@ image-slot{
 .bell-icon-btn:hover:not(:disabled) {
   transform: scale(1.1) rotate(-8deg);
   box-shadow: 0 8px 22px rgba(220,122,31,0.6);
+}
+
+.temple-bell-standalone-btn {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  font-size: 4.5rem !important;
+  line-height: 1 !important;
+  cursor: pointer;
+  filter: drop-shadow(0 8px 18px rgba(180, 83, 9, 0.45));
+  transition: transform 0.2s ease-in-out;
+  padding: 0 !important;
+  display: inline-block;
+  user-select: none;
+}
+.temple-bell-standalone-btn:hover:not(:disabled) {
+  transform: scale(1.15) rotate(-6deg);
 }
 .bell-icon-btn:active:not(:disabled) {
   transform: scale(0.92) rotate(12deg);
