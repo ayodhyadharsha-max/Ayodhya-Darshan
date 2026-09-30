@@ -818,83 +818,6 @@
   </div>
 </header>
 
-<!-- ==================== DIVINE TEMPLE BELL YATRA REWARDS SECTION ==================== -->
-<section class="section temple-bell-reward-section" id="templeBellRewardSection" style="background: linear-gradient(135deg, #FFFDF8 0%, #FCEFD9 50%, #FFF3D6 100%); border-top: 2px solid var(--saffron); border-bottom: 2px solid var(--saffron); padding: 50px 0; margin: 0;">
-  <div class="container" style="max-width: 920px; text-align: center;">
-    
-    <p class="eyebrow" style="color:var(--saffron-deep); font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:8px;">🛕 Daily Temple Blessing &amp; Yatra Rewards (पुण्य घंटी सेवा)</p>
-    <h2 class="display" style="color:var(--maroon); font-size:clamp(2rem, 4vw, 2.8rem); margin-bottom:12px;">Ring the Sacred Temple Bell &amp; Win Yatra Rewards!</h2>
-    <p style="color:var(--ink-2); font-size:1.05rem; max-width:720px; margin:0 auto 32px; line-height:1.6;">
-      Ring Shri Ram's temple bell to accumulate daily blessings! Reach 1,000 rings to win a <strong>₹2,100 Yatra Coupon</strong>, and 2,500 rings for a <strong>100% FREE Same Day Tour Package for All Group Members!</strong>
-    </p>
-
-    <!-- Main Animated Temple Bell Stage Card -->
-    <div class="temple-bell-stage" style="background: var(--bg-card); border: 2px solid var(--gold); border-radius: var(--r-lg); padding: 40px 24px; box-shadow: var(--shadow-lg); position: relative; overflow: hidden;">
-      
-      <!-- Brass Chain & Animated Swaying Bell -->
-      <div class="hanging-bell-wrapper" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 24px;">
-        <div class="bell-chain" style="width: 5px; height: 70px; background: linear-gradient(180deg, #8B5A2B 0%, #D4AF37 50%, #B45309 100%); margin: 0 auto; box-shadow: 0 0 6px rgba(0,0,0,0.25); border-radius: 2px;"></div>
-        <div class="bell-hanging-body animated-sway" id="hangingBellBody" style="display: inline-block; transform-origin: top center; cursor: pointer;">
-          <button class="bell-icon-btn main-bell-trigger" id="templeBellBtn" onclick="ringTempleBell()" aria-label="Ring Temple Bell for Yatra Blessings" style="font-size: 4.8rem; background: transparent; border: none; cursor: pointer; filter: drop-shadow(0 8px 16px rgba(180, 83, 9, 0.4)); transition: transform 0.2s;">🔔</button>
-        </div>
-        <div style="margin-top: 10px; font-weight: 700; color: var(--maroon); font-size: 1.05rem;">
-          👉 Tap the Temple Bell to Ring &amp; Collect Blessings!
-        </div>
-      </div>
-
-      <!-- Status Badge & Counter -->
-      <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;">
-        <div class="bell-timer-badge" id="bellStatusBadge" style="padding: 12px 24px; border-radius: 999px; font-weight: 700; font-size: 1rem; background: linear-gradient(135deg, #10B981, #059669); color: #fff; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);">🔔 Ring Temple Bell (+1 Blessing)</div>
-        <span style="font-size: 1.05rem; font-weight: 700; color: var(--maroon); background: rgba(124, 38, 26, 0.08); padding: 10px 22px; border-radius: 999px;" id="totalClicksDisplay">🚩 0 Blessings Collected</span>
-      </div>
-
-      <p id="bellSubtext" style="font-size: 1rem; color: var(--ink-2); margin-bottom: 28px; font-weight: 600;">
-        Complete 1,000 rings to unlock <strong>Level 1: ₹2,100 Coupon</strong>!
-      </p>
-
-      <!-- Progress Bars Container -->
-      <div style="max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
-        
-        <!-- Level 1 Progress Bar (1,000 Rings) -->
-        <div class="bell-progress-wrap" id="level1ProgressWrap" style="background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px 20px;">
-          <div class="bell-progress-label" style="display: flex; justify-content: space-between; font-weight: 700; color: var(--maroon); font-size: 0.96rem; margin-bottom: 10px;">
-            <span>🎯 Level 1: ₹2,100 Discount Coupon (1,000 Rings)</span>
-            <span id="target2100Percent">0%</span>
-          </div>
-          <div class="bell-progress-bar" style="height: 14px; background: rgba(0,0,0,0.08); border-radius: 999px; overflow: hidden;">
-            <div class="bell-progress-fill" id="target2100Fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #FF6B00, #D4AF37); transition: width 0.4s ease;"></div>
-          </div>
-        </div>
-
-        <!-- Level 1 Coupon Badge Container -->
-        <div id="level1CouponContainer"></div>
-
-        <!-- Level 2 Progress Bar (2,500 Rings) -->
-        <div class="bell-progress-wrap" id="level2ProgressWrap" style="display: none; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px 20px;">
-          <div class="bell-progress-label" style="display: flex; justify-content: space-between; font-weight: 700; color: #059669; font-size: 0.96rem; margin-bottom: 10px;">
-            <span>👑 Level 2: 100% FREE Same Day Tour Package for All Group Members! (2,500 Rings)</span>
-            <span id="target30Percent">0%</span>
-          </div>
-          <div class="bell-progress-bar" style="height: 14px; background: rgba(0,0,0,0.08); border-radius: 999px; overflow: hidden;">
-            <div class="bell-progress-fill" id="target30Fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #10B981, #059669); transition: width 0.4s ease;"></div>
-          </div>
-        </div>
-
-        <!-- Level 2 Locked Indicator -->
-        <div id="level2LockedBadge" style="font-size: 0.92rem; color: var(--ink-3); text-align: center; padding: 12px 18px; background: rgba(0,0,0,0.04); border-radius: var(--r-sm); border: 1px dashed var(--line);">
-          🔒 <strong>Level 2 (100% FREE Same Day Tour Package)</strong> unlocks after completing Level 1 (1,000 Rings)!
-        </div>
-
-        <!-- Level 2 Coupon Badge Container -->
-        <div id="level2CouponContainer"></div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
 <!-- ===== DESTINATIONS ===== -->
 <section class="section" id="destinations">
   <div class="container">
@@ -978,6 +901,83 @@
         <span style="font-size:0.85rem; color:var(--saffron-deep); font-weight:600;">Patna to Ayodhya Package</span>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ==================== DIVINE TEMPLE BELL YATRA REWARDS SECTION ==================== -->
+<section class="section temple-bell-reward-section" id="templeBellRewardSection" style="background: linear-gradient(180deg, #FAF4E8 0%, #FFFDF8 100%); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); padding: 60px 0;">
+  <div class="container" style="max-width: 900px; text-align: center;">
+    
+    <p class="eyebrow center" style="color:var(--saffron-deep); font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:8px;">🛕 Daily Temple Blessing &amp; Yatra Rewards (पुण्य घंटी सेवा)</p>
+    <h2 style="color:var(--maroon); margin-bottom:12px; font-family:var(--font-display); font-size:clamp(1.8rem, 3.8vw, 2.6rem);">Ring the Sacred Temple Bell &amp; Win Yatra Rewards!</h2>
+    <p class="lead" style="max-width:700px; margin:0 auto 36px; font-size:1.02rem;">
+      Ring Shri Ram's temple bell to accumulate daily blessings! Reach 1,000 rings to win a <strong>₹2,100 Yatra Coupon</strong>, and 2,500 rings for a <strong>100% FREE Same Day Tour Package for All Group Members!</strong>
+    </p>
+
+    <!-- Main Animated Temple Bell Stage Card -->
+    <div class="temple-bell-stage" style="background: #FFFFFF; border: 2px solid var(--gold-soft); border-radius: 20px; padding: 36px 24px; box-shadow: 0 10px 30px rgba(180, 83, 9, 0.08); position: relative; overflow: hidden;">
+      
+      <!-- Brass Chain & Animated Swaying Bell -->
+      <div class="hanging-bell-wrapper" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
+        <div class="bell-chain" style="width: 4px; height: 50px; background: linear-gradient(180deg, #8B5A2B 0%, #D4AF37 50%, #B45309 100%); margin: 0 auto; border-radius: 2px;"></div>
+        <div class="bell-hanging-body animated-sway" id="hangingBellBody" style="display: inline-block; transform-origin: top center; cursor: pointer; margin-top: -4px;">
+          <button class="bell-icon-btn main-bell-trigger" id="templeBellBtn" onclick="ringTempleBell()" aria-label="Ring Temple Bell for Yatra Blessings" style="font-size: 4rem; background: transparent; border: none; cursor: pointer; filter: drop-shadow(0 6px 14px rgba(180, 83, 9, 0.35)); transition: transform 0.2s; line-height: 1;">🔔</button>
+        </div>
+        <div style="margin-top: 12px; font-weight: 700; color: var(--maroon); font-size: 1rem;">
+          👉 Tap the Temple Bell to Ring &amp; Collect Blessings!
+        </div>
+      </div>
+
+      <!-- Status Badge & Counter -->
+      <div style="display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 20px;">
+        <div class="bell-timer-badge" id="bellStatusBadge" style="padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 0.95rem; background: linear-gradient(135deg, #10B981, #059669); color: #fff; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);">🔔 Ring Temple Bell (+1 Blessing)</div>
+        <span style="font-size: 0.98rem; font-weight: 700; color: var(--maroon); background: rgba(124, 38, 26, 0.07); padding: 9px 20px; border-radius: 999px;" id="totalClicksDisplay">🚩 0 Blessings Collected</span>
+      </div>
+
+      <p id="bellSubtext" style="font-size: 0.95rem; color: var(--ink-2); margin-bottom: 24px; font-weight: 600;">
+        Complete 1,000 rings to unlock <strong>Level 1: ₹2,100 Coupon</strong>!
+      </p>
+
+      <!-- Progress Bars Container -->
+      <div style="max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+        
+        <!-- Level 1 Progress Bar (1,000 Rings) -->
+        <div class="bell-progress-wrap" id="level1ProgressWrap" style="background: var(--bg); border: 1px solid var(--line-soft); border-radius: 12px; padding: 16px 18px;">
+          <div class="bell-progress-label" style="display: flex; justify-content: space-between; font-weight: 700; color: var(--maroon); font-size: 0.92rem; margin-bottom: 8px;">
+            <span>🎯 Level 1: ₹2,100 Discount Coupon (1,000 Rings)</span>
+            <span id="target2100Percent">0%</span>
+          </div>
+          <div class="bell-progress-bar" style="height: 12px; background: rgba(0,0,0,0.06); border-radius: 999px; overflow: hidden;">
+            <div class="bell-progress-fill" id="target2100Fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #FF6B00, #D4AF37); transition: width 0.4s ease;"></div>
+          </div>
+        </div>
+
+        <!-- Level 1 Coupon Badge Container -->
+        <div id="level1CouponContainer"></div>
+
+        <!-- Level 2 Progress Bar (2,500 Rings) -->
+        <div class="bell-progress-wrap" id="level2ProgressWrap" style="display: none; background: var(--bg); border: 1px solid var(--line-soft); border-radius: 12px; padding: 16px 18px;">
+          <div class="bell-progress-label" style="display: flex; justify-content: space-between; font-weight: 700; color: #059669; font-size: 0.92rem; margin-bottom: 8px;">
+            <span>👑 Level 2: 100% FREE Same Day Tour Package for All Group Members! (2,500 Rings)</span>
+            <span id="target30Percent">0%</span>
+          </div>
+          <div class="bell-progress-bar" style="height: 12px; background: rgba(0,0,0,0.06); border-radius: 999px; overflow: hidden;">
+            <div class="bell-progress-fill" id="target30Fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #10B981, #059669); transition: width 0.4s ease;"></div>
+          </div>
+        </div>
+
+        <!-- Level 2 Locked Indicator -->
+        <div id="level2LockedBadge" style="font-size: 0.88rem; color: var(--ink-3); text-align: center; padding: 10px 16px; background: rgba(0,0,0,0.03); border-radius: 8px; border: 1px dashed var(--line-soft);">
+          🔒 <strong>Level 2 (100% FREE Same Day Tour Package)</strong> unlocks after completing Level 1 (1,000 Rings)!
+        </div>
+
+        <!-- Level 2 Coupon Badge Container -->
+        <div id="level2CouponContainer"></div>
+
+      </div>
+
+    </div>
+
   </div>
 </section>
 
