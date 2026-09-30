@@ -648,6 +648,25 @@ image-slot{
 }
 
 
+/* Lightweight Keyword Chips for Compressed HTML Payload */
+.kw-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  font-weight: 500;
+  margin: 3px;
+}
+.kw-chip::before {
+  content: "🔍 ";
+  font-size: 0.75rem;
+}
+
 /* Floating WhatsApp Button for Desktop */
 .whatsapp-float {
   display: flex !important;
