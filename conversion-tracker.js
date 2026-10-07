@@ -23,9 +23,9 @@
         let pkg = document.title.split('|')[0].split(':')[0] || 'Ayodhya Tour Package';
         pkg = pkg.replace(/[\n\r]/g, ' ').trim();
 
-        // Direct WhatsApp inquiry URL targeting +917408763401
+        // Direct WhatsApp inquiry URL targeting +919235222399
         const waText = `Hi Ayodhya Dharshan! New Inquiry:\nPackage: ${pkg}\nName: ${name}\nPhone: ${phone}\nTravel Date: ${date}`;
-        const waUrl = `https://wa.me/917408763401?text=${encodeURIComponent(waText)}`;
+        const waUrl = `https://wa.me/919235222399?text=${encodeURIComponent(waText)}`;
 
         // Dispatch tracking event for analytics
         if (typeof window.gtag === 'function') {

@@ -5,7 +5,7 @@ base_dir = '/Users/rishabhjaiswal/ayodhya-darshan'
 html_files = [f for f in os.listdir(base_dir) if f.endswith('.html')]
 
 # Primary conversion phone & WhatsApp number
-PRIMARY_PHONE = '7408763401'
+PRIMARY_PHONE = '9235222399'
 FORMATTED_PHONE = '+91 74087 63401'
 
 updated_count = 0
@@ -16,7 +16,7 @@ for fname in html_files:
 
     modified = False
 
-    # 1. Update old WhatsApp wa.me links from 9235222399 to 7408763401
+    # 1. Update old WhatsApp wa.me links from 9235222399 to 9235222399
     if 'wa.me/919235222399' in content:
         content = content.replace('wa.me/919235222399', f'wa.me/91{PRIMARY_PHONE}')
         modified = True
