@@ -1,12 +1,15 @@
 # SEO Health & Automation Report
-Report Generated: **2026-11-02 10:00:48**
+Report Generated: **2026-11-03 10:16:31**
 
 ---
 
 ## 📄 HTML Code & Schema Audit
 
-### ✅ All Pages Healthy!
-No broken links, syntax errors, or missing tags detected.
+### ⚠️ Issues Found:
+
+#### [blog-varanasi-tour-package-price-itinerary-booking-guide.html](file:///Users/rishabhjaiswal/ayodhya-darshan/blog-varanasi-tour-package-price-itinerary-booking-guide.html)
+- ❌ Broken internal link: 'ayodhya-tour-package.html'
+
 
 ---
 
