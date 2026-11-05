@@ -1,11 +1,14 @@
 # SEO Health & Automation Report
-Report Generated: **2026-11-04 10:25:29**
+Report Generated: **2026-11-05 10:30:25**
 
 ---
 
 ## 📄 HTML Code & Schema Audit
 
 ### ⚠️ Issues Found:
+
+#### [blog-ayodhya-varanasi-prayagraj-tour-package-price-itinerary-guide.html](file:///Users/rishabhjaiswal/ayodhya-darshan/blog-ayodhya-varanasi-prayagraj-tour-package-price-itinerary-guide.html)
+- ❌ Broken internal link: 'ayodhya-tour-package.html'
 
 #### [blog-varanasi-tour-package-price-itinerary-booking-guide.html](file:///Users/rishabhjaiswal/ayodhya-darshan/blog-varanasi-tour-package-price-itinerary-booking-guide.html)
 - ❌ Broken internal link: 'ayodhya-tour-package.html'
