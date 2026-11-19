@@ -1,5 +1,5 @@
 # SEO Health & Automation Report
-Report Generated: **2026-11-18 15:31:03**
+Report Generated: **2026-11-19 10:20:57**
 
 ---
 
@@ -11,6 +11,9 @@ Report Generated: **2026-11-18 15:31:03**
 - ❌ Broken internal link: 'ayodhya-tour-package.html'
 
 #### [blog-ayodhya-varanasi-prayagraj-tour-package-price-itinerary-guide.html](file:///Users/rishabhjaiswal/ayodhya-darshan/blog-ayodhya-varanasi-prayagraj-tour-package-price-itinerary-guide.html)
+- ❌ Broken internal link: 'ayodhya-tour-package.html'
+
+#### [blog-ayodhya-tour-package-for-senior-citizens-parents-guide.html](file:///Users/rishabhjaiswal/ayodhya-darshan/blog-ayodhya-tour-package-for-senior-citizens-parents-guide.html)
 - ❌ Broken internal link: 'ayodhya-tour-package.html'
 
 #### [blog-ayodhya-14-kosi-parikrama-traffic-advisory-parking-routes.html](file:///Users/rishabhjaiswal/ayodhya-darshan/blog-ayodhya-14-kosi-parikrama-traffic-advisory-parking-routes.html)
