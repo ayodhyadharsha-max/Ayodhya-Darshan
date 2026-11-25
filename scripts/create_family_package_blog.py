@@ -1,0 +1,687 @@
+#!/usr/bin/env python3
+import os
+import re
+
+def create_family_blog():
+    blog_filename = "blog-ayodhya-tour-package-for-family-price-itinerary-guide.html"
+    
+    html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.png" type="image/png" sizes="192x192">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-7513283731802791">
+<title>Ayodhya Tour Package for Family 2026-2027: Price List, 3★ Hotels &amp; Itinerary</title>
+<meta name="description" content="Verified Ayodhya tour package for family 2026-2027 from ₹4,499/person: Ram Mandir VIP darshan, family suites, private AC Ertiga/Innova, elderly care &amp; sattvic meals. Call +91 92352 22399.">
+<meta name="keywords" content="ayodhya tour package for family, ayodhya family tour package, ayodhya family tour package price, ayodhya 2 nights 3 days tour package for family, ayodhya tour package with hotel for family, best ayodhya tour package for family, ram mandir family darshan package, ayodhya tour package, ayodhya darshan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://www.ayodhyadharshan.com/blog-ayodhya-tour-package-for-family-price-itinerary-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ayodhya Dharshan">
+<meta property="og:title" content="Ayodhya Tour Package for Family 2026-2027: Price List, 3★ Hotels &amp; Itinerary">
+<meta property="og:description" content="Take your entire family on an unforgettable, comfortable pilgrimage to Shri Ram Janmabhoomi: connected family hotel rooms, private AC cabs, queue assistance, and pure sattvic dining.">
+<meta property="og:url" content="https://www.ayodhyadharshan.com/blog-ayodhya-tour-package-for-family-price-itinerary-guide.html">
+<meta property="og:image" content="https://www.ayodhyadharshan.com/assets/destinations/ram-mandir.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mukta:wght@300;400;500;600;700&display=optional" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ayodhyadharshan">
+<meta name="twitter:title" content="Ayodhya Tour Package for Family 2026-2027: Price List, 3★ Hotels &amp; Itinerary">
+<meta name="twitter:description" content="Specialized family pilgrimage packages for Ayodhya Dham: private AC cabs, elevator hotels, child-friendly food, and Ram Mandir Sugam Darshan coordination.">
+<meta name="twitter:image" content="https://www.ayodhyadharshan.com/assets/destinations/ram-mandir.webp">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7513283731802791" crossorigin="anonymous"></script>
+
+<!-- Blog Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Ayodhya Tour Package for Family 2026-2027: Price List, 3-Star Hotels, Itinerary & Booking Guide",
+  "description": "Comprehensive guide to planning a family pilgrimage to Ayodhya Dham in 2026-2027: per-family pricing matrix, child & senior-friendly amenities, connected family rooms, private AC Ertiga/Innova cabs, and hassle-free Ram Mandir darshan.",
+  "image": "https://www.ayodhyadharshan.com/assets/destinations/ram-mandir.webp",
+  "datePublished": "2026-11-25",
+  "dateModified": "2026-11-25",
+  "author": {
+    "@type": "Organization",
+    "name": "Ayodhya Dharshan"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ayodhya Dharshan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.ayodhyadharshan.com/assets/logo.webp"
+    }
+  },
+  "mainEntityOfPage": "https://www.ayodhyadharshan.com/blog-ayodhya-tour-package-for-family-price-itinerary-guide.html"
+}
+</script>
+
+<!-- TouristTrip Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Ayodhya Family Spiritual Pilgrimage Tour Package",
+  "description": "Customized family pilgrimage package for groups traveling with children and elderly parents: private AC transportation (Ertiga/Innova/Tempo Traveller), 3-star/4-star hotel family suites with elevator, sattvic pure-vegetarian dining, and Ram Mandir darshan coordination.",
+  "touristType": ["Families with Children", "Joint Families", "Couples with Parents", "Multi-Generation Groups"],
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "4499",
+    "highPrice": "12999",
+    "priceCurrency": "INR"
+  },
+  "itinerary": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Day 1: Arrival, Family Check-in, Hanuman Garhi & Evening Saryu Maha Aarti"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Day 2: Morning Shri Ram Janmabhoomi Mandir Darshan, Kanak Bhawan & Guptar Ghat Boat Ride"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Day 3: Surya Kund Sound & Light Show, Local Ayodhya Shopping & Departure Transfer"
+      }
+    ]
+  }
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.ayodhyadharshan.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Yatra Blog",
+      "item": "https://www.ayodhyadharshan.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ayodhya Tour Package for Family",
+      "item": "https://www.ayodhyadharshan.com/blog-ayodhya-tour-package-for-family-price-itinerary-guide.html"
+    }
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does an Ayodhya tour package for family cost in 2026-2027?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a typical family of 4 (2 adults + 2 children/parents), an all-inclusive 2 Nights / 3 Days Ayodhya package ranges from ₹18,000 to ₹26,000 total (approx. ₹4,500 to ₹6,500 per person). This includes private AC Ertiga cab, 3-star hotel with breakfast, and full temple sightseeing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Ayodhya suitable for a trip with small children and elderly parents together?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, absolutely. Our family packages are specifically planned at a relaxed pace with zero walking fatigue. We provide battery golf carts for elderly parents, pram-friendly pathways, heated family hotel rooms, and mild, non-spicy sattvic meals suitable for kids."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What type of vehicles are provided for family tour packages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We provide dedicated, clean, commercial AC vehicles based on your family size: comfortable Sedans (Dzire/Etios) for 2-3 persons, spacious SUVs (Maruti Ertiga / Toyota Innova Crysta) for 4-6 persons, and luxury 12 to 17-seater Tempo Travellers for joint families."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many days are recommended for an unhurried family yatra in Ayodhya?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2 Nights / 3 Days is the ideal duration for families. It allows you to cover Hanuman Garhi, Shri Ram Janmabhoomi Mandir, Kanak Bhawan, Dashrath Mahal, Saryu Aarti, and Guptar Ghat without rushing tired kids or elderly relatives."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are family suites or interconnected rooms available in Ayodhya hotels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our hand-picked partner 3-star and 4-star hotels offer spacious triple-bed, four-bed family suites, and interconnected rooms with modern elevators, 24/7 hot water geysers, room heaters in winter, and high-speed Wi-Fi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I book an Ayodhya family tour package?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can reserve directly via WhatsApp or phone at +91 92352 22399. Share your travel dates, passenger count, and hotel preference to receive an itemized family voucher with confirmed hotel details."
+      }
+    }
+  ]
+}
+</script>
+</head>
+
+<body style="background:var(--cream); color:var(--ink); font-family:var(--font-sans); line-height:1.7;">
+
+<!-- Header / Navigation -->
+<header style="background:var(--maroon); border-bottom:3px solid var(--saffron); padding:16px 0; position:sticky; top:0; z-index:100;">
+  <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:0 20px;">
+    <a href="https://www.ayodhyadharshan.com/" style="text-decoration:none; display:flex; align-items:center; gap:10px;">
+      <span style="color:var(--saffron); font-size:24px; font-weight:700; font-family:var(--font-display);">अयोध्या दर्शन</span>
+      <span style="color:#fff; font-size:14px; background:var(--saffron-deep); padding:2px 8px; border-radius:4px; font-weight:600;">AYODHYA DHARSHAN</span>
+    </a>
+    <div style="display:flex; gap:18px; align-items:center;">
+      <a href="https://www.ayodhyadharshan.com/" style="color:#fff; text-decoration:none; font-weight:600; font-size:15px;">Home</a>
+      <a href="ayodhya-dharshan-tour-package.html" style="color:#fff; text-decoration:none; font-weight:600; font-size:15px;">Tour Packages</a>
+      <a href="blog.html" style="color:var(--saffron); text-decoration:none; font-weight:600; font-size:15px;">Yatra Blog</a>
+      <a href="tel:+919235222399" style="background:var(--saffron); color:var(--maroon); padding:8px 18px; border-radius:999px; text-decoration:none; font-weight:700; font-size:14px;">📞 +91 92352 22399</a>
+    </div>
+  </div>
+</header>
+
+<!-- Main Article Container -->
+<main style="max-width:920px; margin:40px auto; padding:0 20px;">
+
+  <!-- Breadcrumb UI -->
+  <nav aria-label="Breadcrumb" style="font-size:14px; margin-bottom:20px; color:var(--ink-muted);">
+    <a href="https://www.ayodhyadharshan.com/" style="color:var(--maroon); text-decoration:none;">Home</a> &raquo;
+    <a href="blog.html" style="color:var(--maroon); text-decoration:none;">Blog</a> &raquo;
+    <span style="color:var(--saffron-deep); font-weight:600;">Ayodhya Tour Package for Family</span>
+  </nav>
+
+  <!-- Article Header -->
+  <header style="margin-bottom:32px;">
+    <div style="display:inline-block; background:rgba(255,107,0,0.12); color:var(--saffron-deep); padding:4px 14px; border-radius:999px; font-size:13px; font-weight:700; margin-bottom:12px; border:1px solid rgba(255,107,0,0.3);">
+      👨‍👩‍👧‍👦 FAMILY PILGRIMAGE SPECIAL · 2026-2027 PLANNING GUIDE
+    </div>
+    <h1 style="font-size:clamp(2rem, 3.5vw, 2.75rem); color:var(--maroon); font-family:var(--font-display); line-height:1.25; margin-bottom:16px;">
+      Ayodhya Tour Package for Family 2026-2027: Price List, 3★ Hotels &amp; Itinerary
+    </h1>
+    <div style="display:flex; gap:18px; color:var(--ink-muted); font-size:14px; align-items:center; flex-wrap:wrap; border-bottom:1px solid var(--line-soft); padding-bottom:16px;">
+      <span>📅 Updated: 25 November 2026</span>
+      <span>⏱️ 8 min read</span>
+      <span>⭐ 4.9/5 Rating (2,100+ Happy Families Guided)</span>
+      <span>🏛️ Family Yatra Support Desk</span>
+    </div>
+  </header>
+
+  <!-- Featured Image -->
+  <div style="margin-bottom:32px; border-radius:12px; overflow:hidden; border:1px solid var(--line); box-shadow:0 8px 24px rgba(0,0,0,0.06);">
+    <img width="920" height="480" src="assets/destinations/ram-mandir.webp" alt="Ayodhya Tour Package for Family Ram Mandir Darshan 2026 2027" style="width:100%; height:auto; display:block;">
+    <div style="background:#2C0B0E; color:#fde68a; padding:10px 16px; font-size:13px; text-align:center;">
+      Shri Ram Janmabhoomi Mandir, Ayodhya. Millions of families visit every year to seek the divine blessings of Prabhu Shri Ram Lalla.
+    </div>
+  </div>
+
+  <!-- Quick Answer / GEO Box -->
+  <div style="background:#FFF9EE; border-left:5px solid var(--saffron); border-radius:0 12px 12px 0; padding:24px; margin-bottom:36px; box-shadow:0 4px 16px rgba(0,0,0,0.03);">
+    <h3 style="color:var(--maroon); font-size:1.2rem; margin-top:0; margin-bottom:10px; font-family:var(--font-display);">
+      ⚡ Quick Summary: Planning a Family Pilgrimage to Ayodhya Dham
+    </h3>
+    <ul style="margin:0; padding-left:20px; font-size:15px; color:var(--ink-2); line-height:1.8;">
+      <li><strong>Family Pricing:</strong> Complete 3-day family packages start from <strong>₹4,499 per person</strong> (approx. ₹18,000 to ₹26,000 for a family of 4) including 3-star hotel stay, private AC Ertiga/Innova cab, and sightseeing.</li>
+      <li><strong>Elderly &amp; Child Comfort:</strong> Zero-walking fatigue with battery golf cart transfers, wheelchair attendants, elevator-equipped hotel suites, and mild, non-spicy sattvic meals.</li>
+      <li><strong>Ideal Duration:</strong> <strong>2 Nights / 3 Days</strong> is the recommended duration to comfortably cover Ram Janmabhoomi, Hanuman Garhi, Kanak Bhawan, Saryu Aarti, and Guptar Ghat without exhausting kids or grandparents.</li>
+      <li><strong>Booking Helpline:</strong> Instant family customized quotes on WhatsApp or Call: <a href="tel:+919235222399" style="color:var(--maroon); font-weight:700;">+91 92352 22399</a>.</li>
+    </ul>
+  </div>
+
+  <!-- Table of Contents -->
+  <div style="background:#fff; border:1px solid var(--line); border-radius:12px; padding:24px; margin-bottom:40px;">
+    <h3 style="color:var(--maroon); font-size:1.15rem; margin-top:0; margin-bottom:14px;">📖 Guide Outline for Families</h3>
+    <ol style="margin:0; padding-left:22px; color:var(--saffron-deep); font-size:14.5px; line-height:1.9;">
+      <li><a href="#why-ayodhya-family" style="color:inherit; text-decoration:none;">Why Ayodhya is India's #1 Family Pilgrimage in 2026-2027</a></li>
+      <li><a href="#family-logistics" style="color:inherit; text-decoration:none;">Managing Elderly Parents &amp; Children Together (Comfort Guide)</a></li>
+      <li><a href="#price-matrix" style="color:inherit; text-decoration:none;">2026-2027 Ayodhya Family Tour Package Price Matrix</a></li>
+      <li><a href="#itinerary" style="color:inherit; text-decoration:none;">Recommended 3 Days / 2 Nights Relaxed Family Itinerary</a></li>
+      <li><a href="#hotel-standards" style="color:inherit; text-decoration:none;">Verified Hotel Amenities: Family Suites, Lifts, Heating &amp; Food</a></li>
+      <li><a href="#multi-city" style="color:inherit; text-decoration:none;">Extended Family Circuits: Ayodhya + Varanasi + Prayagraj</a></li>
+      <li><a href="#how-to-book" style="color:inherit; text-decoration:none;">How to Book Your Family Tour Package in 3 Simple Steps</a></li>
+      <li><a href="#faqs" style="color:inherit; text-decoration:none;">Frequently Asked Questions (FAQs)</a></li>
+    </ol>
+  </div>
+
+  <!-- Section 1 -->
+  <section id="why-ayodhya-family" style="margin-bottom:40px;">
+    <h2 style="color:var(--maroon); font-family:var(--font-display); font-size:1.8rem; border-bottom:2px solid var(--saffron); padding-bottom:8px; margin-bottom:18px;">
+      1. Why Ayodhya is India's #1 Family Pilgrimage in 2026-2027
+    </h2>
+    <p>
+      Traveling with three generations under one roof—grandparents, parents, and growing children—is one of the most fulfilling experiences in Indian family life. Following the historic opening of the grand <strong>Shri Ram Janmabhoomi Mandir</strong>, Ayodhya has transformed into a world-class pilgrimage destination that combines profound spiritual sanctity with modern, convenient civic infrastructure.
+    </p>
+    <p>
+      Unlike older pilgrimage circuits that involved steep hill climbs or narrow, congested alleyways, modern Ayodhya offers wide pedestrian boulevards (<strong>Ram Path, Bhakti Path, and Dharma Path</strong>), clean battery-operated golf carts, well-maintained public restrooms, international-standard airports (AYJ), and multi-lane expressways from Lucknow and Gorakhpur. Children get to learn the timeless values of the Ramayana firsthand, while grandparents fulfill their lifelong devotion to Prabhu Shri Ram in total comfort.
+    </p>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="family-logistics" style="margin-bottom:40px;">
+    <h2 style="color:var(--maroon); font-family:var(--font-display); font-size:1.8rem; border-bottom:2px solid var(--saffron); padding-bottom:8px; margin-bottom:18px;">
+      2. Managing Elderly Parents &amp; Children Together (Comfort Guide)
+    </h2>
+    <p>
+      The greatest worry for family organizers is balancing the different energy levels of elderly parents and active children. Our specialized <strong>Ayodhya tour package for family</strong> eliminates travel stress through verified ground logistics:
+    </p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px; margin:24px 0;">
+      <div style="background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px; border-top:3px solid var(--saffron);">
+        <h4 style="margin:0 0 8px; color:var(--maroon); font-size:1.1rem;">👴 Grandparents Care</h4>
+        <p style="margin:0; font-size:14px; color:var(--ink-2); line-height:1.7;">
+          Free battery golf carts from parking zones directly to Ram Mandir entry gates. Dedicated wheelchair assistance and attendant service for smooth darshan without knee or joint pain.
+        </p>
+      </div>
+      <div style="background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px; border-top:3px solid var(--saffron-deep);">
+        <h4 style="margin:0 0 8px; color:var(--maroon); font-size:1.1rem;">👶 Kids &amp; Toddlers Comfort</h4>
+        <p style="margin:0; font-size:14px; color:var(--ink-2); line-height:1.7;">
+          Pram-friendly ramps across temple corridors. Fresh warm cow milk arranged at hotels on request, and pure, non-spicy sattvic meals cooked hygienically with no onion or garlic.
+        </p>
+      </div>
+      <div style="background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px; border-top:3px solid var(--maroon);">
+        <h4 style="margin:0 0 8px; color:var(--maroon); font-size:1.1rem;">🚗 Private Dedicated Cabs</h4>
+        <p style="margin:0; font-size:14px; color:var(--ink-2); line-height:1.7;">
+          Never wait for shared auto-rickshaws. Your private AC Ertiga, Innova Crysta, or Tempo Traveller stays reserved exclusively for your family with trusted local drivers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mid-Article Conversion CTA -->
+  <div style="background:linear-gradient(135deg, #7A1C1C 0%, #9A3415 100%); color:#fff; border-radius:12px; padding:28px; margin:36px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; box-shadow:0 8px 24px rgba(122,28,28,0.25);">
+    <div>
+      <h3 style="color:#FFFDF8; margin:0 0 6px; font-size:1.35rem; font-family:var(--font-display);">
+        Planning an Ayodhya Pilgrimage for Your Family?
+      </h3>
+      <p style="margin:0; font-size:0.95rem; color:rgba(255,255,255,0.9); max-width:600px;">
+        Get guaranteed 3★/4★ connected family rooms, private AC cabs, Ram Mandir darshan coordination, and pure sattvic dining with zero booking hassle.
+      </p>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="https://wa.me/919235222399?text=Jai%20Shree%20Ram!%20I%20want%20to%20enquire%20about%20an%20Ayodhya%20tour%20package%20for%20my%20family." target="_blank" rel="noopener" style="background:#25D366; color:#fff; padding:12px 22px; border-radius:8px; text-decoration:none; font-weight:700; font-size:14px; box-shadow:0 4px 12px rgba(37,211,102,0.3);">
+        💬 WhatsApp Family Desk
+      </a>
+      <a href="tel:+919235222399" style="background:#fff; color:var(--maroon); padding:12px 22px; border-radius:8px; text-decoration:none; font-weight:700; font-size:14px;">
+        📞 Call +91 92352 22399
+      </a>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <section id="price-matrix" style="margin-bottom:40px;">
+    <h2 style="color:var(--maroon); font-family:var(--font-display); font-size:1.8rem; border-bottom:2px solid var(--saffron); padding-bottom:8px; margin-bottom:18px;">
+      3. 2026-2027 Ayodhya Family Tour Package Price Matrix
+    </h2>
+    <p>
+      We offer completely transparent pricing designed around family sizes, ensuring you pay only for what your family requires with zero hidden commercial surprises:
+    </p>
+
+    <!-- Pricing Table -->
+    <div style="overflow-x:auto; margin:24px 0;">
+      <table style="width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line); border-radius:8px; font-size:14.5px;">
+        <thead>
+          <tr style="background:#2C0B0E; color:#fde68a; text-align:left;">
+            <th style="padding:14px; border:1px solid var(--line);">Family Package Tier</th>
+            <th style="padding:14px; border:1px solid var(--line);">Group Size &amp; Vehicle</th>
+            <th style="padding:14px; border:1px solid var(--line);">Hotel &amp; Room Setup</th>
+            <th style="padding:14px; border:1px solid var(--line);">Total Package Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:14px; border:1px solid var(--line); font-weight:700;">
+              Nuclear Family (2D/1N)<br>
+              <small style="color:var(--ink-muted); font-weight:normal;">2 Adults + 1-2 Kids</small>
+            </td>
+            <td style="padding:14px; border:1px solid var(--line);">
+              3 to 4 Persons<br>
+              <small style="color:var(--saffron-deep); font-weight:600;">Dedicated AC Dzire / Sedan</small>
+            </td>
+            <td style="padding:14px; border:1px solid var(--line);">
+              1 Night in 3★ Hotel (Family Triple/Four-Bed Room with AC, Wi-Fi &amp; Breakfast)
+            </td>
+            <td style="padding:14px; border:1px solid var(--line); color:var(--saffron-deep); font-weight:700;">
+              ₹14,999 – ₹17,999 <small>total per family</small>
+            </td>
+          </tr>
+          <tr style="background:#FFFDF8;">
+            <td style="padding:14px; border:1px solid var(--line); font-weight:700;">
+              Complete Family (3D/2N)<br>
+              <small style="color:var(--saffron-deep); font-weight:700;">🌟 Most Popular Family Choice</small>
+            </td>
+            <td style="padding:14px; border:1px solid var(--line);">
+              4 to 6 Persons<br>
+              <small style="color:var(--saffron-deep); font-weight:600;">Spacious AC Ertiga / Innova</small>
+            </td>
+            <td style="padding:14px; border:1px solid var(--line);">
+              2 Nights in 3★/4★ Hotel (2 Connected Deluxe Rooms with Breakfast &amp; Dinners)
+            </td>
+            <td style="padding:14px; border:1px solid var(--line); color:var(--saffron-deep); font-weight:700;">
+              ₹27,999 – ₹34,999 <small>total per family</small>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:14px; border:1px solid var(--line); font-weight:700;">
+              Joint Family / Grandparents<br>
+              <small style="color:var(--ink-muted); font-weight:normal;">3 Generations (3D/2N)</small>
+            </td>
+            <td style="padding:14px; border:1px solid var(--line);">
+              7 to 12 Persons<br>
+              <small style="color:var(--saffron-deep); font-weight:600;">12-17 Seater Luxury Tempo</small>
+            </td>
+            <td style="padding:14px; border:1px solid var(--line);">
+              2 Nights in Premium Hotel (3-4 Deluxe Rooms with Lift, Meals &amp; Wheelchair)
+            </td>
+            <td style="padding:14px; border:1px solid var(--line); color:var(--maroon); font-weight:700;">
+              ₹48,999 – ₹59,999 <small>total group cost</small>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13.5px; color:var(--ink-muted); font-style:italic;">
+      * All family packages include complete door-to-door transfers from Ayodhya Cantt (AYC), Ayodhya Dham (AY), Maharishi Valmiki Airport (AYJ), or Lucknow Airport (LKO), toll taxes, state parking permits, and pandit guide coordination.
+    </p>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="itinerary" style="margin-bottom:40px;">
+    <h2 style="color:var(--maroon); font-family:var(--font-display); font-size:1.8rem; border-bottom:2px solid var(--saffron); padding-bottom:8px; margin-bottom:18px;">
+      4. Recommended 3 Days / 2 Nights Relaxed Family Itinerary
+    </h2>
+    <p>
+      Our family itinerary is specially structured so that neither children get cranky nor elderly parents feel rushed:
+    </p>
+
+    <div style="display:flex; flex-direction:column; gap:20px; margin:24px 0;">
+      <!-- Day 1 -->
+      <div style="background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px; border-left:4px solid var(--saffron);">
+        <h3 style="color:var(--maroon); margin-top:0; font-size:1.15rem;">📅 Day 1: Warm Welcome, Hotel Check-in, Hanuman Garhi &amp; Saryu Aarti</h3>
+        <p style="margin:0; font-size:15px; color:var(--ink-2); line-height:1.8;">
+          • Morning pickup from Lucknow Airport or Ayodhya Railway Station in your sanitized private AC cab.<br>
+          • Check-in to your family rooms; enjoy fresh vegetarian lunch and brief rest.<br>
+          • 03:30 PM: Visit <strong>Shri Hanuman Garhi Mandir</strong> (76 steps with handrails, or assistance for senior citizens). Seek blessings of Ayodhya Kotwal Lord Hanuman.<br>
+          • 05:30 PM: Head to <strong>Ram ki Paidi &amp; Naya Ghat</strong>. Attend the divine Saryu Maha Aarti at 6:30 PM with thousands of floating earthen lamps.<br>
+          • 07:45 PM: Watch the magnificent Sound, Light &amp; Laser show at Ram Katha Park.<br>
+          • Return to hotel for hot sattvic family dinner; overnight stay.
+        </p>
+      </div>
+
+      <!-- Day 2 -->
+      <div style="background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px; border-left:4px solid var(--saffron-deep);">
+        <h3 style="color:var(--maroon); margin-top:0; font-size:1.15rem;">🛕 Day 2: Grand Ram Janmabhoomi Darshan, Kanak Bhawan &amp; Guptar Ghat</h3>
+        <p style="margin:0; font-size:15px; color:var(--ink-2); line-height:1.8;">
+          • 07:30 AM: Healthy family breakfast at hotel.<br>
+          • 08:30 AM: Proceed to <strong>Bhavya Shri Ram Janmabhoomi Mandir</strong>. Experience the mesmerizing darshan of <strong>Shri Ram Lalla</strong>, Ram Darbar, and Kuber Tila with timed queue coordination.<br>
+          • 11:30 AM: Visit <strong>Kanak Bhawan</strong> (golden palace of Sita-Ram) and <strong>Dashrath Mahal</strong>.<br>
+          • 01:30 PM: Family lunch break; afternoon rest during temple closure hours.<br>
+          • 04:30 PM: Sunset drive to historic <strong>Guptar Ghat</strong> on the banks of Saryu River where Lord Ram took Jal Samadhi. Enjoy a peaceful motorized boat ride for the whole family.<br>
+          • Evening shopping for local souvenirs, Ayodhya peda prasad, and holy Ramcharitmanas.
+        </p>
+      </div>
+
+      <!-- Day 3 -->
+      <div style="background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px; border-left:4px solid var(--maroon);">
+        <h3 style="color:var(--maroon); margin-top:0; font-size:1.15rem;">🌸 Day 3: Surya Kund, Mani Parbat &amp; Departure</h3>
+        <p style="margin:0; font-size:15px; color:var(--ink-2); line-height:1.8;">
+          • 08:30 AM: Relaxed breakfast at hotel.<br>
+          • 10:00 AM: Visit the beautifully restored <strong>Surya Kund</strong> and the sacred <strong>Mani Parbat</strong>.<br>
+          • 12:30 PM: Hotel checkout and departure drop to Ayodhya Airport / Railway Station or return transfer to Lucknow with cherished family memories and the eternal blessings of Prabhu Shri Ram.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section id="hotel-standards" style="margin-bottom:40px;">
+    <h2 style="color:var(--maroon); font-family:var(--font-display); font-size:1.8rem; border-bottom:2px solid var(--saffron); padding-bottom:8px; margin-bottom:18px;">
+      5. Verified Hotel Amenities: Family Suites, Lifts, Heating &amp; Food
+    </h2>
+    <p>
+      When traveling with family, staying in low-quality or non-verified rooms can ruin an entire pilgrimage. All partner hotels in our packages are rigorously audited for family standards:
+    </p>
+    <ul style="padding-left:22px; font-size:15px; line-height:1.8; color:var(--ink-2);">
+      <li><strong>Spacious Family Layouts:</strong> Triple-bed, four-bed connected rooms, and family suites with clean attached western-style bathrooms.</li>
+      <li><strong>Modern Elevators / Lifts:</strong> Safe lifts for elderly parents with knee arthritis, eliminating stair climbing.</li>
+      <li><strong>Winter Climate Control:</strong> During chilly months (November to February), rooms are equipped with instant hot water geysers and electric room blowers/heaters.</li>
+      <li><strong>100% Pure Vegetarian Kitchens:</strong> Authentic North Indian, South Indian, and Gujarati sattvic cuisine prepared fresh with zero artificial additives.</li>
+    </ul>
+  </section>
+
+  <!-- Section 6 -->
+  <section id="multi-city" style="margin-bottom:40px;">
+    <h2 style="color:var(--maroon); font-family:var(--font-display); font-size:1.8rem; border-bottom:2px solid var(--saffron); padding-bottom:8px; margin-bottom:18px;">
+      6. Extended Family Circuits: Ayodhya + Varanasi + Prayagraj
+    </h2>
+    <p>
+      Many families visiting Uttar Pradesh choose to cover the complete holy त्रिवेणी (Triveni) circuit. We organize seamless 4D/3N and 5D/4N multi-city family tours:
+    </p>
+    <p>
+      • <strong>Ayodhya + Varanasi (4 Days / 3 Nights):</strong> Spend 2 days in Ayodhya with Ram Lalla and 2 days in Kashi experiencing the Dashashwamedh Ganga Aarti and Kashi Vishwanath Sugam Darshan (from ₹12,900/person).<br>
+      • <strong>Ayodhya + Prayagraj + Varanasi (5 Days / 4 Nights):</strong> Include the sacred holy Sangam snan and Bade Hanuman ji mandir in Prayagraj (from ₹17,500/person).
+    </p>
+    <p>
+      Explore our multi-city guides: <a href="blog-ayodhya-varanasi-prayagraj-tour-package-price-itinerary-guide.html" style="color:var(--saffron-deep); font-weight:700; text-decoration:underline;">Ayodhya Varanasi Prayagraj Package Guide</a> and <a href="blog-ayodhya-to-varanasi-tour-package-price-itinerary-booking-guide.html" style="color:var(--saffron-deep); font-weight:700; text-decoration:underline;">Ayodhya to Varanasi Tour Package Guide</a>.
+    </p>
+  </section>
+
+  <!-- Section 7 -->
+  <section id="how-to-book" style="margin-bottom:40px;">
+    <h2 style="color:var(--maroon); font-family:var(--font-display); font-size:1.8rem; border-bottom:2px solid var(--saffron); padding-bottom:8px; margin-bottom:18px;">
+      7. How to Book Your Family Tour Package in 3 Simple Steps
+    </h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin:24px 0;">
+      <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:18px;">
+        <span style="font-size:24px;">1️⃣</span>
+        <h4 style="margin:8px 0 4px; color:var(--maroon);">Share Family Details</h4>
+        <p style="margin:0; font-size:13.5px; color:var(--ink-2);">WhatsApp us your arrival date, number of adults/children, and preferred vehicle size.</p>
+      </div>
+      <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:18px;">
+        <span style="font-size:24px;">2️⃣</span>
+        <h4 style="margin:8px 0 4px; color:var(--maroon);">Receive Custom Itinerary</h4>
+        <p style="margin:0; font-size:13.5px; color:var(--ink-2);">Our family yatra coordinator shares hotel photos, room options, and an all-inclusive quote.</p>
+      </div>
+      <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:18px;">
+        <span style="font-size:24px;">3️⃣</span>
+        <h4 style="margin:8px 0 4px; color:var(--maroon);">Confirmed Booking Voucher</h4>
+        <p style="margin:0; font-size:13.5px; color:var(--ink-2);">Confirm with nominal advance token. Your cab and family rooms are 100% locked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: FAQs -->
+  <section id="faqs" style="margin-bottom:40px;">
+    <h2 style="color:var(--maroon); font-family:var(--font-display); font-size:1.8rem; border-bottom:2px solid var(--saffron); padding-bottom:8px; margin-bottom:18px;">
+      8. Frequently Asked Questions (FAQs)
+    </h2>
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <details style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px 20px;">
+        <summary style="font-weight:700; color:var(--maroon); cursor:pointer;">How much does an Ayodhya tour package for family cost in 2026-2027?</summary>
+        <p style="margin-top:10px; font-size:14.5px; color:var(--ink-2);">For a family of 4, a 2N/3D package starts around ₹18,000 to ₹26,000 total (₹4,500 to ₹6,500 per person), including private AC cab, 3-star hotel stay with breakfast, and temple sightseeing.</p>
+      </details>
+      <details style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px 20px;">
+        <summary style="font-weight:700; color:var(--maroon); cursor:pointer;">Is Ayodhya suitable for toddlers and senior citizens together?</summary>
+        <p style="margin-top:10px; font-size:14.5px; color:var(--ink-2);">Yes. Ayodhya features paved pathways, battery golf carts for elderly parents, pram accessibility, and hygienic child-friendly food options at all our partner hotels.</p>
+      </details>
+      <details style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px 20px;">
+        <summary style="font-weight:700; color:var(--maroon); cursor:pointer;">What vehicle will our family get?</summary>
+        <p style="margin-top:10px; font-size:14.5px; color:var(--ink-2);">For 2-3 persons: AC Sedan (Dzire/Etios). For 4-6 persons: Spacious AC Ertiga / Innova Crysta. For larger families of 7-14 persons: Luxury AC Tempo Traveller.</p>
+      </details>
+      <details style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px 20px;">
+        <summary style="font-weight:700; color:var(--maroon); cursor:pointer;">Are pickup and drops included from Lucknow Airport or Ayodhya Cantt?</summary>
+        <p style="margin-top:10px; font-size:14.5px; color:var(--ink-2);">Yes, all family packages include door-to-door pickup and drop from Lucknow Airport (LKO), Ayodhya Airport (AYJ), or Ayodhya Cantt Railway Station (AYC).</p>
+      </details>
+      <details style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px 20px;">
+        <summary style="font-weight:700; color:var(--maroon); cursor:pointer;">How do I contact for custom family package quotes?</summary>
+        <p style="margin-top:10px; font-size:14.5px; color:var(--ink-2);">Call or WhatsApp our 24x7 family pilgrimage coordinator at <strong>+91 92352 22399</strong> or email <strong>yatra@ayodhyadharshan.com</strong>.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Final Call to Action Box -->
+  <div style="background:var(--cream); border:2px solid var(--saffron); border-radius:12px; padding:32px; text-align:center; margin:48px 0;">
+    <h3 style="color:var(--maroon); font-size:1.6rem; margin-top:0; margin-bottom:10px; font-family:var(--font-display);">
+      Create Everlasting Spiritual Memories for Your Family
+    </h3>
+    <p style="font-size:15px; color:var(--ink-2); max-width:640px; margin:0 auto 24px;">
+      Lock in your customized 2026-2027 Ayodhya family pilgrimage package today with zero booking anxiety. Verified hotel suites, private AC cabs, and 24x7 on-ground assistance.
+    </p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://wa.me/919235222399?text=Jai%20Shree%20Ram!%20Please%20send%20Ayodhya%20Family%20Tour%20Package%20details." target="_blank" rel="noopener" style="background:#25D366; color:#fff; font-weight:700; padding:14px 28px; border-radius:999px; text-decoration:none; font-size:15px; box-shadow:0 4px 16px rgba(37,211,102,0.4);">
+        📱 WhatsApp +91 92352 22399
+      </a>
+      <a href="tel:+919235222399" style="background:var(--maroon); color:#fff; font-weight:700; padding:14px 28px; border-radius:999px; text-decoration:none; font-size:15px;">
+        📞 Call Family Desk
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer style="background:#2C0B0E; color:#fde68a; padding:48px 20px 24px; font-size:14px; border-top:3px solid var(--saffron);">
+  <div class="container" style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:32px;">
+    <div>
+      <h4 style="color:#fff; font-size:18px; margin-top:0; font-family:var(--font-display);">Ayodhya Dharshan</h4>
+      <p style="color:#fef08a; font-size:13px; line-height:1.7;">Govt. Registered UP Yatra Tour Agency (GSTIN: 09CJPPJ6346G1ZR). Specialized in personalized family and senior-citizen pilgrimages across Ayodhya, Varanasi, Prayagraj and UP sacred circuits.</p>
+    </div>
+    <div>
+      <h4 style="color:#fff; font-size:16px; margin-top:0;">Popular Packages</h4>
+      <ul style="list-style:none; padding:0; margin:0; line-height:2;">
+        <li><a href="https://www.ayodhyadharshan.com/" style="color:#fef08a; text-decoration:none;">Ayodhya Darshan Homepage</a></li>
+        <li><a href="ayodhya-dharshan-tour-package.html" style="color:#fef08a; text-decoration:none;">Ayodhya Tour Package</a></li>
+        <li><a href="blog-ayodhya-tour-package-for-family-price-itinerary-guide.html" style="color:#fef08a; text-decoration:none;">Ayodhya Family Tour Package</a></li>
+        <li><a href="blog-ayodhya-tour-package-for-senior-citizens-parents-guide.html" style="color:#fef08a; text-decoration:none;">Senior Citizen Ayodhya Package</a></li>
+        <li><a href="blog-ayodhya-to-varanasi-tour-package-price-itinerary-booking-guide.html" style="color:#fef08a; text-decoration:none;">Ayodhya to Varanasi Package</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color:#fff; font-size:16px; margin-top:0;">Contact &amp; Bookings</h4>
+      <p style="margin:0 0 10px; color:#fef08a;">📍 Near Ram Janmabhoomi, Ram Path, Ayodhya, UP 224123</p>
+      <p style="margin:0 0 10px; color:#fef08a;">📞 Phone: <a href="tel:+919235222399" style="color:#fff; text-decoration:underline;">+91 92352 22399</a></p>
+      <p style="margin:0; color:#fef08a;">✉️ Email: <a href="mailto:yatra@ayodhyadharshan.com" style="color:#fff; text-decoration:underline;">yatra@ayodhyadharshan.com</a></p>
+    </div>
+  </div>
+  <div style="max-width:1200px; margin:32px auto 0; padding-top:20px; border-top:1px solid rgba(253,230,138,0.2); text-align:center; font-size:13px; color:#fde68a;">
+    &copy; 2026 Ayodhya Dharshan. All rights reserved. | <a href="privacy-policy.html" style="color:#fde68a;">Privacy Policy</a> | <a href="terms.html" style="color:#fde68a;">Terms &amp; Conditions</a>
+  </div>
+</footer>
+
+</body>
+</html>
+"""
+    with open(blog_filename, "w", encoding="utf-8") as f:
+        f.write(html_content)
+    print(f"✅ Created {blog_filename} (length: {len(html_content)} bytes)")
+
+def update_sitemap_rss_blog():
+    new_url = "https://www.ayodhyadharshan.com/blog-ayodhya-tour-package-for-family-price-itinerary-guide.html"
+    today_date = "2026-11-25"
+
+    # 1. Update sitemap.xml
+    sitemap_path = "sitemap.xml"
+    if os.path.exists(sitemap_path):
+        with open(sitemap_path, "r", encoding="utf-8") as f:
+            s_content = f.read()
+        if new_url not in s_content:
+            entry = f"""  <url>
+    <loc>{new_url}</loc>
+    <lastmod>{today_date}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+"""
+            s_content = s_content.replace("</urlset>", entry + "</urlset>")
+        s_content = re.sub(r"<lastmod>2026-\d\d-\d\d</lastmod>", f"<lastmod>{today_date}</lastmod>", s_content)
+        with open(sitemap_path, "w", encoding="utf-8") as f:
+            f.write(s_content)
+        print(f"✅ Updated sitemap.xml with new URL and lastmod {today_date}")
+
+    # 2. Update Next.js public sitemap
+    next_sitemap = "ayodhya-landing-main/public/sitemap.xml"
+    if os.path.exists(next_sitemap):
+        with open(next_sitemap, "r", encoding="utf-8") as f:
+            n_content = f.read()
+        if new_url not in n_content:
+            entry = f"""  <url>
+    <loc>{new_url}</loc>
+    <lastmod>{today_date}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+"""
+            n_content = n_content.replace("</urlset>", entry + "</urlset>")
+        n_content = re.sub(r"<lastmod>2026-\d\d-\d\d</lastmod>", f"<lastmod>{today_date}</lastmod>", n_content)
+        with open(next_sitemap, "w", encoding="utf-8") as f:
+            f.write(n_content)
+        print(f"✅ Updated Next.js public/sitemap.xml with new URL and lastmod {today_date}")
+
+    # 3. Update rss.xml
+    rss_path = "rss.xml"
+    if os.path.exists(rss_path):
+        with open(rss_path, "r", encoding="utf-8") as f:
+            r_content = f.read()
+        new_item = f"""    <item>
+      <title>Ayodhya Tour Package for Family 2026-2027: Price List, 3★ Hotels &amp; Itinerary</title>
+      <link>{new_url}</link>
+      <guid>{new_url}</guid>
+      <description>Plan a comfortable Ayodhya family pilgrimage: verified 2026-2027 packages from ₹4,499/person, connected family suites, private AC Ertiga/Innova cabs, Ram Mandir darshan coordination &amp; pure sattvic dining.</description>
+      <pubDate>Wed, 25 Nov 2026 13:30:00 +0530</pubDate>
+    </item>
+"""
+        if new_url not in r_content:
+            r_content = r_content.replace("<channel>\n", "<channel>\n" + new_item)
+            with open(rss_path, "w", encoding="utf-8") as f:
+                f.write(r_content)
+            print("✅ Added Family package guide item to rss.xml")
+
+    # 4. Update blog.html
+    blog_path = "blog.html"
+    if os.path.exists(blog_path):
+        with open(blog_path, "r", encoding="utf-8") as f:
+            b_content = f.read()
+        new_card = """      <article class="card blog-card" style="border: 2px solid var(--saffron);">
+        <a href="blog-ayodhya-tour-package-for-family-price-itinerary-guide.html" class="bc-img"><img width="600" height="400" src="assets/destinations/ram-mandir.webp" alt="Ayodhya Tour Package for Family 2026 2027 Guide" loading="lazy"></a>
+        <div class="bc-body">
+          <span class="bc-meta" style="color:var(--saffron-deep); font-weight:700;">Family Pilgrimage · 8 min read</span>
+          <h3><a href="blog-ayodhya-tour-package-for-family-price-itinerary-guide.html">Ayodhya Tour Package for Family 2026-2027: Price List &amp; Itinerary Guide</a></h3>
+          <p>Verified 2026-2027 price list (from ₹4,499/person), connected 3★ family rooms, private AC Ertiga/Innova cabs, elderly &amp; child-friendly pacing, and pure sattvic meals.</p>
+          <a class="link-arrow bc-foot" href="blog-ayodhya-tour-package-for-family-price-itinerary-guide.html" style="color:var(--saffron-deep);">Read Family Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+"""
+        if "blog-ayodhya-tour-package-for-family-price-itinerary-guide.html" not in b_content:
+            target = '<div class="blog-grid">\n'
+            b_content = b_content.replace(target, target + new_card)
+            schema_entry = '    { "@type": "BlogPosting", "headline": "Ayodhya Tour Package for Family 2026-2027: Price List, 3★ Hotels & Itinerary", "url": "https://www.ayodhyadharshan.com/blog-ayodhya-tour-package-for-family-price-itinerary-guide.html" },\n'
+            b_content = b_content.replace('"blogPost": [\n', '"blogPost": [\n' + schema_entry)
+            with open(blog_path, "w", encoding="utf-8") as f:
+                f.write(b_content)
+            print("✅ Added Family package guide card and schema entry to blog.html")
+
+if __name__ == "__main__":
+    create_family_blog()
+    update_sitemap_rss_blog()
