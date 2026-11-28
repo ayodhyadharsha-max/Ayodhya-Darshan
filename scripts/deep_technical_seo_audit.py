@@ -130,7 +130,10 @@ for file_name in sorted(html_files):
         issues.append((file_name, 'Canonical', 'MISSING_CANONICAL', 'Canonical tag is missing'))
     else:
         canonical_href = parser.canonical.strip()
-        expected = f'https://www.ayodhyadharshan.com/{file_name}'
+        ALLOWED_CANONICAL_ALIASES = {
+            'ayodhya-dharshan-tour-package.html': 'https://www.ayodhyadharshan.com/ayodhya-tour-package.html'
+        }
+        expected = ALLOWED_CANONICAL_ALIASES.get(file_name, f'https://www.ayodhyadharshan.com/{file_name}')
         if file_name == 'index.html':
             expected_alt = 'https://www.ayodhyadharshan.com/'
             if canonical_href != expected and canonical_href != expected_alt:

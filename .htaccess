@@ -1,6 +1,7 @@
 # AyodhyaDharshan Canonical, Compression & Caching Rules
 <IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteRule ^ayodhya-dharshan-tour-package\.html$ https://www.ayodhyadharshan.com/ayodhya-tour-package.html [R=301,L]
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ https://www.ayodhyadharshan.com/$1 [L,R=301]
